@@ -7,6 +7,16 @@
     android:gravity="center"
     android:padding="10dp" >
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:src="@drawable/splash"
+        android:layout_gravity="center_horizontal"
+        android:paddingEnd="10dp"
+        android:paddingStart="10dp"
+        android:minHeight="230dp" />
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"

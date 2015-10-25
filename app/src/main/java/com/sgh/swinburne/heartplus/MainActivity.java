@@ -8,17 +8,22 @@ import com.sgh.swinburne.heartplus.activity.LoginActivity;
 import com.sgh.swinburne.heartplus.helper.SQLiteHandler;
 import com.sgh.swinburne.heartplus.helper.SessionManager;
 
+
 import java.util.HashMap;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.TypedArray;
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v4.app.ActionBarDrawerToggle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
-public class MainActivity extends Activity
-{
+
+public class MainActivity extends Activity {
     private TextView txtName;
     private TextView txtEmail;
     private Button btnLogout;
@@ -26,10 +31,14 @@ public class MainActivity extends Activity
     private SQLiteHandler db;
     private SessionManager session;
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         txtName = (TextView) findViewById(R.id.name);
         txtEmail = (TextView) findViewById(R.id.email);
@@ -68,7 +77,7 @@ public class MainActivity extends Activity
     /**
      * Logging out the user. Will set isLoggedIn flag to false in shared
      * preferences Clears the user data from sqlite users table
-     * */
+     */
     private void logoutUser() {
         session.setLogin(false);
 
