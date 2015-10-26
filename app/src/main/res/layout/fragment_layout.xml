@@ -8,42 +8,42 @@
 
 
     <Button
-        android:id="@+id/btn_news_feed"
+        android:id="@+id/btn_profile"
         style="@style/DashboardButton"
         android:drawableTop="@drawable/heartlogo_toolbar"
-        android:text="News Feed" />
+        android:text="Profile" />
 
     <!--  Friends Button -->
     <Button
-        android:id="@+id/btn_friends"
+        android:id="@+id/btn_bpmonitoring"
         style="@style/DashboardButton"
         android:drawableTop="@drawable/heartlogo_toolbar"
         android:text="BP Monitoring" />
 
     <!--  Messages Button -->
     <Button
-        android:id="@+id/btn_messages"
+        android:id="@+id/btn_pillreminder"
         style="@style/DashboardButton"
         android:drawableTop="@drawable/heartlogo_toolbar"
         android:text="Pill Reminder" />
 
     <!--  Places Button -->
     <Button
-        android:id="@+id/btn_places"
+        android:id="@+id/btn_test"
         style="@style/DashboardButton"
         android:drawableTop="@drawable/heartlogo_toolbar"
         android:text="Test" />
 
     <!--  Events Button -->
     <Button
-        android:id="@+id/btn_events"
+        android:id="@+id/btn_test2"
         style="@style/DashboardButton"
         android:drawableTop="@drawable/heartlogo_toolbar"
         android:text="Test" />
 
     <!--  Photos Button -->
     <Button
-        android:id="@+id/btn_photos"
+        android:id="@+id/btn_feedback"
         style="@style/DashboardButton"
         android:drawableTop="@drawable/heartlogo_toolbar"
         android:text="Feedback" />

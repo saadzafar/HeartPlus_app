@@ -43,25 +43,34 @@ public class MainActivity extends Activity {
         /**
          * Creating all buttons instances
          * */
-        // Dashboard News feed button
-        Button btn_newsfeed = (Button) findViewById(R.id.btn_news_feed);
+        // Dashboard Profile button
+        Button btn_profile = (Button) findViewById(R.id.btn_profile);
 
-        // Dashboard Friends button
-        Button btn_friends = (Button) findViewById(R.id.btn_friends);
+        // Dashboard BP Monitoring button
+        Button btn_bpmonitoring = (Button) findViewById(R.id.btn_bpmonitoring);
 
-        // Dashboard Messages button
-        Button btn_messages = (Button) findViewById(R.id.btn_messages);
+        // Dashboard Pill Reminder button
+        Button btn_pillreminder = (Button) findViewById(R.id.btn_pillreminder);
 
-        // Dashboard Places button
-        Button btn_places = (Button) findViewById(R.id.btn_places);
+        // Dashboard Test button
+        Button btn_test = (Button) findViewById(R.id.btn_test);
 
-        // Dashboard Events button
-        Button btn_events = (Button) findViewById(R.id.btn_events);
+        // Dashboard Test2 button
+        Button btn_test2 = (Button) findViewById(R.id.btn_test2);
 
-        // Dashboard Photos button
-        Button btn_photos = (Button) findViewById(R.id.btn_photos);
+        // Dashboard Feedback button
+        Button btn_feedback = (Button) findViewById(R.id.btn_feedback);
 
+        // Listening to News Feed button click
+        btn_profile.setOnClickListener(new View.OnClickListener() {
 
+            @Override
+            public void onClick(View view) {
+                // Launching News Feed Screen
+                Intent i = new Intent(getApplicationContext(), ProfileActivity.class);
+                startActivity(i);
+            }
+        });
 
 
 
