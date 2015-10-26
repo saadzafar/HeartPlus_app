@@ -40,6 +40,32 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
 
+        /**
+         * Creating all buttons instances
+         * */
+        // Dashboard News feed button
+        Button btn_newsfeed = (Button) findViewById(R.id.btn_news_feed);
+
+        // Dashboard Friends button
+        Button btn_friends = (Button) findViewById(R.id.btn_friends);
+
+        // Dashboard Messages button
+        Button btn_messages = (Button) findViewById(R.id.btn_messages);
+
+        // Dashboard Places button
+        Button btn_places = (Button) findViewById(R.id.btn_places);
+
+        // Dashboard Events button
+        Button btn_events = (Button) findViewById(R.id.btn_events);
+
+        // Dashboard Photos button
+        Button btn_photos = (Button) findViewById(R.id.btn_photos);
+
+
+
+
+
+
         txtName = (TextView) findViewById(R.id.name);
         txtEmail = (TextView) findViewById(R.id.email);
         btnLogout = (Button) findViewById(R.id.btnLogout);
