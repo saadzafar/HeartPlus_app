@@ -41,7 +41,7 @@
             </intent-filter>
         </activity>
 
-        <!-- News Feed Activity -->
+        <!-- Profile Activity -->
         <activity android:name="com.sgh.swinburne.heartplus.ProfileActivity" ></activity>
 
 

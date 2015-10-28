@@ -10,4 +10,7 @@ public class AppConfig
 
     // Server user register url
     public static String URL_REGISTER = "http://188.166.237.51/android_login_api/register.php";
+
+    //Server get patient details url
+    public static String URL_GETPATIENTDATA = "http://188.166.237.51/android_login_api/GET_PROFILE.php";
 }

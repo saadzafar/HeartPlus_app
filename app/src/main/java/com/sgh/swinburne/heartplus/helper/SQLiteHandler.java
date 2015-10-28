@@ -26,6 +26,8 @@ public class SQLiteHandler extends SQLiteOpenHelper
 
     // Login table name
     private static final String TABLE_USER = "user";
+    //Feedback table name
+    private static final String TABLE_FEEDBACK = "feedback";
 
     // Login Table Columns names
     private static final String KEY_ID = "id";
@@ -33,6 +35,11 @@ public class SQLiteHandler extends SQLiteOpenHelper
     private static final String KEY_EMAIL = "email";
     private static final String KEY_UID = "uid";
     private static final String KEY_CREATED_AT = "created_at";
+
+    //Feedback table Column names
+    private static final String KEY_FID = "id";
+    private static final String KEY_FEMAIL = "email";
+    private static final String KEY_FMESSAGE = "message";
 
     public SQLiteHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -46,6 +53,10 @@ public class SQLiteHandler extends SQLiteOpenHelper
                 + KEY_EMAIL + " TEXT UNIQUE," + KEY_UID + " TEXT,"
                 + KEY_CREATED_AT + " TEXT" + ")";
         db.execSQL(CREATE_LOGIN_TABLE);
+        String CREATE_PATIENT_TABLE = "CREATE TABLE " + TABLE_FEEDBACK + "("
+                + KEY_FID + " INTEGER PRIMARY KEY" + KEY_FEMAIL + " TEXT UNIQUE,"
+                + KEY_FMESSAGE + " TEXT" + ")";
+        db.execSQL(CREATE_PATIENT_TABLE);
 
         Log.d(TAG, "Database tables created");
     }
@@ -55,6 +66,7 @@ public class SQLiteHandler extends SQLiteOpenHelper
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // Drop older table if existed
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_FEEDBACK);
 
         // Create tables again
         onCreate(db);
@@ -69,7 +81,7 @@ public class SQLiteHandler extends SQLiteOpenHelper
         ContentValues values = new ContentValues();
         values.put(KEY_NAME, name); // Name
         values.put(KEY_EMAIL, email); // Email
-        values.put(KEY_UID, uid); // Email
+        values.put(KEY_UID, uid); // unique ID
         values.put(KEY_CREATED_AT, created_at); // Created At
 
         // Inserting Row
@@ -78,6 +90,23 @@ public class SQLiteHandler extends SQLiteOpenHelper
 
         Log.d(TAG, "New user inserted into sqlite: " + id);
     }
+
+    /**
+     * Storing User Feedback into database
+     */
+    public void addFeedback(String email, String message)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_FEMAIL, email);
+        values.put(KEY_FMESSAGE, message);
+
+        long id = db.insert(TABLE_FEEDBACK, null, values);
+        db.close();
+        Log.d(TAG, "New feedback inserted into sqlite: " + id);
+    }
+
 
     /**
      * Getting user data from database
@@ -105,12 +134,34 @@ public class SQLiteHandler extends SQLiteOpenHelper
     }
 
     /**
+     * Getting User feedback from database
+     */
+    public HashMap<String, String> getUserFeedback()
+    {
+        HashMap<String, String> feedback = new HashMap<String, String>();
+        String selectQuery = "SELECT * FROM " + TABLE_FEEDBACK;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        cursor.moveToFirst();
+        if (cursor.getCount() > 0)
+        {
+            feedback.put("email", cursor.getString(1));
+            feedback.put("message", cursor.getString(2));
+        }
+        cursor.close();
+        db.close();
+        Log.d(TAG, "Fetching feedback from Sqlite: " + feedback.toString());
+        return feedback;
+    }
+
+    /**
      * Re crate database Delete all tables and create them again
      * */
     public void deleteUsers() {
         SQLiteDatabase db = this.getWritableDatabase();
         // Delete All Rows
         db.delete(TABLE_USER, null, null);
+        db.delete(TABLE_FEEDBACK, null, null);
         db.close();
 
         Log.d(TAG, "Deleted all user info from sqlite");
