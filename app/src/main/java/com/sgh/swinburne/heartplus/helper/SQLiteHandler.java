@@ -27,8 +27,6 @@ public class SQLiteHandler extends SQLiteOpenHelper
     // Login table name
     private static final String TABLE_USER = "user";
 
-    //Feedback table name
-    private static final String TABLE_FEEDBACK = "feedback";
 
     // Login Table Columns names
     private static final String KEY_ID = "id";
@@ -37,10 +35,6 @@ public class SQLiteHandler extends SQLiteOpenHelper
     private static final String KEY_UID = "uid";
     private static final String KEY_CREATED_AT = "created_at";
 
-    //Feedback table columns name
-    private static final String KEY_FID = "fid";
-    private static final String KEY_FEMAIL = "femail";
-    private static final String KEY_FMESSAGE = "fmessage";
 
     public SQLiteHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -55,11 +49,6 @@ public class SQLiteHandler extends SQLiteOpenHelper
                 + KEY_CREATED_AT + " TEXT" + ")";
         db.execSQL(CREATE_LOGIN_TABLE);
 
-        String CREATE_FEEDBACK_TABLE = "CREATE TABLE " + TABLE_FEEDBACK + "("
-                + KEY_FID + " INTEGER PRIMARY KEY, " + KEY_FEMAIL + " TEXT,"
-                + KEY_FMESSAGE + " TEXT" + ")";
-        db.execSQL(CREATE_FEEDBACK_TABLE);
-
         Log.d(TAG, "Database tables created");
     }
 
@@ -68,7 +57,6 @@ public class SQLiteHandler extends SQLiteOpenHelper
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // Drop older table if existed
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_FEEDBACK);
 
         // Create tables again
         onCreate(db);
@@ -93,21 +81,6 @@ public class SQLiteHandler extends SQLiteOpenHelper
         Log.d(TAG, "New user inserted into sqlite: " + id);
     }
 
-    /**
-     * Storing feedback into database
-     */
-    public void addFeedback(String femail, String fmessage)
-    {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(KEY_FEMAIL, femail);
-        values.put(KEY_FMESSAGE, fmessage);
-
-        long id = db.insert(TABLE_FEEDBACK, null, values);
-        db.close();
-
-        Log.d(TAG, "New feedback inserted into sqlite: " + id);
-    }
 
     /**
      * Getting user data from database
@@ -141,7 +114,6 @@ public class SQLiteHandler extends SQLiteOpenHelper
         SQLiteDatabase db = this.getWritableDatabase();
         // Delete All Rows
             db.delete(TABLE_USER, null, null);
-            //db.delete(TABLE_FEEDBACK, null, null);
             db.close();
         Log.d(TAG, "Deleted all user info from sqlite");
     }
