@@ -36,17 +36,17 @@
 
     <!--  Events Button -->
     <Button
-        android:id="@+id/btn_test2"
-        style="@style/DashboardButton"
-        android:drawableTop="@drawable/heartlogo_toolbar"
-        android:text="Test" />
-
-    <!--  Photos Button -->
-    <Button
         android:id="@+id/btn_feedback"
         style="@style/DashboardButton"
         android:drawableTop="@drawable/heartlogo_toolbar"
         android:text="Feedback" />
+
+    <!--  Photos Button -->
+    <Button
+        android:id="@+id/btn_emergency"
+        style="@style/DashboardButton"
+        android:drawableTop="@drawable/heartlogo_toolbar"
+        android:text="Emergency" />
 
 
 </com.sgh.swinburne.heartplus.DashboardLayout>

@@ -7,4 +7,5 @@
         android:textColor="#606060"
         android:gravity="center"
         android:paddingTop="10dip"/>
+
 </LinearLayout>

@@ -56,10 +56,10 @@ public class MainActivity extends Activity {
         Button btn_test = (Button) findViewById(R.id.btn_test);
 
         // Dashboard Test2 button
-        Button btn_test2 = (Button) findViewById(R.id.btn_test2);
+        Button btn_feedback = (Button) findViewById(R.id.btn_feedback);
 
         // Dashboard Feedback button
-        Button btn_feedback = (Button) findViewById(R.id.btn_feedback);
+        Button btn_emergency = (Button) findViewById(R.id.btn_emergency);
 
         // Listening to News Feed button click
         btn_profile.setOnClickListener(new View.OnClickListener() {
@@ -69,6 +69,25 @@ public class MainActivity extends Activity {
                 // Launching News Feed Screen
                 Intent i = new Intent(getApplicationContext(), ProfileActivity.class);
                 startActivity(i);
+            }
+        });
+        btn_emergency.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                // Launching News Feed Screen
+                Intent i = new Intent(getApplicationContext(), Emergency.class);
+                startActivity(i);
+            }
+        });
+
+        btn_feedback.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                // Launching News Feed Screen
+                Intent j = new Intent(getApplicationContext(), Feedback.class);
+                startActivity(j);
             }
         });
 
