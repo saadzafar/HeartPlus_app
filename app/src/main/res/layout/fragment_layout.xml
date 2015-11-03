@@ -43,7 +43,7 @@
         android:id="@+id/btn_test2"
         style="@style/DashboardButton"
         android:drawableTop="@drawable/heartlogo_toolbar"
-        android:text="Test"
+        android:text="Emergency"
         android:textStyle="bold" />/>
 
     <!--  Photos Button -->

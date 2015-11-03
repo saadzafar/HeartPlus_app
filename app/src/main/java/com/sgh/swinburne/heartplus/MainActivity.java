@@ -16,6 +16,7 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.TypedArray;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -57,8 +58,8 @@ public class MainActivity extends Activity {
         // Dashboard Test button
         Button btn_test = (Button) findViewById(R.id.btn_test);
 
-        // Dashboard Test2 button
-        Button btn_test2 = (Button) findViewById(R.id.btn_test2);
+        // Dashboard Emergency button
+        Button btn_emergency = (Button) findViewById(R.id.btn_test2);
 
         // Dashboard Feedback button
         Button btn_feedback = (Button) findViewById(R.id.btn_feedback);
@@ -81,6 +82,16 @@ public class MainActivity extends Activity {
                 //Launching feedback screen
                 Intent i = new Intent(getApplicationContext(), FeedbackActivity.class);
                 startActivity(i);
+            }
+        });
+
+        //listening to Emergency button click
+        btn_emergency.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                String emergency_number = "999";
+                Intent intent = new Intent(Intent.ACTION_CALL);
+                intent.setData(Uri.parse("tel: " + emergency_number));
+                startActivity(intent);
             }
         });
 
