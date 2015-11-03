@@ -1,5 +1,6 @@
 package com.sgh.swinburne.heartplus;
 
+
 /**
  * Created by Saad on 10/7/2015.
  */
@@ -12,6 +13,7 @@ import com.sgh.swinburne.heartplus.helper.SessionManager;
 import java.util.HashMap;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.os.Bundle;
@@ -61,13 +63,23 @@ public class MainActivity extends Activity {
         // Dashboard Feedback button
         Button btn_feedback = (Button) findViewById(R.id.btn_feedback);
 
-        // Listening to News Feed button click
+        // Listening to Profile button click
         btn_profile.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                // Launching News Feed Screen
+                // Launching profile Screen
                 Intent i = new Intent(getApplicationContext(), ProfileActivity.class);
+                startActivity(i);
+            }
+        });
+
+        //listening to Feedback button click
+        btn_feedback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Launching feedback screen
+                Intent i = new Intent(getApplicationContext(), FeedbackActivity.class);
                 startActivity(i);
             }
         });

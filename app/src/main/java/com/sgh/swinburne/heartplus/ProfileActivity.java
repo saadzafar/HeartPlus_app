@@ -6,11 +6,7 @@ package com.sgh.swinburne.heartplus;
 
 
 import android.app.Activity;
-import android.app.ProgressDialog;
-
 import android.os.Bundle;
-
-
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,15 +16,10 @@ import com.sgh.swinburne.heartplus.R;
 
 import com.sgh.swinburne.heartplus.helper.SQLiteHandler;
 import com.sgh.swinburne.heartplus.helper.SessionManager;
-
-
-import java.util.ArrayList;
 import java.util.HashMap;
 
+
 public class ProfileActivity extends Activity {
-
-    private ProgressDialog pDialog;
-
 
     private SQLiteHandler db;
     private SessionManager session;
@@ -36,12 +27,9 @@ public class ProfileActivity extends Activity {
     private TextView txtEmail;
 
 
-
-
-
-
-
-    /** Called when the activity is first created. */
+    /**
+     * Called when the activity is first created.
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,10 +54,9 @@ public class ProfileActivity extends Activity {
         // Displaying the user details on the screen
         txtName.setText(name);
         txtEmail.setText(email);
-
-
-
     }
-
-
 }
+
+
+
+

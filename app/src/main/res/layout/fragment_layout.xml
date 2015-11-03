@@ -4,49 +4,55 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:layout_weight="1"
-    android:background="#f8f9fe" >
+    android:background="@drawable/gradient_background">
 
 
     <Button
         android:id="@+id/btn_profile"
         style="@style/DashboardButton"
         android:drawableTop="@drawable/heartlogo_toolbar"
-        android:text="Profile" />
+        android:text="Profile"
+        android:textStyle="bold" />
 
     <!--  Friends Button -->
     <Button
         android:id="@+id/btn_bpmonitoring"
         style="@style/DashboardButton"
         android:drawableTop="@drawable/heartlogo_toolbar"
-        android:text="BP Monitoring" />
+        android:text="BP Monitoring"
+        android:textStyle="bold" />/>
 
     <!--  Messages Button -->
     <Button
         android:id="@+id/btn_pillreminder"
         style="@style/DashboardButton"
         android:drawableTop="@drawable/heartlogo_toolbar"
-        android:text="Pill Reminder" />
+        android:text="Pill Reminder"
+        android:textStyle="bold" />/>
 
     <!--  Places Button -->
     <Button
         android:id="@+id/btn_test"
         style="@style/DashboardButton"
         android:drawableTop="@drawable/heartlogo_toolbar"
-        android:text="Test" />
+        android:text="Test"
+        android:textStyle="bold" />/>
 
     <!--  Events Button -->
     <Button
         android:id="@+id/btn_test2"
         style="@style/DashboardButton"
         android:drawableTop="@drawable/heartlogo_toolbar"
-        android:text="Test" />
+        android:text="Test"
+        android:textStyle="bold" />/>
 
     <!--  Photos Button -->
     <Button
         android:id="@+id/btn_feedback"
         style="@style/DashboardButton"
         android:drawableTop="@drawable/heartlogo_toolbar"
-        android:text="Feedback" />
+        android:text="Feedback"
+        android:textStyle="bold" />/>
 
 
 </com.sgh.swinburne.heartplus.DashboardLayout>

@@ -44,6 +44,8 @@
         <!-- Profile Activity -->
         <activity android:name="com.sgh.swinburne.heartplus.ProfileActivity" ></activity>
 
+        <!-- Feedback Activity -->
+        <activity android:name="com.sgh.swinburne.heartplus.FeedbackActivity"></activity>
 
         <!-- <activity
              android:name=".MainActivity"
