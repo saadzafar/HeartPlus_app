@@ -16,10 +16,10 @@
 
     <!--  Friends Button -->
     <Button
-        android:id="@+id/btn_bpmonitoring"
+        android:id="@+id/btn_MedicalCharts"
         style="@style/DashboardButton"
         android:drawableTop="@drawable/heartlogo_toolbar"
-        android:text="BP Monitoring"
+        android:text="Medical Charts"
         android:textStyle="bold" />/>
 
     <!--  Messages Button -->

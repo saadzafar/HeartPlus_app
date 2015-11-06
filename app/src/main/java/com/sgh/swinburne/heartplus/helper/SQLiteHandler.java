@@ -50,6 +50,7 @@ public class SQLiteHandler extends SQLiteOpenHelper
         db.execSQL(CREATE_LOGIN_TABLE);
 
         Log.d(TAG, "Database tables created");
+
     }
 
     // Upgrading database

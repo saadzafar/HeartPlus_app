@@ -50,7 +50,7 @@ public class MainActivity extends Activity {
         Button btn_profile = (Button) findViewById(R.id.btn_profile);
 
         // Dashboard BP Monitoring button
-        Button btn_bpmonitoring = (Button) findViewById(R.id.btn_bpmonitoring);
+        Button btn_bpmonitoring = (Button) findViewById(R.id.btn_MedicalCharts);
 
         // Dashboard Pill Reminder button
         Button btn_pillreminder = (Button) findViewById(R.id.btn_pillreminder);
