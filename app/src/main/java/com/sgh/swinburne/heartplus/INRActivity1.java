@@ -7,6 +7,7 @@ import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -19,7 +20,6 @@ import com.sgh.swinburne.heartplus.helper.SessionManager;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -29,36 +29,33 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Created by Saad on 11/5/2015.
+ * Created by Saad on 11/6/2015.
  */
-public class GlucoseActivity extends Activity {
-
+public class INRActivity1 extends Activity {
     private ProgressDialog pDialog;
     private SQLiteHandler db;
     private SessionManager session;
 
     JSONParser jsonParser = new JSONParser();
-    EditText inputGlucose;
+    EditText inputINR;
     EditText inputDate;
-    EditText inputMeal;
     private DatePicker datePicker;
     private Calendar calendar;
     private TextView dateView;
     private int year, month, day;
 
-    private static String url_create_inr = "http://188.166.237.51/android_login_api/create_glucose.php";
+    private static String url_create_inr = "http://188.166.237.51/android_login_api/create_inr.php";
     private static final String TAG_SUCCESS = "success";
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.glucose_layout);
+        setContentView(R.layout.inr_layout);
 
 
-        inputGlucose = (EditText) findViewById(R.id.inputGlucose);
+        inputINR = (EditText) findViewById(R.id.inputINR);
         dateView = (TextView) findViewById(R.id.inputDate);
-        inputMeal = (EditText) findViewById(R.id.inputMeal);
 
         calendar = Calendar.getInstance();
         year = calendar.get(Calendar.YEAR);
@@ -68,11 +65,11 @@ public class GlucoseActivity extends Activity {
         showDate(year, month + 1, day);
 
 
-        Button btnCreateGlucose = (Button) findViewById(R.id.btnCreateGlucose);
-        btnCreateGlucose.setOnClickListener(new View.OnClickListener() {
+        Button btnCreateINR = (Button) findViewById(R.id.btnCreateINR);
+        btnCreateINR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new CreateNewGlucose().execute();
+                new CreateNewINR().execute();
             }
         });
     }
@@ -110,12 +107,12 @@ public class GlucoseActivity extends Activity {
         Log.d("date: ", dateView.toString());
     }
 
-    class CreateNewGlucose extends AsyncTask<String, String, String> {
+    class CreateNewINR extends AsyncTask<String, String, String> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog = new ProgressDialog(GlucoseActivity.this);
-            pDialog.setMessage("Posting Glucose...");
+            pDialog = new ProgressDialog(INRActivity1.this);
+            pDialog.setMessage("Posting INR...");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
             //pDialog.show();
@@ -128,16 +125,14 @@ public class GlucoseActivity extends Activity {
             HashMap<String, String> user = db.getUserDetails();
             String email = user.get("email");
             Log.d("email ", email);
-            String value = inputGlucose.getText().toString();
+            String value = inputINR.getText().toString();
             String date = dateView.getText().toString();
-            String meal = inputMeal.getText().toString();
             Log.d("value ", value);
             Log.d("date ", date);
             List<NameValuePair> params = new ArrayList<NameValuePair>();
             params.add(new BasicNameValuePair("value", value));
             params.add(new BasicNameValuePair("date", date));
             params.add(new BasicNameValuePair("email", email));
-            params.add(new BasicNameValuePair("meal", meal));
             JSONObject json = jsonParser.makeHttpRequest(url_create_inr, "POST", params);
             Log.d("Create Response", json.toString());
 
@@ -158,5 +153,4 @@ public class GlucoseActivity extends Activity {
             pDialog.dismiss();
         }
     }
-
 }

@@ -15,7 +15,7 @@ public class MedicalChartActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.feedback_layout);
+        setContentView(R.layout.medicalchart_layout);
 
 
         Button btnINR = (Button) findViewById(R.id.btnINR);
@@ -23,7 +23,7 @@ public class MedicalChartActivity extends Activity {
             @Override
             public void onClick(View view) {
                 // Launching INR Screen
-                Intent i = new Intent(getApplicationContext(), INRActivity.class);
+                Intent i = new Intent(getApplicationContext(), INRActivity1.class);
                 startActivity(i);
             }
         });

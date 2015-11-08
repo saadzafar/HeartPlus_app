@@ -50,7 +50,7 @@ public class MainActivity extends Activity {
         Button btn_profile = (Button) findViewById(R.id.btn_profile);
 
         // Dashboard BP Monitoring button
-        Button btn_bpmonitoring = (Button) findViewById(R.id.btn_MedicalCharts);
+        Button btn_MC = (Button) findViewById(R.id.btn_MedicalCharts);
 
         // Dashboard Pill Reminder button
         Button btn_pillreminder = (Button) findViewById(R.id.btn_pillreminder);
@@ -92,6 +92,14 @@ public class MainActivity extends Activity {
                 Intent intent = new Intent(Intent.ACTION_CALL);
                 intent.setData(Uri.parse("tel: " + emergency_number));
                 startActivity(intent);
+            }
+        });
+
+        //listening to Medical Charts button click
+        btn_MC.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), MedicalChartActivity.class);
+                startActivity(i);
             }
         });
 

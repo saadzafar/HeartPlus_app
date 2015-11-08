@@ -9,6 +9,7 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.http.NameValuePair;
@@ -22,9 +23,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.sgh.swinburne.heartplus.helper.SQLiteHandler;
+import com.sgh.swinburne.heartplus.helper.SessionManager;
+
 
 public class FeedbackActivity extends Activity {
     private ProgressDialog pDialog;
+    private SQLiteHandler db;
+    private SessionManager session;
 
     JSONParser jsonParser = new JSONParser();
     EditText inputEmail;
@@ -38,7 +44,7 @@ public class FeedbackActivity extends Activity {
         setContentView(R.layout.feedback_layout);
 
 
-        inputEmail = (EditText) findViewById(R.id.inputEmail);
+        //inputEmail = (EditText) findViewById(R.id.inputEmail);
         inputMessage = (EditText) findViewById(R.id.inputMessage);
 
 
@@ -64,7 +70,11 @@ public class FeedbackActivity extends Activity {
         }
 
         protected String doInBackground(String... args) {
-            String email = inputEmail.getText().toString();
+            db = new SQLiteHandler(getApplicationContext());
+            session = new SessionManager(getApplicationContext());
+            HashMap<String, String> user = db.getUserDetails();
+            String email = user.get("email");
+            //String email = inputEmail.getText().toString();
             String message = inputMessage.getText().toString();
             List<NameValuePair> params = new ArrayList<NameValuePair>();
             params.add(new BasicNameValuePair("email", email));

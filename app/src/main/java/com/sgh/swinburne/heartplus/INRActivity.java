@@ -27,16 +27,12 @@ import java.util.List;
  */
 public class INRActivity extends Activity {
 
-    private TextView txtName;
-    private TextView txtEmail;
-    private TextView highINR;
-    private TextView lowINR;
     private SQLiteHandler db;
     private SessionManager session;
     private ProgressDialog pDialog;
 
     JSONParser jParser = new JSONParser();
-    HashMap<String, String> inr_vals;
+    ArrayList<HashMap<String, String>> INRList;
 
     private static String url_get_inr = "http://188.166.237.51/android_login_api/get_inr.php";
 
@@ -59,7 +55,7 @@ public class INRActivity extends Activity {
         HashMap<String, String> user = db.getUserDetails();
         String email = user.get("email");*/
 
-        inr_vals = new HashMap<String, String>();
+        //inr_vals = new HashMap<String, String>();
         new LoadINR().execute();
     }
 
@@ -69,32 +65,47 @@ public class INRActivity extends Activity {
             pDialog = new ProgressDialog(INRActivity.this);
             pDialog.setMessage("Loading INR values. Please wait...");
             pDialog.setIndeterminate(false);
-            pDialog.setCancelable(false);
-            pDialog.show();
+            pDialog.setCancelable(true);
+            // pDialog.show();
         }
 
         protected String doInBackground(String... args) {
             db = new SQLiteHandler(getApplicationContext());
             session = new SessionManager(getApplicationContext());
-            try {
                 HashMap<String, String> user = db.getUserDetails();
                 String email = user.get("email");
+            Log.d("EMAIL: ", email);
+
                 List<NameValuePair> params = new ArrayList<NameValuePair>();
                 params.add(new BasicNameValuePair("email", email));
+            Log.d("Email PARAMS:", params.toString());
                 JSONObject json = jParser.makeHttpRequest(url_get_inr, "GET", params);
 
                 Log.d("INR: ", json.toString());
 
-                // try {
+            try {
                 int success = json.getInt(TAG_SUCCESS);
                 if (success == 1) {
                     inr = json.getJSONArray(TAG_INR);
-                    JSONObject inrObject = inr.getJSONObject(0);
-                    highINR.setText(inrObject.getString(TAG_HINR));
-                    lowINR.setText(inrObject.getString(TAG_LINR));
+                    for (int i = 0; i < inr.length(); i++) {
+                        JSONObject inrObject = inr.getJSONObject(i);
 
-                    highINR = (TextView) findViewById(R.id.HINR);
-                    lowINR = (TextView) findViewById(R.id.LINR);
+                        String highINR = inrObject.getString(TAG_HINR);
+                        String lowINR = inrObject.getString(TAG_LINR);
+                        String txtEmail = inrObject.getString(TAG_EMAIL);
+
+                        Log.d("Email: ", txtEmail);
+                        Log.d("High INR: ", highINR);
+                        Log.d("Low INR: ", lowINR);
+
+
+                        if (txtEmail.equals(email)) {
+
+                            break;
+                        }
+                    }
+                    // highINR = (TextView) findViewById(R.id.HINR);
+                    // lowINR = (TextView) findViewById(R.id.LINR);
 
                 }
             } catch (JSONException e) {

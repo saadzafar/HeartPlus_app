@@ -56,11 +56,12 @@ public class JSONParser {
 
             } else if (method == "GET") {
                 // request method is GET
+                Log.d("GET PASS TEST: ", params.toString());
                 DefaultHttpClient httpClient = new DefaultHttpClient();
                 String paramString = URLEncodedUtils.format(params, "utf-8");
+                Log.d("Encoded GET: ", paramString);
                 url += "?" + paramString;
                 HttpGet httpGet = new HttpGet(url);
-
                 HttpResponse httpResponse = httpClient.execute(httpGet);
                 HttpEntity httpEntity = httpResponse.getEntity();
                 is = httpEntity.getContent();

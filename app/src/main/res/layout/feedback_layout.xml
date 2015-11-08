@@ -28,7 +28,7 @@
         android:layout_alignParentTop="true"
         android:id="@+id/linearLayout">
 
-        <!-- Email Label -->
+        <!--
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -37,14 +37,15 @@
             android:paddingRight="10dip"
             android:paddingTop="10dip"
             android:textSize="17dip" />
-        <!-- Input Email -->
+
         <EditText
             android:id="@+id/inputEmail"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dip"
             android:layout_marginBottom="15dip"
-            android:singleLine="true" />
+            android:singleLine="true" /> -->
+
 
         <!-- Message Label -->
         <TextView

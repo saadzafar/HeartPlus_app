@@ -26,23 +26,66 @@
         android:orientation="vertical"
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
-        android:id="@+id/linearLayout">
+        android:id="@+id/linearLayout"
+        android:layout_weight="0.82"
+        android:weightSum="1">
 
         <TextView
-            android:id="@+id/HINR"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:textColor="@color/lbl_name"
-            android:textSize="24dp" />
+            android:text="INR"
+            android:paddingLeft="10dip"
+            android:paddingRight="10dip"
+            android:paddingTop="10dip"
+            android:textSize="17dip" />
+
+        <EditText
+            android:id="@+id/inputINR"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dip"
+            android:layout_marginBottom="15dip"
+            android:singleLine="true" />
 
         <TextView
-            android:id="@+id/LINR"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:text="date"
+            android:paddingLeft="10dip"
+            android:paddingRight="10dip"
+            android:paddingTop="10dip"
+            android:layout_gravity="left"
+            android:textSize="17dip" />
+
+        <TextView
+            android:id="@+id/inputDate"
+            android:layout_width="153dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dip"
+            android:layout_marginBottom="15dip"
+            android:singleLine="true"
+            android:layout_weight="0.13" />
+
+        <Button
+            android:id="@+id/button1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:textColor="@color/lbl_name"
-            android:textSize="24dp" />
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:onClick="setDate"
+            android:text="Set Date"
+            android:layout_gravity="center_horizontal" /><![CDATA[
+
+        !-- Button Create INR -->
+
+        ]]>
+
+        <Button
+            android:id="@+id/btnCreateINR"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Submit" />
 
 
     </LinearLayout>

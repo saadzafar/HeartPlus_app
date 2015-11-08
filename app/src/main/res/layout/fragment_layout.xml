@@ -14,7 +14,7 @@
         android:text="Profile"
         android:textStyle="bold" />
 
-    <!--  Friends Button -->
+    <!--  Medical Charts Button -->
     <Button
         android:id="@+id/btn_MedicalCharts"
         style="@style/DashboardButton"
