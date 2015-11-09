@@ -4,12 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <include layout="@layout/actionbar_layout" />
 
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:padding="15dip"
-        android:text="Blood Pressure"
+        android:text="Heart Rate"
         android:textColor="#ff29549f"
         android:textSize="25dip"
         android:textStyle="bold" />
@@ -30,55 +31,19 @@
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Systolic Value"
+            android:text="Heart Rate"
             android:paddingLeft="10dip"
             android:paddingRight="10dip"
             android:paddingTop="10dip"
             android:textSize="17dip" />
 
         <EditText
-            android:id="@+id/inputS"
+            android:id="@+id/inputHR"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dip"
             android:layout_marginBottom="15dip"
             android:singleLine="true" />
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Diastolic Value"
-            android:paddingLeft="10dip"
-            android:paddingRight="10dip"
-            android:paddingTop="10dip"
-            android:textSize="17dip" />
-
-        <EditText
-            android:id="@+id/inputD"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dip"
-            android:layout_marginBottom="15dip"
-            android:singleLine="true" />
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Remark"
-            android:paddingLeft="10dip"
-            android:paddingRight="10dip"
-            android:paddingTop="10dip"
-            android:textSize="17dip" />
-
-        <EditText
-            android:id="@+id/remark"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dip"
-            android:layout_marginBottom="15dip"
-            android:lines="2"
-            android:gravity="top" />
-
 
         <TextView
             android:layout_width="140dp"
@@ -99,7 +64,6 @@
             android:singleLine="true"
             android:layout_weight="0.13" />
 
-
         <Button
             android:id="@+id/button1"
             android:layout_width="wrap_content"
@@ -109,13 +73,14 @@
             android:layout_marginTop="30dp"
             android:onClick="setDate"
             android:text="Set Date"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal" /><![CDATA[
 
+        !-- Button Create HR -->
 
-        !-- Button Create BP -->
+        ]]>
 
         <Button
-            android:id="@+id/btnCreateGlucose"
+            android:id="@+id/btnCreateHR"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="Submit" />

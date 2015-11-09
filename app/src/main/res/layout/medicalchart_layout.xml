@@ -50,6 +50,13 @@
             android:layout_height="wrap_content"
             android:text="Glucose" />
 
+        <!-- Button Heart Rate -->
+        <Button
+            android:id="@+id/btnHR"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Heart Rate" />
+
 
     </LinearLayout>
 </LinearLayout>

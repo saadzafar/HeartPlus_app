@@ -47,5 +47,15 @@ public class MedicalChartActivity extends Activity {
                 startActivity(i);
             }
         });
+
+        Button btnHR = (Button) findViewById(R.id.btnHR);
+        btnHR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Launching Heart Rate Screen
+                Intent i = new Intent(getApplicationContext(), HeartRateActivity.class);
+                startActivity(i);
+            }
+        });
     }
 }

@@ -58,6 +58,12 @@
         <!-- Glucose Activity -->
         <activity android:name="com.sgh.swinburne.heartplus.GlucoseActivity"></activity>
 
+        <!-- Glucose Activity -->
+        <activity android:name="com.sgh.swinburne.heartplus.BPActivity"></activity>
+
+        <!-- Heart Rate Activity -->
+        <activity android:name="com.sgh.swinburne.heartplus.HeartRateActivity"></activity>
+
         <!-- <activity
              android:name=".MainActivity"
              android:label="@string/app_name">

@@ -28,37 +28,32 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Created by Saad on 11/5/2015.
+ * Created by Saad on 11/9/2015.
  */
-public class BPActivity extends Activity
-{
+public class HeartRateActivity extends Activity {
     private ProgressDialog pDialog;
     private SQLiteHandler db;
     private SessionManager session;
 
     JSONParser jsonParser = new JSONParser();
-    EditText inputS;
+    EditText inputHR;
     EditText inputDate;
-    EditText inputD;
-    EditText remark;
     private DatePicker datePicker;
     private Calendar calendar;
     private TextView dateView;
     private int year, month, day;
 
-    private static String url_create_bp = "http://188.166.237.51/android_login_api/create_bp.php";
+    private static String url_create_hr = "http://188.166.237.51/android_login_api/create_hr.php";
     private static final String TAG_SUCCESS = "success";
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.bp_layout);
+        setContentView(R.layout.hr_layout);
 
 
-        inputS = (EditText) findViewById(R.id.inputS);
-        inputD = (EditText) findViewById(R.id.inputD);
-        remark = (EditText) findViewById(R.id.remark);
+        inputHR = (EditText) findViewById(R.id.inputHR);
         dateView = (TextView) findViewById(R.id.inputDate);
 
         calendar = Calendar.getInstance();
@@ -69,11 +64,11 @@ public class BPActivity extends Activity
         showDate(year, month + 1, day);
 
 
-        Button btnCreateGlucose = (Button) findViewById(R.id.btnCreateGlucose);
-        btnCreateGlucose.setOnClickListener(new View.OnClickListener() {
+        Button btnCreateINR = (Button) findViewById(R.id.btnCreateHR);
+        btnCreateINR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new CreateNewBP().execute();
+                new CreateNewINR().execute();
             }
         });
     }
@@ -111,12 +106,12 @@ public class BPActivity extends Activity
         Log.d("date: ", dateView.toString());
     }
 
-    class CreateNewBP extends AsyncTask<String, String, String> {
+    class CreateNewINR extends AsyncTask<String, String, String> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog = new ProgressDialog(BPActivity.this);
-            pDialog.setMessage("Posting Blood Pressure...");
+            pDialog = new ProgressDialog(HeartRateActivity.this);
+            pDialog.setMessage("Posting Heart Rate...");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
             //pDialog.show();
@@ -129,21 +124,15 @@ public class BPActivity extends Activity
             HashMap<String, String> user = db.getUserDetails();
             String email = user.get("email");
             Log.d("email ", email);
-            String systolic = inputS.getText().toString();
-            String diastolic = inputD.getText().toString();
-            String inputremark = remark.getText().toString();
+            String hr = inputHR.getText().toString();
             String date = dateView.getText().toString();
-            Log.d("BPS ", systolic);
-            Log.d("BPD ", diastolic);
+            Log.d("HR ", hr);
             Log.d("date ", date);
             List<NameValuePair> params = new ArrayList<NameValuePair>();
-            params.add(new BasicNameValuePair("systolic", systolic));
-            params.add(new BasicNameValuePair("diastolic", diastolic));
+            params.add(new BasicNameValuePair("heartrate", hr));
             params.add(new BasicNameValuePair("date", date));
             params.add(new BasicNameValuePair("email", email));
-            params.add(new BasicNameValuePair("remark", inputremark));
-            Log.d("params ", params.toString());
-            JSONObject json = jsonParser.makeHttpRequest(url_create_bp, "POST", params);
+            JSONObject json = jsonParser.makeHttpRequest(url_create_hr, "POST", params);
             Log.d("Create Response", json.toString());
 
             try {
