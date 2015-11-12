@@ -64,6 +64,12 @@
         <!-- Heart Rate Activity -->
         <activity android:name="com.sgh.swinburne.heartplus.HeartRateActivity"></activity>
 
+        <!-- Edit Pill Activity -->
+        <activity android:name="com.sgh.swinburne.heartplus.EditPill"></activity>
+
+        <!-- New Pill Activity -->
+        <activity android:name="com.sgh.swinburne.heartplus.NewPillActivity"></activity>
+
         <!-- <activity
              android:name=".MainActivity"
              android:label="@string/app_name">

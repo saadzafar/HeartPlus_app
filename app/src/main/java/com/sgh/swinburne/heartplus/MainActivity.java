@@ -30,12 +30,8 @@ public class MainActivity extends Activity {
     private TextView txtName;
     private TextView txtEmail;
     private Button btnLogout;
-
     private SQLiteHandler db;
     private SessionManager session;
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

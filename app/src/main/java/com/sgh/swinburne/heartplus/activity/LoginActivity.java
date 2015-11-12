@@ -13,18 +13,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.android.volley.Request.Method;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.HashMap;
 import java.util.Map;
-
 import com.sgh.swinburne.heartplus.MainActivity;
 import com.sgh.swinburne.heartplus.R;
 import com.sgh.swinburne.heartplus.app.AppConfig;

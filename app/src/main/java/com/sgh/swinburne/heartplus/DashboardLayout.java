@@ -95,7 +95,7 @@ public class DashboardLayout extends ViewGroup
         }
 
         // Calculate what number of rows and columns will optimize for even horizontal and
-        // vertical whitespace between items. Start with a 1 x N grid, then try 2 x N, and so on.
+        // vertical whitespace between items.
         int bestSpaceDifference = Integer.MAX_VALUE;
         int spaceDifference;
 
@@ -127,7 +127,7 @@ public class DashboardLayout extends ViewGroup
                     break;
                 }
             } else {
-                // This is a worse whitespace ratio, use the previous value of cols and exit.
+                // This is a worst possible whitespace ratio, use the previous value of cols and exit.
                 --cols;
                 rows = (visibleCount - 1) / cols + 1;
                 hSpace = ((width - mMaxChildWidth * cols) / (cols + 1));
