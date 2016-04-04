@@ -2,20 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f8f9fe"
+    android:background="@color/background"
     android:orientation="vertical"
     android:weightSum="1">
-
-    <include layout="@layout/actionbar_layout" />
 
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:padding="15dip"
         android:text="Feedback"
-        android:textColor="#ff29549f"
         android:textSize="25dip"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="@color/black" />
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -52,19 +50,24 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="Message"
+            android:textAllCaps="true"
+            android:textStyle="bold"
             android:paddingLeft="10dip"
             android:paddingRight="10dip"
             android:paddingTop="10dip"
-            android:textSize="17dip" />
+            android:textSize="17dip"
+            android:textColor="#000" />
         <!-- Input Message -->
         <EditText
             android:id="@+id/inputMessage"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dip"
+            android:text="Your Feedback"
             android:layout_marginBottom="15dip"
             android:lines="4"
-            android:gravity="top" />
+            android:gravity="top"
+            android:textColor="@color/hint" />
 
         <!-- Button Create Message -->
         <Button

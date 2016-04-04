@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.app.TimePickerDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,6 +13,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.sgh.swinburne.heartplus.helper.SQLiteHandler;
@@ -30,8 +32,7 @@ import java.util.List;
 /**
  * Created by Saad on 11/5/2015.
  */
-public class BPActivity extends Activity
-{
+public class BPActivity extends Activity {
     private ProgressDialog pDialog;
     private SQLiteHandler db;
     private SessionManager session;
@@ -39,12 +40,14 @@ public class BPActivity extends Activity
     JSONParser jsonParser = new JSONParser();
     EditText inputS;
     EditText inputDate;
+    EditText inputTime;
     EditText inputD;
     EditText remark;
     private DatePicker datePicker;
     private Calendar calendar;
     private TextView dateView;
-    private int year, month, day;
+    private TextView timeView;
+    private int year, month, day, hour, minute;
 
     private static String url_create_bp = "http://188.166.237.51/android_login_api/create_bp.php";
     private static final String TAG_SUCCESS = "success";
@@ -60,22 +63,27 @@ public class BPActivity extends Activity
         inputD = (EditText) findViewById(R.id.inputD);
         remark = (EditText) findViewById(R.id.remark);
         dateView = (TextView) findViewById(R.id.inputDate);
+        timeView = (TextView) findViewById(R.id.inputTime);
 
         calendar = Calendar.getInstance();
         year = calendar.get(Calendar.YEAR);
-
         month = calendar.get(Calendar.MONTH);
         day = calendar.get(Calendar.DAY_OF_MONTH);
+        hour = calendar.get(Calendar.HOUR_OF_DAY);
+        minute = calendar.get(Calendar.MINUTE);
         showDate(year, month + 1, day);
 
 
+        //showTime(hour, minute);
+
         Button btnCreateGlucose = (Button) findViewById(R.id.btnCreateGlucose);
         btnCreateGlucose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                new CreateNewBP().execute();
-            }
-        });
+                                                @Override
+                                                public void onClick(View view) {
+                                                    new CreateNewBP().execute();
+                                                }
+                                            }
+        );
     }
 
     @SuppressWarnings("deprecation")
@@ -105,62 +113,80 @@ public class BPActivity extends Activity
         }
     };
 
-    private void showDate(int year, int month, int day) {
-        dateView.setText(new StringBuilder().append(year).append("-")
-                .append(month).append("-").append(day));
-        Log.d("date: ", dateView.toString());
-    }
-
-    class CreateNewBP extends AsyncTask<String, String, String> {
+    private TimePickerDialog.OnTimeSetListener myTimeListener = new TimePickerDialog.OnTimeSetListener() {
         @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            pDialog = new ProgressDialog(BPActivity.this);
-            pDialog.setMessage("Posting Blood Pressure...");
-            pDialog.setIndeterminate(false);
-            pDialog.setCancelable(true);
-            //pDialog.show();
+        public void onTimeSet(TimePicker timePicker, int i, int i1) {
+            showTime(i, i1);
+        }
+
+    };
+
+        private void showTime(int hour, int minute) {
+            timeView.setText(new StringBuilder().append(hour).append(":").append(minute));
+            Log.d("time: ", timeView.toString());
 
         }
 
-        protected String doInBackground(String... args) {
-            db = new SQLiteHandler(getApplicationContext());
-            session = new SessionManager(getApplicationContext());
-            HashMap<String, String> user = db.getUserDetails();
-            String email = user.get("email");
-            Log.d("email ", email);
-            String systolic = inputS.getText().toString();
-            String diastolic = inputD.getText().toString();
-            String inputremark = remark.getText().toString();
-            String date = dateView.getText().toString();
-            Log.d("BPS ", systolic);
-            Log.d("BPD ", diastolic);
-            Log.d("date ", date);
-            List<NameValuePair> params = new ArrayList<NameValuePair>();
-            params.add(new BasicNameValuePair("systolic", systolic));
-            params.add(new BasicNameValuePair("diastolic", diastolic));
-            params.add(new BasicNameValuePair("date", date));
-            params.add(new BasicNameValuePair("email", email));
-            params.add(new BasicNameValuePair("remark", inputremark));
-            Log.d("params ", params.toString());
-            JSONObject json = jsonParser.makeHttpRequest(url_create_bp, "POST", params);
-            Log.d("Create Response", json.toString());
+        ;
 
-            try {
-                int success = json.getInt(TAG_SUCCESS);
-                if (success == 1) {
-                    finish();
-                } else {
+        private void showDate(int year, int month, int day) {
+            dateView.setText(new StringBuilder().append(year).append("-")
+                    .append(month).append("-").append(day));
+            Log.d("date: ", dateView.toString());
+        }
 
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
+        class CreateNewBP extends AsyncTask<String, String, String> {
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                pDialog = new ProgressDialog(BPActivity.this);
+                pDialog.setMessage("Posting Blood Pressure...");
+                pDialog.setIndeterminate(false);
+                pDialog.setCancelable(true);
+                //pDialog.show();
+
             }
-            return null;
-        }
 
-        protected void onPostExecute(String file_url) {
-            pDialog.dismiss();
+            protected String doInBackground(String... args) {
+                db = new SQLiteHandler(getApplicationContext());
+                session = new SessionManager(getApplicationContext());
+                HashMap<String, String> user = db.getUserDetails();
+                String email = user.get("email");
+                Log.d("email ", email);
+                String systolic = inputS.getText().toString();
+                String diastolic = inputD.getText().toString();
+                String inputremark = remark.getText().toString();
+                String date = dateView.getText().toString();
+                String time = timeView.getText().toString();
+                Log.d("BPS ", systolic);
+                Log.d("BPD ", diastolic);
+                Log.d("date ", date);
+                List<NameValuePair> params = new ArrayList<NameValuePair>();
+                params.add(new BasicNameValuePair("systolic", systolic));
+                params.add(new BasicNameValuePair("diastolic", diastolic));
+                params.add(new BasicNameValuePair("date", date));
+                params.add(new BasicNameValuePair("time", time));
+                params.add(new BasicNameValuePair("email", email));
+                params.add(new BasicNameValuePair("remark", inputremark));
+                Log.d("params ", params.toString());
+                JSONObject json = jsonParser.makeHttpRequest(url_create_bp, "POST", params);
+                Log.d("Create Response", json.toString());
+
+                try {
+                    int success = json.getInt(TAG_SUCCESS);
+                    if (success == 1) {
+                        finish();
+                    } else {
+
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                return null;
+            }
+
+            protected void onPostExecute(String file_url) {
+                pDialog.dismiss();
+            }
         }
-    }
 }

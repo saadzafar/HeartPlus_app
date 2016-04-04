@@ -2,16 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <include layout="@layout/actionbar_layout" />
+    android:layout_height="match_parent"
+    android:background="@color/background">
 
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:padding="15dip"
         android:text="Heart Rate"
-        android:textColor="#ff29549f"
+        android:textColor="#000"
         android:textSize="25dip"
         android:textStyle="bold" />
 
@@ -32,58 +31,58 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="Heart Rate"
+            android:textStyle="bold"
             android:paddingLeft="10dip"
             android:paddingRight="10dip"
-            android:paddingTop="10dip"
-            android:textSize="17dip" />
+            android:textSize="17dip"
+            android:textColor="#000" />
 
         <EditText
             android:id="@+id/inputHR"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:text="Your Heart Rate"
             android:layout_margin="5dip"
             android:layout_marginBottom="15dip"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:textColor="@color/hint" />
 
         <TextView
             android:layout_width="140dp"
             android:layout_height="wrap_content"
-            android:text="date"
+            android:text="Date"
+            android:textStyle="bold"
             android:paddingLeft="10dip"
             android:paddingRight="10dip"
-            android:paddingTop="10dip"
+            android:paddingTop="20dp"
             android:layout_gravity="left"
-            android:textSize="17dip" />
+            android:textSize="17dip"
+            android:textColor="#000" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="30dp"
+            android:onClick="setDate"
+            android:background="@drawable/calendar" />
 
         <TextView
             android:id="@+id/inputDate"
             android:layout_width="153dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_margin="5dip"
             android:layout_marginBottom="15dip"
             android:singleLine="true"
             android:layout_weight="0.13" />
 
         <Button
-            android:id="@+id/button1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp"
-            android:onClick="setDate"
-            android:text="Set Date"
-            android:layout_gravity="center_horizontal" /><![CDATA[
-
-        !-- Button Create HR -->
-
-        ]]>
-
-        <Button
             android:id="@+id/btnCreateHR"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Submit" />
+            android:text="SUBMIT"
+            android:background="#ffb2b8"
+            android:textColor="@color/black" />
 
 
     </LinearLayout>

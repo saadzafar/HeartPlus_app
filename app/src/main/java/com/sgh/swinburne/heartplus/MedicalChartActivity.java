@@ -57,5 +57,25 @@ public class MedicalChartActivity extends Activity {
                 startActivity(i);
             }
         });
+
+        Button btnVINR = (Button) findViewById(R.id.btnVINR);
+        btnVINR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Launching INR HISTORY Screen
+                Intent i = new Intent(getApplicationContext(), INRActivity.class);
+                startActivity(i);
+            }
+        });
+
+        Button btnGraph = (Button) findViewById(R.id.btnGraph);
+        btnGraph.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Launching Graph Screen
+                Intent i = new Intent(getApplicationContext(), Graph_View.class);
+                startActivity(i);
+            }
+        });
     }
 }

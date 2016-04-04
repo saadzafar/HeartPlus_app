@@ -1,62 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#f8f9fe"
+    android:id="@+id/home_root"
     android:orientation="vertical"
-    android:weightSum="1">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/background">
+    <!-- Include Action Bar -->
 
-    <include layout="@layout/actionbar_layout" />
+    <!--  Include Fragmented dashboard -->
+    <include layout="@layout/fragmented_medicalchart"/>
 
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:padding="15dip"
-        android:text="Medical Charts"
-        android:textColor="#ff29549f"
-        android:textSize="25dip"
-        android:textStyle="bold" />
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true"
-        android:id="@+id/linearLayout">
-
-
-        <!-- Button INR -->
-        <Button
-            android:id="@+id/btnINR"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="INR" />
-
-        <!-- Button Blood Pressure -->
-        <Button
-            android:id="@+id/btnBP"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Blood Pressure" />
-
-        <!-- Button Glucose -->
-        <Button
-            android:id="@+id/btnGlucose"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Glucose" />
-
-        <!-- Button Heart Rate -->
-        <Button
-            android:id="@+id/btnHR"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Heart Rate" />
-
-
-    </LinearLayout>
 </LinearLayout>

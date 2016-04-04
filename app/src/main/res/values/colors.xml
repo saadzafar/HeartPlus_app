@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="bg_login">#26ae90</color>
+    <color name="bg_login">#16d2a9</color>
     <color name="bg_register">#2e3237</color>
     <color name="bg_main">#428bca</color>
     <color name="white">#ffffff</color>
@@ -13,4 +13,7 @@
     <color name="btn_login_bg">#eceef1</color>
     <color name="lbl_name">#333333</color>
     <color name="btn_logut_bg">#ff6861</color>
+    <color name="background">#ed7074</color>
+    <color name="black">#000000</color>
+    <color name="hint">#f50101</color>
 </resources>

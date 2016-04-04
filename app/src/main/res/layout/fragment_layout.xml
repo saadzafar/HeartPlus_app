@@ -4,55 +4,78 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:layout_weight="1"
-    android:background="@drawable/gradient_background">
+    android:background="@color/background">
 
     <!-- Patient Education -->
     <Button
         android:id="@+id/btn_profile"
         style="@style/DashboardButton"
-        android:drawableTop="@drawable/heartlogo_toolbar"
+        android:drawableTop="@drawable/graduation"
+        android:paddingBottom="30dp"
         android:text="Patient Education"
-        android:textStyle="bold" />
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"/>
 
     <!--  Medical Charts Button -->
     <Button
         android:id="@+id/btn_MedicalCharts"
         style="@style/DashboardButton"
-        android:drawableTop="@drawable/heartlogo_toolbar"
+        android:drawableTop="@drawable/medical"
         android:text="Medical Charts"
-        android:textStyle="bold" />/>
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" />
 
     <!--  Pill Reminder Button -->
     <Button
         android:id="@+id/btn_pillreminder"
         style="@style/DashboardButton"
-        android:drawableTop="@drawable/heartlogo_toolbar"
+        android:drawableTop="@drawable/healthy"
+        android:paddingTop="20dp"
         android:text="Pill Reminder"
-        android:textStyle="bold" />/>
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
-    <!--   Button -->
+    <!--  Appointment Button -->
     <Button
         android:id="@+id/btn_test"
         style="@style/DashboardButton"
-        android:drawableTop="@drawable/heartlogo_toolbar"
-        android:text="Test"
-        android:textStyle="bold" />/>
+        android:drawableTop="@drawable/music"
+        android:paddingTop="20dp"
+        android:text="Appointment Scheduler"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <!--  Emergency Button -->
     <Button
         android:id="@+id/btn_test2"
         style="@style/DashboardButton"
-        android:drawableTop="@drawable/heartlogo_toolbar"
+        android:drawableTop="@drawable/transport"
+        android:paddingTop="20dp"
         android:text="Emergency"
-        android:textStyle="bold" />/>
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <!--  Feedback Button -->
     <Button
         android:id="@+id/btn_feedback"
         style="@style/DashboardButton"
-        android:drawableTop="@drawable/heartlogo_toolbar"
+        android:drawableTop="@drawable/lists"
+        android:paddingTop="20dp"
         android:text="Feedback"
-        android:textStyle="bold" />/>
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 
 </com.sgh.swinburne.heartplus.DashboardLayout>

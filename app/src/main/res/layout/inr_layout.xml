@@ -2,18 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f8f9fe"
+    android:background="@color/background"
     android:orientation="vertical"
     android:weightSum="1">
-
-    <include layout="@layout/actionbar_layout" />
 
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:padding="15dip"
         android:text="INR"
-        android:textColor="#ff29549f"
+        android:textColor="#000"
         android:textSize="25dip"
         android:textStyle="bold" />
 
@@ -34,10 +32,12 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="INR"
+            android:textStyle="bold"
             android:paddingLeft="10dip"
             android:paddingRight="10dip"
             android:paddingTop="10dip"
-            android:textSize="17dip" />
+            android:textSize="17dip"
+            android:textColor="#000" />
 
         <EditText
             android:id="@+id/inputINR"
@@ -45,26 +45,21 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dip"
             android:layout_marginBottom="15dip"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:text="Your INR Value"
+            android:textColor="@color/hint" />
 
         <TextView
             android:layout_width="140dp"
             android:layout_height="wrap_content"
-            android:text="date"
+            android:text="Date"
+            android:textStyle="bold"
             android:paddingLeft="10dip"
             android:paddingRight="10dip"
             android:paddingTop="10dip"
             android:layout_gravity="left"
-            android:textSize="17dip" />
-
-        <TextView
-            android:id="@+id/inputDate"
-            android:layout_width="153dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dip"
-            android:layout_marginBottom="15dip"
-            android:singleLine="true"
-            android:layout_weight="0.13" />
+            android:textSize="17dip"
+            android:textColor="#000" />
 
         <Button
             android:id="@+id/button1"
@@ -74,12 +69,17 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
             android:onClick="setDate"
-            android:text="Set Date"
-            android:layout_gravity="center_horizontal" /><![CDATA[
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/calendar"/>
 
-        !-- Button Create INR -->
-
-        ]]>
+        <TextView
+            android:id="@+id/inputDate"
+            android:layout_width="153dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dip"
+            android:layout_marginBottom="15dip"
+            android:singleLine="true"
+            android:layout_weight="0.13" />
 
         <Button
             android:id="@+id/btnCreateINR"

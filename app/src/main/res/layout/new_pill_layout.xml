@@ -2,17 +2,20 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/background">
 
     <!-- Name Label -->
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Pill Name"
+        android:textStyle="bold"
         android:paddingLeft="10dip"
         android:paddingRight="10dip"
         android:paddingTop="10dip"
-        android:textSize="17dip" />
+        android:textSize="17dip"
+        android:textColor="#000" />
 
     <!-- Input Name -->
     <EditText
@@ -21,17 +24,21 @@
         android:layout_height="wrap_content"
         android:layout_margin="5dip"
         android:layout_marginBottom="15dip"
-        android:singleLine="true" />
+        android:singleLine="true"
+        android:text="The Pill Name"
+        android:textColor="@color/hint" />
 
     <!-- Price Label -->
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Side Effect"
+        android:textStyle="bold"
         android:paddingLeft="10dip"
         android:paddingRight="10dip"
         android:paddingTop="10dip"
-        android:textSize="17dip" />
+        android:textSize="17dip"
+        android:textColor="#000" />
 
     <!-- Input Price -->
     <EditText
@@ -41,17 +48,21 @@
         android:layout_margin="5dip"
         android:layout_marginBottom="15dip"
         android:singleLine="true"
-        android:inputType="numberDecimal" />
+        android:inputType="numberDecimal"
+        android:textColor="@color/hint"
+        android:text="Any Side Effects" />
 
     <!-- Indication Label -->
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Indication"
+        android:textStyle="bold"
         android:paddingLeft="10dip"
         android:paddingRight="10dip"
         android:paddingTop="10dip"
-        android:textSize="17dip" />
+        android:textSize="17dip"
+        android:textColor="#000" />
 
     <!-- Input indication -->
     <EditText
@@ -61,17 +72,21 @@
         android:layout_margin="5dip"
         android:layout_marginBottom="15dip"
         android:lines="1"
-        android:gravity="top" />
+        android:gravity="top"
+        android:text="Indications"
+        android:textColor="@color/hint" />
 
     <!-- Description Label -->
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Description"
+        android:textStyle="bold"
         android:paddingLeft="10dip"
         android:paddingRight="10dip"
         android:paddingTop="10dip"
-        android:textSize="17dip" />
+        android:textSize="17dip"
+        android:textColor="#000" />
 
     <!-- Input description -->
     <EditText
@@ -81,7 +96,9 @@
         android:layout_margin="5dip"
         android:layout_marginBottom="15dip"
         android:lines="4"
-        android:gravity="top" />
+        android:gravity="top"
+        android:text="Your Description"
+        android:textColor="@color/hint" />
 
 
     <!-- Button Create Product -->

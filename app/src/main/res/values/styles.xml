@@ -5,7 +5,8 @@
         <!-- Customize your theme here. -->
     </style>
 
-
+    <!--style name="EditText" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@color/indigo</item-->
 
     <style name="ActionBarCompat">
         <item name="android:layout_width">fill_parent</item>
@@ -32,6 +33,8 @@
         <item name="android:orientation">horizontal</item>
         <item name="android:background">#dedede</item>
     </style>
+
+    <style name="My_Theme" parent="@android:style/Theme.Holo" />
 
 
 </resources>

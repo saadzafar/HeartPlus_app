@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="false"
+    android:background="@color/background">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:text="@string/name"
+            android:layout_width="140dp"
+            android:textStyle="bold"
+            android:paddingLeft="10dip"
+            android:paddingRight="10dip"
+            android:paddingTop="10dip"
+            android:layout_gravity="left"
+            android:textSize="14dip"
+            android:textColor="#000"/>
+
+        <EditText android:id="@+id/name"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dip"
+            android:layout_marginBottom="15dip"
+            android:singleLine="true"
+            android:text="Drug Name"
+            android:textSize="12dip"
+            android:textColor="@color/hint"
+            />
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:text="@string/dose"
+            android:layout_width="140dp"
+            android:textStyle="bold"
+            android:paddingLeft="10dip"
+            android:paddingRight="10dip"
+            android:paddingTop="10dip"
+            android:layout_gravity="left"
+            android:textSize="14dip"
+            android:textColor="#000"/>
+
+        <EditText android:id="@+id/dose"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dip"
+            android:layout_marginBottom="15dip"
+            android:singleLine="true"
+            android:text="Current Dosage"
+            android:textSize="12dip"
+            android:textColor="@color/hint"/>
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:text="@string/instructions"
+            android:layout_width="140dp"
+            android:textStyle="bold"
+            android:paddingLeft="10dip"
+            android:paddingRight="10dip"
+            android:paddingTop="10dip"
+            android:layout_gravity="left"
+            android:textSize="14dip"
+            android:textColor="#000"/>
+
+        <EditText android:id="@+id/instructions"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dip"
+            android:layout_marginBottom="15dip"
+            android:text="Any Instructions?"
+            android:textSize="12dip"
+            android:textColor="@color/hint"
+            android:minLines="5"
+            android:scrollbars="vertical"
+            android:gravity="top" />
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:text="Date"
+            android:layout_width="140dp"
+            android:textStyle="bold"
+            android:paddingLeft="10dip"
+            android:paddingRight="10dip"
+            android:paddingTop="10dip"
+            android:layout_gravity="left"
+            android:textSize="14dip"
+            android:textColor="#000"/>
+
+        <Button
+            android:id="@+id/pill_date"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/calendar"
+            />
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:text="Time"
+            android:layout_width="140dp"
+            android:textStyle="bold"
+            android:paddingLeft="10dip"
+            android:paddingRight="10dip"
+            android:paddingTop="10dip"
+            android:layout_gravity="left"
+            android:textSize="14dip"
+            android:textColor="#000"/>
+
+        <Button
+            android:id="@+id/pill_time"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            />
+
+        <Button android:id="@+id/confirm"
+            android:text="@string/confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" />
+    </LinearLayout>
+</LinearLayout>

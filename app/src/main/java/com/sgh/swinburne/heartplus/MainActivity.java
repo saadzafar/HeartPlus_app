@@ -6,8 +6,10 @@ package com.sgh.swinburne.heartplus;
  */
 
 import com.sgh.swinburne.heartplus.activity.LoginActivity;
+import com.sgh.swinburne.heartplus.appointment.AppointmentListActivity;
 import com.sgh.swinburne.heartplus.helper.SQLiteHandler;
 import com.sgh.swinburne.heartplus.helper.SessionManager;
+import com.sgh.swinburne.heartplus.pillreminder.PillListActivity;
 
 
 import java.util.HashMap;
@@ -60,6 +62,7 @@ public class MainActivity extends Activity {
         // Dashboard Feedback button
         Button btn_feedback = (Button) findViewById(R.id.btn_feedback);
 
+
         // Listening to Profile button click
         btn_profile.setOnClickListener(new View.OnClickListener() {
 
@@ -95,6 +98,22 @@ public class MainActivity extends Activity {
         btn_MC.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(), MedicalChartActivity.class);
+                startActivity(i);
+            }
+        });
+
+        //listening to Appointment button click
+        btn_test.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), AppointmentListActivity.class);
+                startActivity(i);
+            }
+        });
+
+        //listening to Pill Reminder button click
+        btn_pillreminder.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), PillListActivity.class);
                 startActivity(i);
             }
         });

@@ -2,16 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical">
-
-    <include layout="@layout/actionbar_layout" />
+    android:orientation="vertical"
+    android:background="@color/background">
 
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:padding="15dip"
         android:text="Pill List"
-        android:textColor="#ff29549f"
+        android:textColor="#040404"
         android:textSize="25dip"
         android:textStyle="bold" />
 

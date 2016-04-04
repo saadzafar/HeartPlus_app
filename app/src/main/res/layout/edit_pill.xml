@@ -2,83 +2,98 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/background"
+    android:weightSum="1">
 
     <!-- Name Label -->
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Product Name"
+        android:textAllCaps="true"
+        android:textStyle="bold"
         android:paddingLeft="10dip"
         android:paddingRight="10dip"
-        android:paddingTop="10dip"
-        android:textSize="17dip" />
+        android:paddingTop="10dp"
+        android:textSize="17dip"
+        android:textColor="#000" />
 
-    <!-- Input Name -->
-    <TextView
+    <!--  Name -->
+    <EditText
         android:id="@+id/inputName"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dip"
-        android:layout_marginBottom="15dip"
-        android:singleLine="true" />
+        android:text="Your Name"
+        android:padding="10dip"
+        android:textColor="@color/hint"/>
 
-    <!-- Price Label -->
+    <!-- Side Effect Label -->
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Side Effect"
+        android:textAllCaps="true"
+        android:textStyle="bold"
         android:paddingLeft="10dip"
         android:paddingRight="10dip"
-        android:paddingTop="10dip"
-        android:textSize="17dip" />
+        android:paddingTop="35dp"
+        android:textSize="17dip"
+        android:textColor="#000" />
 
-    <!-- Input Price -->
-    <TextView
+    <!-- Side Effect -->
+    <EditText
         android:id="@+id/inputSideEffect"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dip"
-        android:layout_marginBottom="15dip"
-        android:singleLine="true" />
+        android:text="Side Effects"
+        android:padding="10dip"
+        android:textColor="@color/hint" />
 
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Indication"
+        android:textAllCaps="true"
+        android:textStyle="bold"
         android:paddingLeft="10dip"
         android:paddingRight="10dip"
-        android:paddingTop="10dip"
-        android:textSize="17dip" />
+        android:paddingTop="35dp"
+        android:textSize="17dip"
+        android:textColor="#000" />
 
-    <!-- Input Price -->
-    <TextView
+    <EditText
         android:id="@+id/inputIndication"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dip"
-        android:layout_marginBottom="15dip"
-        android:singleLine="true" />
+        android:text="Indication"
+        android:padding="10dip"
+        android:textColor="@color/hint"/>
 
     <!-- Description Label -->
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Description"
+        android:textAllCaps="true"
+        android:textStyle="bold"
         android:paddingLeft="10dip"
         android:paddingRight="10dip"
-        android:paddingTop="10dip"
-        android:textSize="17dip" />
+        android:paddingTop="35dp"
+        android:textSize="17dip"
+        android:textColor="#000" />
 
-    <!-- Input description -->
-    <TextView
+    <!-- description -->
+    <EditText
         android:id="@+id/inputDescription"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dip"
+        android:layout_height="90dp"
+        android:text="Description"
+        android:padding="10dp"
+        android:textColor="@color/hint"
         android:layout_marginBottom="15dip"
-        android:lines="4"
-        android:gravity="top" />
+        android:lines="2"
+        android:gravity="top"/>
 
     <LinearLayout
         android:layout_width="fill_parent"

@@ -1,11 +1,18 @@
 package com.sgh.swinburne.heartplus;
 
 import android.app.Activity;
+import android.app.ListActivity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import com.sgh.swinburne.heartplus.helper.SQLiteHandler;
@@ -25,88 +32,100 @@ import java.util.List;
 /**
  * Created by Saad on 11/5/2015.
  */
-public class INRActivity extends Activity {
+public class INRActivity extends ListActivity {
 
-    private SQLiteHandler db;
-    private SessionManager session;
     private ProgressDialog pDialog;
-
     JSONParser jParser = new JSONParser();
+
     ArrayList<HashMap<String, String>> INRList;
 
-    private static String url_get_inr = "http://188.166.237.51/android_login_api/get_inr.php";
+    private static String url_all_inr = "http://188.166.237.51/android_login_api/get_inr_all.php";
 
     private static final String TAG_SUCCESS = "success";
-    private static final String TAG_INR = "inr";
     private static final String TAG_EMAIL = "email";
-    private static final String TAG_HINR = "high_inr";
-    private static final String TAG_LINR = "low_inr";
+    private static final String TAG_INR = "inr_monitoring";
+    private static final String TAG_DATE = "date";
+    private static final String TAG_VALUE = "value";
+    private SQLiteHandler db;
+    private SessionManager session;
 
     JSONArray inr = null;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.inr_layout);
+        setContentView(R.layout.all_inr);
 
-        /*db = new SQLiteHandler(getApplicationContext());
-        session = new SessionManager(getApplicationContext());
+        INRList = new ArrayList<HashMap<String, String>>();
+        new LoadAllINR().execute();
 
-        HashMap<String, String> user = db.getUserDetails();
-        String email = user.get("email");*/
+        ListView lv = getListView();
 
-        //inr_vals = new HashMap<String, String>();
-        new LoadINR().execute();
     }
 
-    class LoadINR extends AsyncTask<String, String, String> {
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == 100) {
+            Intent intent = getIntent();
+            finish();
+            startActivity(intent);
+        }
+    }
+
+    class LoadAllINR extends AsyncTask<String, String, String> {
+        @Override
         protected void onPreExecute() {
             super.onPreExecute();
             pDialog = new ProgressDialog(INRActivity.this);
-            pDialog.setMessage("Loading INR values. Please wait...");
+            pDialog.setMessage("Loading INR History. Please wait...");
             pDialog.setIndeterminate(false);
-            pDialog.setCancelable(true);
-            // pDialog.show();
+            pDialog.setCancelable(false);
+            pDialog.show();
         }
 
         protected String doInBackground(String... args) {
+            List<NameValuePair> params = new ArrayList<NameValuePair>();
+
+            // SqLite database handler
             db = new SQLiteHandler(getApplicationContext());
+
+            // session manager
             session = new SessionManager(getApplicationContext());
-                HashMap<String, String> user = db.getUserDetails();
-                String email = user.get("email");
-            Log.d("EMAIL: ", email);
 
-                List<NameValuePair> params = new ArrayList<NameValuePair>();
-                params.add(new BasicNameValuePair("email", email));
-            Log.d("Email PARAMS:", params.toString());
-                JSONObject json = jParser.makeHttpRequest(url_get_inr, "GET", params);
+            // Fetching user details from sqlite
+            HashMap<String, String> user = db.getUserDetails();
 
-                Log.d("INR: ", json.toString());
+            String email1 = user.get("email");
+
+            params.add(new BasicNameValuePair("email", email1));
+            Log.d("email", email1);
+
+            JSONObject json = jParser.makeHttpRequest(url_all_inr, "GET", params);
+            Log.d("All INR", json.toString());
 
             try {
                 int success = json.getInt(TAG_SUCCESS);
+
                 if (success == 1) {
                     inr = json.getJSONArray(TAG_INR);
+
                     for (int i = 0; i < inr.length(); i++) {
-                        JSONObject inrObject = inr.getJSONObject(i);
+                        JSONObject c = inr.getJSONObject(i);
 
-                        String highINR = inrObject.getString(TAG_HINR);
-                        String lowINR = inrObject.getString(TAG_LINR);
-                        String txtEmail = inrObject.getString(TAG_EMAIL);
+                        String email = c.getString(TAG_EMAIL);
+                        String value = c.getString(TAG_VALUE);
 
-                        Log.d("Email: ", txtEmail);
-                        Log.d("High INR: ", highINR);
-                        Log.d("Low INR: ", lowINR);
+                        HashMap<String, String> map = new HashMap<String, String>();
 
+                        map.put(TAG_EMAIL, email);
+                        map.put(TAG_VALUE, value);
 
-                        if (txtEmail.equals(email)) {
-
-                            break;
-                        }
+                        INRList.add(map);
                     }
-                    // highINR = (TextView) findViewById(R.id.HINR);
-                    // lowINR = (TextView) findViewById(R.id.LINR);
-
+                } else {
+                    Intent i = new Intent(getApplicationContext(), INRActivity1.class);
+                    startActivity(i);
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
