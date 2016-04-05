@@ -9,11 +9,12 @@
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:padding="15dip"
-        android:text="Glucose"
-        android:textColor="#000"
-        android:textSize="25dip"
-        android:textStyle="bold" />
+        android:paddingTop="60dp"
+        android:text="GLUCOSE"
+        android:typeface="monospace"
+        android:textColor="#fcfbfb"
+        android:textSize="50dp"
+        android:gravity="center" />
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -32,51 +33,22 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="Glucose Value"
-            android:textStyle="bold"
             android:paddingLeft="10dip"
             android:paddingRight="10dip"
             android:paddingTop="10dip"
-            android:textSize="17dip"
-            android:textColor="#000" />
+            android:textSize="20dp"
+            android:textColor="@color/white" />
 
         <EditText
             android:id="@+id/inputGlucose"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Your Glucose Value"
-            android:layout_margin="5dip"
-            android:layout_marginBottom="15dip"
+            android:hint="Your Glucose Value"
+            android:layout_margin="5dp"
+            android:layout_marginBottom="15dp"
             android:singleLine="true"
-            android:textColor="@color/hint" />
-
-        <TextView
-            android:layout_width="140dp"
-            android:layout_height="wrap_content"
-            android:text="Date"
-            android:textStyle="bold"
-            android:paddingLeft="10dip"
-            android:paddingRight="10dip"
-            android:paddingTop="10dip"
-            android:layout_gravity="left"
-            android:textSize="17dip"
-            android:textColor="#000" />
-
-        <TextClock
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:id="@+id/textClock"
-            android:layout_gravity="center_horizontal" />
-
-        <Button
-            android:id="@+id/button1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp"
-            android:onClick="setDate"
-            android:layout_gravity="center_horizontal"
-            android:background="@drawable/calendar"/>
+            android:textColor="@color/hint"
+            android:textColorHint="@color/hint" />
 
         <TextView
             android:layout_width="fill_parent"
@@ -85,8 +57,8 @@
             android:paddingLeft="10dip"
             android:paddingRight="10dip"
             android:paddingTop="10dip"
-            android:textSize="17dip"
-            android:textColor="#000" />
+            android:textSize="20dp"
+            android:textColor="@color/white" />
 
         <EditText
             android:id="@+id/inputMeal"
@@ -95,8 +67,41 @@
             android:layout_margin="5dip"
             android:layout_marginBottom="15dip"
             android:singleLine="true"
-            android:text="Any Meals?"
-            android:textColor="@color/hint" />
+            android:hint="Any Meals?"
+            android:textColor="@color/hint"
+            android:textColorHint="@color/hint" />
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp"
+            android:layout_width="fill_parent">
+
+            <Button
+                android:id="@+id/btn_time"
+                android:text="SET DATE"
+                android:textSize="15dp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:onClick="onClick"
+                android:background="#c43838" />
+
+            <Button
+                android:id="@+id/btn_date"
+                android:text="SET TIME"
+                android:textSize="15dp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                android:layout_weight="1"
+                android:onClick="onClick"
+                android:background="#c43838" />
+
+        </LinearLayout>
 
         <!-- Button Create INR -->
 
@@ -104,7 +109,9 @@
             android:id="@+id/btnCreateGlucose"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Submit" />
+            android:text="SUBMIT"
+            android:background="#c43838"
+            android:typeface="monospace" />
 
 
     </LinearLayout>

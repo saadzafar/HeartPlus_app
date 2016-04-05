@@ -9,12 +9,14 @@
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:padding="15dip"
+        android:paddingTop="25dp"
+        android:paddingBottom="5dp"
         android:text="Blood Pressure"
         android:textAllCaps="true"
-        android:textColor="#000"
-        android:textSize="25dip"
-        android:textStyle="bold" />
+        android:typeface="monospace"
+        android:textColor="#fcfbfb"
+        android:gravity="center"
+        android:textSize="45dp"/>
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -31,105 +33,95 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="Systolic Value"
-            android:textAllCaps="true"
-            android:textStyle="bold"
             android:paddingLeft="10dip"
             android:paddingRight="10dip"
-            android:paddingTop="10dip"
-            android:textSize="17dip"
-            android:textColor="#000" />
+            android:paddingTop="5dp"
+            android:textSize="19dp"
+            android:textColor="@color/white" />
 
         <EditText
             android:id="@+id/inputS"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Your Systolic Value"
+            android:hint="Your Systolic Value"
+            android:textSize="15dp"
             android:padding="10dip"
-            android:textColor="@color/hint" />
+            android:textColor="@color/hint"
+            android:textColorHint="@color/hint" />
 
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="Diastolic Value"
-            android:textAllCaps="true"
-            android:textStyle="bold"
             android:paddingLeft="10dip"
             android:paddingRight="10dip"
             android:paddingTop="10dip"
-            android:textSize="17dip"
-            android:textColor="#000" />
+            android:textSize="19dp"
+            android:textColor="@color/white" />
 
         <EditText
             android:id="@+id/inputD"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Your Diastolic Value"
+            android:hint="Your Diastolic Value"
+            android:textSize="15dp"
             android:padding="10dip"
-            android:textColor="@color/hint" />
+            android:textColor="@color/hint"
+            android:textColorHint="@color/hint" />
 
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="Remark"
-            android:textAllCaps="true"
-            android:textStyle="bold"
             android:paddingLeft="10dip"
             android:paddingRight="10dip"
             android:paddingTop="10dip"
-            android:textSize="17dip"
-            android:textColor="#000" />
+            android:textSize="19dp"
+            android:textColor="@color/white" />
 
         <EditText
             android:id="@+id/remark"
             android:layout_width="fill_parent"
-            android:layout_height="90dp"
-            android:text="Any Remarks?"
-            android:padding="10dip"
+            android:layout_height="51dp"
+            android:hint="Any Remarks?"
+            android:textSize="15dp"
+            android:padding="10dp"
             android:textColor="@color/hint"
-            android:layout_marginBottom="15dip"
-            android:lines="2"
-            android:gravity="top" />
+            android:layout_marginBottom="10dp"
+            android:lines="1"
+            android:gravity="top"
+            android:textColorHint="@color/hint" />
 
 
-        <TextView
-            android:layout_width="140dp"
-            android:layout_height="wrap_content"
-            android:text="Date"
-            android:textAllCaps="true"
-            android:textStyle="bold"
-            android:paddingLeft="10dip"
-            android:paddingRight="10dip"
-            android:paddingTop="10dip"
-            android:layout_gravity="left"
-            android:textSize="17dip"
-            android:textColor="#000" />
-
-    <LinearLayout android:layout-width="fill_parent"
+        <LinearLayout
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_width="wrap_content">
+        android:layout_marginBottom="10dp"
+        android:layout_width="fill_parent">
 
         <Button
-            android:id="@+id/button1"
-            android:text="Date"
+            android:id="@+id/btn_date"
+            android:text="SET DATE"
+            android:textSize="15dp"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="5dp"
             android:layout_marginRight="10dp"
             android:layout_weight="1"
-            android:onClick="setDate"/>
-            //android:background="@drawable/calendar"
-
+            android:onClick="onClick"
+            android:background="#c43838" />
 
         <Button
-            android:id="@+id/button2"
-            android:text="Time"
-            android:layout_width="wrap_content"
+            android:id="@+id/btn_time"
+            android:text="SET TIME"
+            android:textSize="15dp"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="30dp"
-            android:onClick="setTime" />
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:onClick="onClick"
+            android:background="#c43838" />
 
     </LinearLayout>
 
@@ -137,25 +129,8 @@
             android:id="@+id/btnCreateGlucose"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Submit" />
-
-        <TextView
-            android:id="@+id/inputDate"
-            android:layout_width="153dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dip"
-            android:layout_marginBottom="15dip"
-            android:singleLine="true"
-            android:layout_weight="0.13" />
-
-        <TextView
-            android:id="@+id/inputTime"
-            android:layout_width="153dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dip"
-            android:layout_marginBottom="15dip"
-            android:singleLine="true"
-            android:layout_weight="0.13" />
+            android:text="SUBMIT"
+            android:background="#c43838" />
 
     </LinearLayout>
 

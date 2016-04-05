@@ -4,6 +4,31 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.sgh.swinburne.heartplus.helper.SQLiteHandler;
+import com.sgh.swinburne.heartplus.helper.SessionManager;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.Calendar;
+import java.util.HashMap;
+
+import android.app.Activity;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -32,7 +57,7 @@ import java.util.List;
 /**
  * Created by Saad on 11/5/2015.
  */
-public class BPActivity extends Activity {
+public class BPActivity extends Activity implements View.OnClickListener {
     private ProgressDialog pDialog;
     private SQLiteHandler db;
     private SessionManager session;
@@ -48,6 +73,8 @@ public class BPActivity extends Activity {
     private TextView dateView;
     private TextView timeView;
     private int year, month, day, hour, minute;
+    Button btnDatePicker, btnTimePicker;
+    EditText txtDate, txtTime;
 
     private static String url_create_bp = "http://188.166.237.51/android_login_api/create_bp.php";
     private static final String TAG_SUCCESS = "success";
@@ -57,24 +84,27 @@ public class BPActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bp_layout);
-
-
         inputS = (EditText) findViewById(R.id.inputS);
         inputD = (EditText) findViewById(R.id.inputD);
         remark = (EditText) findViewById(R.id.remark);
-        dateView = (TextView) findViewById(R.id.inputDate);
-        timeView = (TextView) findViewById(R.id.inputTime);
+        btnDatePicker=(Button)findViewById(R.id.btn_date);
+        btnTimePicker=(Button)findViewById(R.id.btn_time);
+       // txtDate=(EditText)findViewById(R.id.in_date);
+       // txtTime=(EditText)findViewById(R.id.in_time);
+        btnDatePicker.setOnClickListener(this);
+        btnTimePicker.setOnClickListener(this);
 
-        calendar = Calendar.getInstance();
+       // dateView = (TextView) findViewById(R.id.inputDate);
+       // timeView = (TextView) findViewById(R.id.inputTime);
+
+       /* calendar = Calendar.getInstance();
         year = calendar.get(Calendar.YEAR);
         month = calendar.get(Calendar.MONTH);
         day = calendar.get(Calendar.DAY_OF_MONTH);
         hour = calendar.get(Calendar.HOUR_OF_DAY);
         minute = calendar.get(Calendar.MINUTE);
-        showDate(year, month + 1, day);
-
-
-        //showTime(hour, minute);
+        showDate(year, month + 1, day);*/
+       // showTime(hour, minute);
 
         Button btnCreateGlucose = (Button) findViewById(R.id.btnCreateGlucose);
         btnCreateGlucose.setOnClickListener(new View.OnClickListener() {
@@ -86,7 +116,54 @@ public class BPActivity extends Activity {
         );
     }
 
-    @SuppressWarnings("deprecation")
+    @Override
+    public void onClick(View v) {
+
+        if (v == btnDatePicker) {
+
+            // Get Current Date
+            final Calendar c = Calendar.getInstance();
+            year = c.get(Calendar.YEAR);
+            month = c.get(Calendar.MONTH);
+            day = c.get(Calendar.DAY_OF_MONTH);
+
+
+            DatePickerDialog datePickerDialog = new DatePickerDialog(this,
+                    new DatePickerDialog.OnDateSetListener() {
+
+                        @Override
+                        public void onDateSet(DatePicker view, int year,
+                                              int monthOfYear, int dayOfMonth) {
+
+                            txtDate.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+
+                        }
+                    }, year, month, day);
+            datePickerDialog.show();
+        }
+        if (v == btnTimePicker) {
+
+            // Get Current Time
+            final Calendar c = Calendar.getInstance();
+            hour = c.get(Calendar.HOUR_OF_DAY);
+            minute = c.get(Calendar.MINUTE);
+
+            // Launch Time Picker Dialog
+            TimePickerDialog timePickerDialog = new TimePickerDialog(this,
+                    new TimePickerDialog.OnTimeSetListener() {
+
+                        @Override
+                        public void onTimeSet(TimePicker view, int hourOfDay,
+                                              int minute) {
+
+                            txtTime.setText(hourOfDay + ":" + minute);
+                        }
+                    }, hour, minute, false);
+            timePickerDialog.show();
+        }
+    }
+
+  /*  @SuppressWarnings("deprecation")
     public void setDate(View view) {
         showDialog(999);
         Toast.makeText(getApplicationContext(), "ca", Toast.LENGTH_SHORT)
@@ -133,7 +210,7 @@ public class BPActivity extends Activity {
             dateView.setText(new StringBuilder().append(year).append("-")
                     .append(month).append("-").append(day));
             Log.d("date: ", dateView.toString());
-        }
+        } */
 
         class CreateNewBP extends AsyncTask<String, String, String> {
             @Override
@@ -156,16 +233,16 @@ public class BPActivity extends Activity {
                 String systolic = inputS.getText().toString();
                 String diastolic = inputD.getText().toString();
                 String inputremark = remark.getText().toString();
-                String date = dateView.getText().toString();
-                String time = timeView.getText().toString();
+                // String date = dateView.getText().toString();
+               // String time = timeView.getText().toString();
                 Log.d("BPS ", systolic);
                 Log.d("BPD ", diastolic);
-                Log.d("date ", date);
+               // Log.d("date ", date);
                 List<NameValuePair> params = new ArrayList<NameValuePair>();
                 params.add(new BasicNameValuePair("systolic", systolic));
                 params.add(new BasicNameValuePair("diastolic", diastolic));
-                params.add(new BasicNameValuePair("date", date));
-                params.add(new BasicNameValuePair("time", time));
+               // params.add(new BasicNameValuePair("date", date));
+                //params.add(new BasicNameValuePair("time", time));
                 params.add(new BasicNameValuePair("email", email));
                 params.add(new BasicNameValuePair("remark", inputremark));
                 Log.d("params ", params.toString());

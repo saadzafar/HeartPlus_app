@@ -8,19 +8,19 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="fill_parent"
+        android:layout_margin="20dp">
 
         <TextView
             android:layout_height="wrap_content"
             android:text="@string/name"
             android:layout_width="140dp"
-            android:textStyle="bold"
             android:paddingLeft="10dip"
             android:paddingRight="10dip"
             android:paddingTop="10dip"
             android:layout_gravity="left"
-            android:textSize="14dip"
-            android:textColor="#000"/>
+            android:textSize="20dp"
+            android:textColor="@color/white"/>
 
         <EditText android:id="@+id/name"
             android:layout_width="fill_parent"
@@ -29,7 +29,7 @@
             android:layout_marginBottom="15dip"
             android:singleLine="true"
             android:text="Drug Name"
-            android:textSize="12dip"
+            android:textSize="17dp"
             android:textColor="@color/hint"
             />
 
@@ -37,13 +37,12 @@
             android:layout_height="wrap_content"
             android:text="@string/dose"
             android:layout_width="140dp"
-            android:textStyle="bold"
             android:paddingLeft="10dip"
             android:paddingRight="10dip"
             android:paddingTop="10dip"
             android:layout_gravity="left"
-            android:textSize="14dip"
-            android:textColor="#000"/>
+            android:textSize="20dp"
+            android:textColor="@color/white"/>
 
         <EditText android:id="@+id/dose"
             android:layout_width="fill_parent"
@@ -52,20 +51,19 @@
             android:layout_marginBottom="15dip"
             android:singleLine="true"
             android:text="Current Dosage"
-            android:textSize="12dip"
+            android:textSize="17dp"
             android:textColor="@color/hint"/>
 
         <TextView
             android:layout_height="wrap_content"
             android:text="@string/instructions"
             android:layout_width="140dp"
-            android:textStyle="bold"
             android:paddingLeft="10dip"
             android:paddingRight="10dip"
             android:paddingTop="10dip"
             android:layout_gravity="left"
-            android:textSize="14dip"
-            android:textColor="#000"/>
+            android:textSize="20dp"
+            android:textColor="@color/white"/>
 
         <EditText android:id="@+id/instructions"
             android:layout_width="fill_parent"
@@ -73,54 +71,50 @@
             android:layout_margin="5dip"
             android:layout_marginBottom="15dip"
             android:text="Any Instructions?"
-            android:textSize="12dip"
+            android:textSize="17dp"
             android:textColor="@color/hint"
-            android:minLines="5"
+            android:minLines="4"
             android:scrollbars="vertical"
             android:gravity="top" />
 
-        <TextView
+        <LinearLayout
             android:layout_height="wrap_content"
-            android:text="Date"
-            android:layout_width="140dp"
-            android:textStyle="bold"
-            android:paddingLeft="10dip"
-            android:paddingRight="10dip"
-            android:paddingTop="10dip"
-            android:layout_gravity="left"
-            android:textSize="14dip"
-            android:textColor="#000"/>
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_width="fill_parent">
 
-        <Button
-            android:id="@+id/pill_date"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:background="@drawable/calendar"
-            />
+            <Button
+                android:id="@+id/pill_date"
+                android:text="SET DATE"
+                android:textSize="15dp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="#c43838" />
 
-        <TextView
-            android:layout_height="wrap_content"
-            android:text="Time"
-            android:layout_width="140dp"
-            android:textStyle="bold"
-            android:paddingLeft="10dip"
-            android:paddingRight="10dip"
-            android:paddingTop="10dip"
-            android:layout_gravity="left"
-            android:textSize="14dip"
-            android:textColor="#000"/>
+            <Button
+                android:id="@+id/pill_time"
+                android:text="SET TIME"
+                android:textSize="15dp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                android:layout_weight="1"
+                android:background="#c43838" />
 
-        <Button
-            android:id="@+id/pill_time"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            />
+        </LinearLayout>
 
         <Button android:id="@+id/confirm"
             android:text="@string/confirm"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal" />
+            android:layout_marginTop="15dp"
+            android:layout_gravity="center_horizontal"
+            android:background="#c43838"
+            android:typeface="monospace"/>
     </LinearLayout>
 </LinearLayout>

@@ -9,11 +9,14 @@
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:padding="15dip"
+        android:paddingTop="50dp"
+        android:paddingBottom="10dp"
         android:text="INR"
-        android:textColor="#000"
-        android:textSize="25dip"
-        android:textStyle="bold" />
+        android:typeface="monospace"
+        android:textColor="#fcfbfb"
+        android:gravity="center"
+        android:textSize="60dp"
+        android:textAllCaps="true"/>
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -32,12 +35,10 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="INR"
-            android:textStyle="bold"
             android:paddingLeft="10dip"
             android:paddingRight="10dip"
-            android:paddingTop="10dip"
-            android:textSize="17dip"
-            android:textColor="#000" />
+            android:textSize="20dp"
+            android:textColor="@color/white" />
 
         <EditText
             android:id="@+id/inputINR"
@@ -46,46 +47,49 @@
             android:layout_margin="5dip"
             android:layout_marginBottom="15dip"
             android:singleLine="true"
-            android:text="Your INR Value"
-            android:textColor="@color/hint" />
+            android:hint="Your INR Value"
+            android:textSize="18dp"
+            android:textColor="@color/hint"
+            android:textColorHint="@color/hint" />
 
-        <TextView
-            android:layout_width="140dp"
+        <LinearLayout
             android:layout_height="wrap_content"
-            android:text="Date"
-            android:textStyle="bold"
-            android:paddingLeft="10dip"
-            android:paddingRight="10dip"
-            android:paddingTop="10dip"
-            android:layout_gravity="left"
-            android:textSize="17dip"
-            android:textColor="#000" />
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp"
+            android:layout_width="fill_parent">
 
-        <Button
-            android:id="@+id/button1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp"
-            android:onClick="setDate"
-            android:layout_gravity="center_horizontal"
-            android:background="@drawable/calendar"/>
+            <Button
+                android:id="@+id/btn_time"
+                android:text="SET DATE"
+                android:textSize="15dp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:onClick="onClick"
+                android:background="#c43838" />
 
-        <TextView
-            android:id="@+id/inputDate"
-            android:layout_width="153dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dip"
-            android:layout_marginBottom="15dip"
-            android:singleLine="true"
-            android:layout_weight="0.13" />
+            <Button
+                android:id="@+id/btn_date"
+                android:text="SET TIME"
+                android:textSize="15dp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                android:layout_weight="1"
+                android:onClick="onClick"
+                android:background="#c43838" />
+
+        </LinearLayout>
 
         <Button
             android:id="@+id/btnCreateINR"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Submit" />
+            android:text="Submit"
+            android:background="#c43838" />
 
 
     </LinearLayout>

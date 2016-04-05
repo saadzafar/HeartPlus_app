@@ -118,11 +118,8 @@ public class MainActivity extends Activity {
             }
         });
 
-
-
-
-        txtName = (TextView) findViewById(R.id.name);
-        txtEmail = (TextView) findViewById(R.id.email);
+       // txtName = (TextView) findViewById(R.id.name);
+       // txtEmail = (TextView) findViewById(R.id.email);
         btnLogout = (Button) findViewById(R.id.btnLogout);
 
         // SqLite database handler
@@ -142,8 +139,8 @@ public class MainActivity extends Activity {
         String email = user.get("email");
 
         // Displaying the user details on the screen
-        txtName.setText(name);
-        txtEmail.setText(email);
+       // txtName.setText(name);
+       // txtEmail.setText(email);
 
         // Logout button click event
         btnLogout.setOnClickListener(new View.OnClickListener() {

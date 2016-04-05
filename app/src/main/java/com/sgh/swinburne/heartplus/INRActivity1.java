@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.app.TimePickerDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +14,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.sgh.swinburne.heartplus.helper.SQLiteHandler;
@@ -31,7 +33,7 @@ import java.util.List;
 /**
  * Created by Saad on 11/6/2015.
  */
-public class INRActivity1 extends Activity {
+public class INRActivity1 extends Activity implements View.OnClickListener {
     private ProgressDialog pDialog;
     private SQLiteHandler db;
     private SessionManager session;
@@ -42,7 +44,9 @@ public class INRActivity1 extends Activity {
     private DatePicker datePicker;
     private Calendar calendar;
     private TextView dateView;
-    private int year, month, day;
+    private int year, month, day, hour, minute;
+    Button btnDatePicker, btnTimePicker;
+    EditText txtDate, txtTime;
 
     private static String url_create_inr = "http://188.166.237.51/android_login_api/create_inr.php";
     private static final String TAG_SUCCESS = "success";
@@ -55,14 +59,20 @@ public class INRActivity1 extends Activity {
 
 
         inputINR = (EditText) findViewById(R.id.inputINR);
-        dateView = (TextView) findViewById(R.id.inputDate);
+      //  dateView = (TextView) findViewById(R.id.inputDate);
+        btnDatePicker=(Button)findViewById(R.id.btn_date);
+        btnTimePicker=(Button)findViewById(R.id.btn_time);
+        // txtDate=(EditText)findViewById(R.id.in_date);
+        // txtTime=(EditText)findViewById(R.id.in_time);
+        btnDatePicker.setOnClickListener(this);
+        btnTimePicker.setOnClickListener(this);
 
-        calendar = Calendar.getInstance();
+      /*  calendar = Calendar.getInstance();
         year = calendar.get(Calendar.YEAR);
 
         month = calendar.get(Calendar.MONTH);
         day = calendar.get(Calendar.DAY_OF_MONTH);
-        showDate(year, month + 1, day);
+        showDate(year, month + 1, day); */
 
 
         Button btnCreateINR = (Button) findViewById(R.id.btnCreateINR);
@@ -74,7 +84,54 @@ public class INRActivity1 extends Activity {
         });
     }
 
-    @SuppressWarnings("deprecation")
+    @Override
+    public void onClick(View v) {
+
+        if (v == btnDatePicker) {
+
+            // Get Current Date
+            final Calendar c = Calendar.getInstance();
+            year = c.get(Calendar.YEAR);
+            month = c.get(Calendar.MONTH);
+            day = c.get(Calendar.DAY_OF_MONTH);
+
+
+            DatePickerDialog datePickerDialog = new DatePickerDialog(this,
+                    new DatePickerDialog.OnDateSetListener() {
+
+                        @Override
+                        public void onDateSet(DatePicker view, int year,
+                                              int monthOfYear, int dayOfMonth) {
+
+                            txtDate.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+
+                        }
+                    }, year, month, day);
+            datePickerDialog.show();
+        }
+        if (v == btnTimePicker) {
+
+            // Get Current Time
+            final Calendar c = Calendar.getInstance();
+            hour = c.get(Calendar.HOUR_OF_DAY);
+            minute = c.get(Calendar.MINUTE);
+
+            // Launch Time Picker Dialog
+            TimePickerDialog timePickerDialog = new TimePickerDialog(this,
+                    new TimePickerDialog.OnTimeSetListener() {
+
+                        @Override
+                        public void onTimeSet(TimePicker view, int hourOfDay,
+                                              int minute) {
+
+                            txtTime.setText(hourOfDay + ":" + minute);
+                        }
+                    }, hour, minute, false);
+            timePickerDialog.show();
+        }
+    }
+
+  /*  @SuppressWarnings("deprecation")
     public void setDate(View view) {
         showDialog(999);
         Toast.makeText(getApplicationContext(), "ca", Toast.LENGTH_SHORT)
@@ -105,7 +162,7 @@ public class INRActivity1 extends Activity {
         dateView.setText(new StringBuilder().append(year).append("-")
                 .append(month).append("-").append(day));
         Log.d("date: ", dateView.toString());
-    }
+    } */
 
     class CreateNewINR extends AsyncTask<String, String, String> {
         @Override
@@ -126,12 +183,12 @@ public class INRActivity1 extends Activity {
             String email = user.get("email");
             Log.d("email ", email);
             String value = inputINR.getText().toString();
-            String date = dateView.getText().toString();
+           // String date = dateView.getText().toString();
             Log.d("value ", value);
-            Log.d("date ", date);
+          //  Log.d("date ", date);
             List<NameValuePair> params = new ArrayList<NameValuePair>();
             params.add(new BasicNameValuePair("value", value));
-            params.add(new BasicNameValuePair("date", date));
+           // params.add(new BasicNameValuePair("date", date));
             params.add(new BasicNameValuePair("email", email));
             JSONObject json = jsonParser.makeHttpRequest(url_create_inr, "POST", params);
             Log.d("Create Response", json.toString());
