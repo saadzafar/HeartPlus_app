@@ -15,7 +15,7 @@ public class PillDbAdapter
 {
     private static final String DATABASE_NAME = "data";
     private static final String DATABASE_TABLE = "reminders";
-    private static final int DATABASE_VERSION = 6;
+    private static final int DATABASE_VERSION = 7;
 
     public static final String KEY_NAME = "name";
     public static final String KEY_DOSE = "dose";
