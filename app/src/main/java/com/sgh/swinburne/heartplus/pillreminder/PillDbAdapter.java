@@ -15,14 +15,14 @@ public class PillDbAdapter
 {
     private static final String DATABASE_NAME = "data";
     private static final String DATABASE_TABLE = "reminders";
-    private static final int DATABASE_VERSION = 5;
+    private static final int DATABASE_VERSION = 6;
 
     public static final String KEY_NAME = "name";
     public static final String KEY_DOSE = "dose";
     public static final String KEY_TIME = "DateTime";
     public static final String KEY_INSTRUCTIONS = "instructions";
     public static final String KEY_RID = "_id";
-    public static final String KEY_BTN = "button";
+    //public static final String KEY_BTN = "button";
 
 
     private static final String TAG = "PillDbAdapter";
@@ -35,7 +35,7 @@ public class PillDbAdapter
                     + KEY_NAME + " text not null, "
                     + KEY_DOSE + " text not null, "
                     + KEY_INSTRUCTIONS + " text not null, "
-                    + KEY_BTN + " text not null, "
+                    //+ KEY_BTN + " text not null, "
                     + KEY_TIME + " text not null);";
 
     private final Context vCtx;
@@ -123,7 +123,7 @@ public class PillDbAdapter
         return Db.update(DATABASE_TABLE, arg, KEY_RID + "=" + r_Id, null) > 0; //updating with new information
     }
 
-    public long InsertRecord(String take, String snooze, String skip) {
+   /* public long InsertRecord(String take, String snooze, String skip) {
 
         long d = 0;
         ContentValues values = new ContentValues();
@@ -139,6 +139,6 @@ public class PillDbAdapter
         }
         return d;
 
-    }
+    }*/
 
 }

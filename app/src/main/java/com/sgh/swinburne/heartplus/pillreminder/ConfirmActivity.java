@@ -85,7 +85,7 @@ public class ConfirmActivity extends Activity
                 String skip = vSkipButton.getText().toString();
                 String snooze = vSnoozeButton.getText().toString();
 
-                DatabaseHelper.InsertRecord(take,skip,snooze);
+                //DatabaseHelper.InsertRecord(take,skip,snooze);
         }
     }
 }
