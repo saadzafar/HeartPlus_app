@@ -49,12 +49,28 @@ public class ConfirmActivity extends Activity
             @Override
             public void onClick(View v)
             {
+
                 Toast.makeText(getApplicationContext(),
                         "Keep It Going",
                         Toast.LENGTH_LONG).show();
+                thread.start();
+
             }
         });
     }
+
+    Thread thread = new Thread(){
+        @Override
+        public void run() {
+            try {
+                Thread.sleep(3500); // As I am using LENGTH_LONG in Toast
+                ConfirmActivity.this.finish();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    };
+
 
     public void onRadioButtonClicked(View view) {
         // Is the button now checked?
@@ -85,7 +101,7 @@ public class ConfirmActivity extends Activity
                 String skip = vSkipButton.getText().toString();
                 String snooze = vSnoozeButton.getText().toString();
 
-                //DatabaseHelper.InsertRecord(take,skip,snooze);
+               DatabaseHelper.InsertRecord(take,skip,snooze);
         }
     }
 }

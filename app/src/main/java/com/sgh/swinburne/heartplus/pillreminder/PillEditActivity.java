@@ -1,5 +1,10 @@
 package com.sgh.swinburne.heartplus.pillreminder;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -16,13 +21,9 @@ import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+
 import com.sgh.swinburne.heartplus.R;
 
-import java.sql.RowId;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 
 /**
  * Created by VivekShah.
@@ -67,9 +68,9 @@ public class PillEditActivity extends Activity
         vDateButton = (Button) findViewById(R.id.pill_date);
         vTimeButton = (Button) findViewById(R.id.pill_time);
 
-        vConfirmButton = (Button) findViewById(R.id.confirm);
+        vConfirmButton = (Button) findViewById(R.id.confirm1);
 
-        vRowId = savedInstanceState != null ? savedInstanceState.getLong(PillDbAdapter.KEY_RID) //22
+        vRowId = savedInstanceState != null ? savedInstanceState.getLong(PillDbAdapter.KEY_RID)
                 : null;
 
         registerButtonListeners_SetDefaultText();
@@ -78,9 +79,7 @@ public class PillEditActivity extends Activity
     private void setR_IdFromIntent() {
         if (vRowId == null) {
             Bundle extras = getIntent().getExtras();
-            vRowId = extras != null ?
-                    extras.getLong(PillDbAdapter.KEY_RID)
-                    : null;
+            vRowId = extras != null ? extras.getLong(PillDbAdapter.KEY_RID) : null;
         }
 
     }

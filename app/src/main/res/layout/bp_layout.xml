@@ -43,11 +43,10 @@
             android:id="@+id/inputS"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:hint="Your Systolic Value"
+            android:text="Your Systolic Value"
             android:textSize="15dp"
             android:padding="10dip"
-            android:textColor="@color/hint"
-            android:textColorHint="@color/hint" />
+            android:textColor="@color/hint" />
 
         <TextView
             android:layout_width="fill_parent"
@@ -63,11 +62,10 @@
             android:id="@+id/inputD"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:hint="Your Diastolic Value"
+            android:text="Your Diastolic Value"
             android:textSize="15dp"
             android:padding="10dip"
-            android:textColor="@color/hint"
-            android:textColorHint="@color/hint" />
+            android:textColor="@color/hint" />
 
         <TextView
             android:layout_width="fill_parent"
@@ -83,14 +81,13 @@
             android:id="@+id/remark"
             android:layout_width="fill_parent"
             android:layout_height="51dp"
-            android:hint="Any Remarks?"
+            android:text="Any Remarks?"
             android:textSize="15dp"
             android:padding="10dp"
             android:textColor="@color/hint"
             android:layout_marginBottom="10dp"
             android:lines="1"
-            android:gravity="top"
-            android:textColorHint="@color/hint" />
+            android:gravity="top" />
 
 
         <LinearLayout
@@ -108,7 +105,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginRight="10dp"
             android:layout_weight="1"
-            android:onClick="onClick"
+            android:onClick="setDate"
             android:background="#c43838" />
 
         <Button
@@ -120,7 +117,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
             android:layout_weight="1"
-            android:onClick="onClick"
+            android:onClick="setTime"
             android:background="#c43838" />
 
     </LinearLayout>
