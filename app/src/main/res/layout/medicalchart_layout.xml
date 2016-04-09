@@ -57,6 +57,12 @@
             android:layout_height="wrap_content"
             android:text="Heart Rate" />
 
+        <Button
+            android:id="@+id/btnVINR"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="INR HISTORY" />
+
 
     </LinearLayout>
 </LinearLayout>

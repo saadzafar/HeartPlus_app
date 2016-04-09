@@ -30,12 +30,12 @@
         android:text="Pill Reminder"
         android:textStyle="bold" />/>
 
-    <!--   Button -->
+    <!--  Appointment Button -->
     <Button
         android:id="@+id/btn_test"
         style="@style/DashboardButton"
         android:drawableTop="@drawable/heartlogo_toolbar"
-        android:text="Test"
+        android:text="Appointment Scheduler"
         android:textStyle="bold" />/>
 
     <!--  Emergency Button -->
