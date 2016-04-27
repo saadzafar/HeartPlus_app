@@ -43,7 +43,7 @@ public class HeartRateActivity extends Activity implements View.OnClickListener 
     private DatePicker datePicker;
     private Calendar calendar;
     private TextView dateView;
-    private int year, month, day, hour, minute;
+    private int year, month, day, hour, minutes, seconds;
     Button btnDatePicker, btnTimePicker;
     EditText txtDate, txtTime;
 
@@ -61,8 +61,8 @@ public class HeartRateActivity extends Activity implements View.OnClickListener 
       //  dateView = (TextView) findViewById(R.id.inputDate);
         btnDatePicker=(Button)findViewById(R.id.btn_date);
         btnTimePicker=(Button)findViewById(R.id.btn_time);
-        // txtDate=(EditText)findViewById(R.id.in_date);
-        // txtTime=(EditText)findViewById(R.id.in_time);
+        txtDate=(EditText)findViewById(R.id.in_date);
+        txtTime=(EditText)findViewById(R.id.in_time);
         btnDatePicker.setOnClickListener(this);
         btnTimePicker.setOnClickListener(this);
 
@@ -101,7 +101,8 @@ public class HeartRateActivity extends Activity implements View.OnClickListener 
                         public void onDateSet(DatePicker view, int year,
                                               int monthOfYear, int dayOfMonth) {
 
-                            txtDate.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+                            txtDate.setText(new StringBuilder().append(year).append("-")
+                                    .append(month).append("-").append(day));
 
                         }
                     }, year, month, day);
@@ -112,7 +113,8 @@ public class HeartRateActivity extends Activity implements View.OnClickListener 
             // Get Current Time
             final Calendar c = Calendar.getInstance();
             hour = c.get(Calendar.HOUR_OF_DAY);
-            minute = c.get(Calendar.MINUTE);
+            minutes = c.get(Calendar.MINUTE);
+            seconds = 00;
 
             // Launch Time Picker Dialog
             TimePickerDialog timePickerDialog = new TimePickerDialog(this,
@@ -122,9 +124,9 @@ public class HeartRateActivity extends Activity implements View.OnClickListener 
                         public void onTimeSet(TimePicker view, int hourOfDay,
                                               int minute) {
 
-                            txtTime.setText(hourOfDay + ":" + minute);
+                            txtTime.setText(new StringBuilder().append(hour).append(":").append(minutes));
                         }
-                    }, hour, minute, false);
+                    }, hour, minutes, false);
             timePickerDialog.show();
         }
     }
@@ -170,7 +172,7 @@ public class HeartRateActivity extends Activity implements View.OnClickListener 
             pDialog.setMessage("Posting Heart Rate...");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
-            //pDialog.show();
+            pDialog.show();
 
         }
 
@@ -181,13 +183,18 @@ public class HeartRateActivity extends Activity implements View.OnClickListener 
             String email = user.get("email");
             Log.d("email ", email);
             String hr = inputHR.getText().toString();
-           // String date = dateView.getText().toString();
+            String date = txtDate.getText().toString();
+            String time = txtTime.getText().toString();
             Log.d("HR ", hr);
-           // Log.d("date ", date);
+            Log.d("date ", date);
+            Log.d("time ", time);
+
             List<NameValuePair> params = new ArrayList<NameValuePair>();
             params.add(new BasicNameValuePair("heartrate", hr));
-           // params.add(new BasicNameValuePair("date", date));
+            params.add(new BasicNameValuePair("date", date));
+            params.add(new BasicNameValuePair("time", time));
             params.add(new BasicNameValuePair("email", email));
+
             JSONObject json = jsonParser.makeHttpRequest(url_create_hr, "POST", params);
             Log.d("Create Response", json.toString());
 

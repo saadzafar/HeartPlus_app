@@ -10,9 +10,10 @@
         android:layout_height="wrap_content"
         android:padding="15dip"
         android:text="INR History"
-        android:textColor="#010101"
-        android:textSize="25dip"
-        android:textStyle="bold" />
+        android:typeface="monospace"
+        android:textColor="#fcfbfb"
+        android:gravity="center"
+        android:textSize="25dip"/>
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -24,8 +25,7 @@
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
         android:id="@+id/linearLayout"
-        android:background="@color/background"
-        android:textAlignment="textStart">
+        android:background="@color/background">
         <!-- Main ListView
              Always give id value as list(@android:id/list)
         -->

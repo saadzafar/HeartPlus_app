@@ -8,19 +8,19 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="fill_parent"
+        android:layout_margin="20dp">
 
         <TextView
             android:layout_height="wrap_content"
             android:text="@string/title"
             android:layout_width="140dp"
-            android:textStyle="bold"
             android:paddingLeft="10dip"
             android:paddingRight="10dip"
             android:paddingTop="10dip"
             android:layout_gravity="left"
-            android:textSize="14dip"
-            android:textColor="#000"/>
+            android:textSize="20dp"
+            android:textColor="@color/white"/>
 
         <EditText android:id="@+id/title"
             android:layout_width="fill_parent"
@@ -28,77 +28,72 @@
             android:layout_margin="5dip"
             android:layout_marginBottom="15dip"
             android:singleLine="true"
-            android:text="Appointment Name"
-            android:textSize="12dip"
-            android:textColor="@color/hint"
+            android:hint="Appointment Name"
+            android:textSize="17dp"
+            android:textColorHint="@color/hint"
             />
 
         <TextView
             android:layout_height="wrap_content"
             android:text="@string/info"
             android:layout_width="140dp"
-            android:textStyle="bold"
             android:paddingLeft="10dip"
             android:paddingRight="10dip"
-            android:paddingTop="10dip"
+            android:paddingTop="30dp"
             android:layout_gravity="left"
-            android:textSize="14dip"
-            android:textColor="#000"/>
+            android:textSize="20dp"
+            android:textColor="@color/white"/>
 
         <EditText android:id="@+id/info"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dip"
             android:layout_marginBottom="15dip"
-            android:text="Any other information?"
-            android:textSize="12dip"
-            android:textColor="@color/hint"
-            android:minLines="5"
+            android:hint="Any other information?"
+            android:textSize="17dp"
+            android:textColorHint="@color/hint"
+            android:minLines="4"
             android:scrollbars="vertical"
             android:gravity="top" />
 
-        <TextView
+        <LinearLayout
             android:layout_height="wrap_content"
-            android:text="Date"
-            android:layout_width="140dp"
-            android:textStyle="bold"
-            android:paddingLeft="10dip"
-            android:paddingRight="10dip"
-            android:paddingTop="10dip"
-            android:layout_gravity="left"
-            android:textSize="14dip"
-            android:textColor="#000"/>
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_width="fill_parent">
 
-        <Button
-            android:id="@+id/reminder_date"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:background="@drawable/calendar"
-            />
+            <Button
+                android:id="@+id/reminder_date"
+                android:text="SET DATE"
+                android:textSize="15dp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="@color/timedate" />
 
-        <TextView
-            android:layout_height="wrap_content"
-            android:text="Time"
-            android:layout_width="140dp"
-            android:textStyle="bold"
-            android:paddingLeft="10dip"
-            android:paddingRight="10dip"
-            android:paddingTop="10dip"
-            android:layout_gravity="left"
-            android:textSize="14dip"
-            android:textColor="#000"/>
+            <Button
+                android:id="@+id/reminder_time"
+                android:text="SET TIME"
+                android:textSize="15dp"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                android:layout_weight="1"
+                android:background="@color/timedate"/>
 
-        <Button
-            android:id="@+id/reminder_time"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            />
+        </LinearLayout>
 
         <Button android:id="@+id/confirm"
             android:text="@string/confirm"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal" />
+            android:layout_marginTop="15dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/timedate"
+            android:typeface="monospace"/>
     </LinearLayout>
 </LinearLayout>

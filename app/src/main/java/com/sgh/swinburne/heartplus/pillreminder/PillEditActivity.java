@@ -165,7 +165,7 @@ public class PillEditActivity extends Activity
         vConfirmButton.setOnClickListener(new View.OnClickListener()
         {
             public void onClick(View view) {
-                savetheState(); // call savestate() method
+                saveState(); // call savestate() method
                 setResult(RESULT_OK); // informs PillListActivity that everything went as planned in PillEditActivity...Part of Activity parent
                 Toast.makeText(PillEditActivity.this, getString(R.string.task_saved_message), Toast.LENGTH_SHORT).show(); //Toast message letting user know task is saved.
                 finish(); //Closes remindereditactivity
@@ -246,7 +246,7 @@ public class PillEditActivity extends Activity
         outState.putLong(PillDbAdapter.KEY_RID, vRowId); //save id using onsaveinstancestate() method
     }
 
-    private void savetheState() //determine whether to create new reminder or update existing reminder.
+    private void saveState() //determine whether to create new reminder or update existing reminder.
     {
         String Name = vNameText.getText().toString();
         String Dose = vDoseText.getText().toString();
@@ -254,13 +254,13 @@ public class PillEditActivity extends Activity
         SimpleDateFormat dateTimeFormat = new SimpleDateFormat(DATE_TIME_FORMAT); //define simple date format used constants are declared above i.e yyyy-mm-dd goood format to store in db
         String reminderDateTime = dateTimeFormat.format(vCalendar.getTime()); //gets the date and time and stores it in local variable
 
-        if (vRowId == null) //if no rowid could be found create new pill reminder
+        if (vRowId == null ) //if no vRowId could be found create new pill reminder
         {
 
             long r_id = DatabaseHelper.createPill(Name, Dose, Instructions, reminderDateTime);
             if (r_id > 0) //check to make sure id is greater than 0
             {
-                vRowId = r_id; //setting local mRowid to new created id.
+                vRowId = r_id; //setting local vRowId to new created id.
             }
         } else
         {
@@ -269,6 +269,4 @@ public class PillEditActivity extends Activity
 
         new PillManager(this).set_Reminder(vRowId, vCalendar); // tell PillManager to setReminder for a row of ID.. at the specficic date and time.
     }
-
-
 }

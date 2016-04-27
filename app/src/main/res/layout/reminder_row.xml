@@ -4,4 +4,8 @@
     android:id="@+id/text1"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:padding="10dip"/>
+    android:padding="10dip"
+    android:background="@color/background"
+    android:textStyle="bold"
+    android:textSize="17dp"
+    android:textColor="@color/white" />

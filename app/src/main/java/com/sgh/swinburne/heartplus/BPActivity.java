@@ -70,11 +70,9 @@ public class BPActivity extends Activity implements View.OnClickListener {
     EditText remark;
     private DatePicker datePicker;
     private Calendar calendar;
-    private TextView dateView;
-    private TextView timeView;
     private int year, month, day, hour, minute;
     Button btnDatePicker, btnTimePicker;
-    EditText txtDate, txtTime;
+    TextView txtDate, txtTime;
 
     private static String url_create_bp = "http://188.166.237.51/android_login_api/create_bp.php";
     private static final String TAG_SUCCESS = "success";
@@ -89,8 +87,8 @@ public class BPActivity extends Activity implements View.OnClickListener {
         remark = (EditText) findViewById(R.id.remark);
         btnDatePicker=(Button)findViewById(R.id.btn_date);
         btnTimePicker=(Button)findViewById(R.id.btn_time);
-       // txtDate=(EditText)findViewById(R.id.in_date);
-       // txtTime=(EditText)findViewById(R.id.in_time);
+        txtDate=(EditText)findViewById(R.id.in_date);
+        txtTime=(EditText)findViewById(R.id.in_time);
         btnDatePicker.setOnClickListener(this);
         btnTimePicker.setOnClickListener(this);
 
@@ -135,7 +133,8 @@ public class BPActivity extends Activity implements View.OnClickListener {
                         public void onDateSet(DatePicker view, int year,
                                               int monthOfYear, int dayOfMonth) {
 
-                            txtDate.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+                            txtDate.setText(new StringBuilder().append(year).append("-")
+                                    .append(month).append("-").append(day));
 
                         }
                     }, year, month, day);
@@ -156,7 +155,8 @@ public class BPActivity extends Activity implements View.OnClickListener {
                         public void onTimeSet(TimePicker view, int hourOfDay,
                                               int minute) {
 
-                            txtTime.setText(hourOfDay + ":" + minute);
+                           txtTime.setText(new StringBuilder().append(hourOfDay).append(":").append(minute));
+
                         }
                     }, hour, minute, false);
             timePickerDialog.show();
@@ -190,13 +190,6 @@ public class BPActivity extends Activity implements View.OnClickListener {
         }
     };
 
-    private TimePickerDialog.OnTimeSetListener myTimeListener = new TimePickerDialog.OnTimeSetListener() {
-        @Override
-        public void onTimeSet(TimePicker timePicker, int i, int i1) {
-            showTime(i, i1);
-        }
-
-    };
 
         private void showTime(int hour, int minute) {
             timeView.setText(new StringBuilder().append(hour).append(":").append(minute));
@@ -220,7 +213,7 @@ public class BPActivity extends Activity implements View.OnClickListener {
                 pDialog.setMessage("Posting Blood Pressure...");
                 pDialog.setIndeterminate(false);
                 pDialog.setCancelable(true);
-                //pDialog.show();
+                pDialog.show();
 
             }
 
@@ -230,19 +223,20 @@ public class BPActivity extends Activity implements View.OnClickListener {
                 HashMap<String, String> user = db.getUserDetails();
                 String email = user.get("email");
                 Log.d("email ", email);
+                String time = txtTime.getText().toString();
                 String systolic = inputS.getText().toString();
                 String diastolic = inputD.getText().toString();
                 String inputremark = remark.getText().toString();
-                // String date = dateView.getText().toString();
-               // String time = timeView.getText().toString();
+                String date = txtDate.getText().toString();
                 Log.d("BPS ", systolic);
                 Log.d("BPD ", diastolic);
-               // Log.d("date ", date);
+                Log.d("date ", date);
+                Log.d("time ", time);
                 List<NameValuePair> params = new ArrayList<NameValuePair>();
                 params.add(new BasicNameValuePair("systolic", systolic));
                 params.add(new BasicNameValuePair("diastolic", diastolic));
-               // params.add(new BasicNameValuePair("date", date));
-                //params.add(new BasicNameValuePair("time", time));
+                params.add(new BasicNameValuePair("date", date));
+                params.add(new BasicNameValuePair("time", time));
                 params.add(new BasicNameValuePair("email", email));
                 params.add(new BasicNameValuePair("remark", inputremark));
                 Log.d("params ", params.toString());

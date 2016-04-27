@@ -56,7 +56,10 @@ public class ConfirmActivity extends Activity
         });
     }
 
-    public void onRadioButtonClicked(View view) {
+
+
+
+  /*  public void onRadioButtonClicked(View view) {
         // Is the button now checked?
         boolean checked = ((RadioButton) view).isChecked();
 
@@ -87,5 +90,5 @@ public class ConfirmActivity extends Activity
 
                 DatabaseHelper.InsertRecord(take,skip,snooze);
         }
-    }
+    }*/
 }

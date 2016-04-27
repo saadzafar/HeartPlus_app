@@ -63,11 +63,12 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dip"
-            android:text="Your Feedback"
+            android:hint="Your Feedback"
             android:layout_marginBottom="15dip"
             android:lines="4"
             android:gravity="top"
-            android:textColor="@color/hint" />
+            android:textColor="@color/hint"
+            android:textColorHint="@color/hint" />
 
         <!-- Button Create Message -->
         <Button

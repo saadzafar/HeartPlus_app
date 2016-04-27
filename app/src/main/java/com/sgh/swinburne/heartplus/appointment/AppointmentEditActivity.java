@@ -240,15 +240,11 @@ public class AppointmentEditActivity extends Activity {
     }
 
 
-
     private void saveState() {
         String title = mTitleText.getText().toString();
         String body = mBodyText.getText().toString();
         SimpleDateFormat dateTimeFormat = new SimpleDateFormat(DATE_TIME_FORMAT);
         String reminderDateTime = dateTimeFormat.format(mCalendar.getTime());
-        //long id = mDbHelper.createReminder(title, body, reminderDateTime);
-
-
 
         if (mRowId == null) {
 

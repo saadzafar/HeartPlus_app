@@ -5,6 +5,7 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -44,9 +45,10 @@ public class INRActivity1 extends Activity implements View.OnClickListener {
     private DatePicker datePicker;
     private Calendar calendar;
     private TextView dateView;
-    private int year, month, day, hour, minute;
-    Button btnDatePicker, btnTimePicker;
-    EditText txtDate, txtTime;
+    private int year, month, day;
+    private String inr;
+    Button btnDatePicker;
+    EditText txtDate;
 
     private static String url_create_inr = "http://188.166.237.51/android_login_api/create_inr.php";
     private static final String TAG_SUCCESS = "success";
@@ -61,11 +63,8 @@ public class INRActivity1 extends Activity implements View.OnClickListener {
         inputINR = (EditText) findViewById(R.id.inputINR);
       //  dateView = (TextView) findViewById(R.id.inputDate);
         btnDatePicker=(Button)findViewById(R.id.btn_date);
-        btnTimePicker=(Button)findViewById(R.id.btn_time);
-        // txtDate=(EditText)findViewById(R.id.in_date);
-        // txtTime=(EditText)findViewById(R.id.in_time);
+        txtDate=(EditText)findViewById(R.id.inputDate);
         btnDatePicker.setOnClickListener(this);
-        btnTimePicker.setOnClickListener(this);
 
       /*  calendar = Calendar.getInstance();
         year = calendar.get(Calendar.YEAR);
@@ -80,6 +79,10 @@ public class INRActivity1 extends Activity implements View.OnClickListener {
             @Override
             public void onClick(View view) {
                 new CreateNewINR().execute();
+                inr = inputINR.getText().toString();
+              //  Intent myIntent = new Intent(view.getContext(), Graph_View.class);
+              // myIntent.putExtra("inr", inr);
+               // startActivityForResult(myIntent, 0);
             }
         });
     }
@@ -103,31 +106,12 @@ public class INRActivity1 extends Activity implements View.OnClickListener {
                         public void onDateSet(DatePicker view, int year,
                                               int monthOfYear, int dayOfMonth) {
 
-                            txtDate.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+                            txtDate.setText(new StringBuilder().append(year).append("-")
+                                    .append(month).append("-").append(day));
 
                         }
                     }, year, month, day);
             datePickerDialog.show();
-        }
-        if (v == btnTimePicker) {
-
-            // Get Current Time
-            final Calendar c = Calendar.getInstance();
-            hour = c.get(Calendar.HOUR_OF_DAY);
-            minute = c.get(Calendar.MINUTE);
-
-            // Launch Time Picker Dialog
-            TimePickerDialog timePickerDialog = new TimePickerDialog(this,
-                    new TimePickerDialog.OnTimeSetListener() {
-
-                        @Override
-                        public void onTimeSet(TimePicker view, int hourOfDay,
-                                              int minute) {
-
-                            txtTime.setText(hourOfDay + ":" + minute);
-                        }
-                    }, hour, minute, false);
-            timePickerDialog.show();
         }
     }
 
@@ -172,7 +156,7 @@ public class INRActivity1 extends Activity implements View.OnClickListener {
             pDialog.setMessage("Posting INR...");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
-            //pDialog.show();
+            pDialog.show();
 
         }
 
@@ -183,12 +167,12 @@ public class INRActivity1 extends Activity implements View.OnClickListener {
             String email = user.get("email");
             Log.d("email ", email);
             String value = inputINR.getText().toString();
-           // String date = dateView.getText().toString();
+            String date = txtDate.getText().toString();
             Log.d("value ", value);
-          //  Log.d("date ", date);
+            Log.d("date ", date);
             List<NameValuePair> params = new ArrayList<NameValuePair>();
             params.add(new BasicNameValuePair("value", value));
-           // params.add(new BasicNameValuePair("date", date));
+            params.add(new BasicNameValuePair("date", date));
             params.add(new BasicNameValuePair("email", email));
             JSONObject json = jsonParser.makeHttpRequest(url_create_inr, "POST", params);
             Log.d("Create Response", json.toString());

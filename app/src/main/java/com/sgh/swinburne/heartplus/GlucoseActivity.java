@@ -68,8 +68,8 @@ public class GlucoseActivity extends Activity implements View.OnClickListener {
 
         btnDatePicker=(Button)findViewById(R.id.btn_date);
         btnTimePicker=(Button)findViewById(R.id.btn_time);
-        //txtDate=(EditText)findViewById(R.id.in_date);
-        //txtTime=(EditText)findViewById(R.id.in_time);
+        txtDate=(EditText)findViewById(R.id.in_date);
+        txtTime=(EditText)findViewById(R.id.in_time);
         btnDatePicker.setOnClickListener(this);
         btnTimePicker.setOnClickListener(this);
 
@@ -109,7 +109,8 @@ public class GlucoseActivity extends Activity implements View.OnClickListener {
                         public void onDateSet(DatePicker view, int year,
                                               int monthOfYear, int dayOfMonth) {
 
-                            txtDate.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+                            txtDate.setText(new StringBuilder().append(year).append("-")
+                                    .append(month).append("-").append(day));
 
                         }
                     }, year, month, day);
@@ -178,7 +179,7 @@ public class GlucoseActivity extends Activity implements View.OnClickListener {
             pDialog.setMessage("Posting Glucose...");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
-            //pDialog.show();
+            pDialog.show();
 
         }
 
@@ -189,13 +190,16 @@ public class GlucoseActivity extends Activity implements View.OnClickListener {
             String email = user.get("email");
             Log.d("email ", email);
             String value = inputGlucose.getText().toString();
-           // String date = dateView.getText().toString();
+            String date = txtDate.getText().toString();
+            String time = txtTime.getText().toString();
             String meal = inputMeal.getText().toString();
             Log.d("value ", value);
-           // Log.d("date ", date);
+            Log.d("date ", date);
+            Log.d("time ", time);
             List<NameValuePair> params = new ArrayList<NameValuePair>();
             params.add(new BasicNameValuePair("value", value));
-          //  params.add(new BasicNameValuePair("date", date));
+            params.add(new BasicNameValuePair("date", date));
+            params.add(new BasicNameValuePair("time", time));
             params.add(new BasicNameValuePair("email", email));
             params.add(new BasicNameValuePair("meal", meal));
             JSONObject json = jsonParser.makeHttpRequest(url_create_inr, "POST", params);

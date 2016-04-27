@@ -5,12 +5,13 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:background="@color/background">
-
     <ListView android:id="@+id/android:list"
-        android:layout_width="373dp"
-        android:layout_height="fill_parent"/>
+        android:layout_width="wrap_content"
+        android:layout_height="541dp"
+        android:background="@color/background" />
     <TextView android:id="@+id/android:empty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nothing to Show"/>
+        android:text="Nothing to Show"
+        android:textColor="@color/hint" />
 </LinearLayout>

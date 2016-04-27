@@ -12,7 +12,7 @@
         style="@style/DashboardButton"
         android:drawableTop="@drawable/graduation"
         android:paddingBottom="30dp"
-        android:text="Patient Education"
+        android:text="Pill List"
         android:textColor="@color/black"
         android:textStyle="bold"
         android:layout_width="fill_parent"

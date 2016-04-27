@@ -2,6 +2,7 @@ package com.sgh.swinburne.heartplus;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -58,7 +59,17 @@ public class MedicalChartActivity extends Activity {
             }
         });
 
-        Button btnVINR = (Button) findViewById(R.id.btnVINR);
+        Button btn_emergency = (Button) findViewById(R.id.btn_test2);
+        btn_emergency.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                String emergency_number = "999";
+                Intent intent = new Intent(Intent.ACTION_CALL);
+                intent.setData(Uri.parse("tel: " + emergency_number));
+                startActivity(intent);
+            }
+        });
+
+     /*   Button btnVINR = (Button) findViewById(R.id.btn_test2);
         btnVINR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,7 +77,7 @@ public class MedicalChartActivity extends Activity {
                 Intent i = new Intent(getApplicationContext(), INRActivity.class);
                 startActivity(i);
             }
-        });
+        });*/
 
         Button btnGraph = (Button) findViewById(R.id.btnGraph);
         btnGraph.setOnClickListener(new View.OnClickListener() {

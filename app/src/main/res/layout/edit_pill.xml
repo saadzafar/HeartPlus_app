@@ -12,21 +12,21 @@
         android:layout_height="wrap_content"
         android:text="Product Name"
         android:textAllCaps="true"
-        android:textStyle="bold"
         android:paddingLeft="10dip"
         android:paddingRight="10dip"
         android:paddingTop="10dp"
-        android:textSize="17dip"
-        android:textColor="#000" />
+        android:textSize="20dp"
+        android:textColor="@color/white" />
 
     <!--  Name -->
     <EditText
         android:id="@+id/inputName"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Your Name"
+        android:hint="The Product Name"
         android:padding="10dip"
-        android:textColor="@color/hint"/>
+        android:textColor="@color/hint"
+        android:textColorHint="@color/hint" />
 
     <!-- Side Effect Label -->
     <TextView
@@ -34,41 +34,41 @@
         android:layout_height="wrap_content"
         android:text="Side Effect"
         android:textAllCaps="true"
-        android:textStyle="bold"
         android:paddingLeft="10dip"
         android:paddingRight="10dip"
         android:paddingTop="35dp"
-        android:textSize="17dip"
-        android:textColor="#000" />
+        android:textSize="20dp"
+        android:textColor="@color/white" />
 
     <!-- Side Effect -->
     <EditText
         android:id="@+id/inputSideEffect"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Side Effects"
+        android:hint="Any Side Effects"
         android:padding="10dip"
-        android:textColor="@color/hint" />
+        android:textColor="@color/hint"
+        android:textColorHint="@color/hint" />
 
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Indication"
         android:textAllCaps="true"
-        android:textStyle="bold"
         android:paddingLeft="10dip"
         android:paddingRight="10dip"
         android:paddingTop="35dp"
-        android:textSize="17dip"
-        android:textColor="#000" />
+        android:textSize="20dp"
+        android:textColor="@color/white" />
 
     <EditText
         android:id="@+id/inputIndication"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Indication"
+        android:hint="Indication"
         android:padding="10dip"
-        android:textColor="@color/hint"/>
+        android:textColor="@color/hint"
+        android:textColorHint="@color/hint" />
 
     <!-- Description Label -->
     <TextView
@@ -76,24 +76,24 @@
         android:layout_height="wrap_content"
         android:text="Description"
         android:textAllCaps="true"
-        android:textStyle="bold"
         android:paddingLeft="10dip"
         android:paddingRight="10dip"
         android:paddingTop="35dp"
-        android:textSize="17dip"
-        android:textColor="#000" />
+        android:textSize="20dp"
+        android:textColor="@color/white" />
 
     <!-- description -->
     <EditText
         android:id="@+id/inputDescription"
         android:layout_width="fill_parent"
         android:layout_height="90dp"
-        android:text="Description"
+        android:hint="Description"
         android:padding="10dp"
         android:textColor="@color/hint"
         android:layout_marginBottom="15dip"
         android:lines="2"
-        android:gravity="top"/>
+        android:gravity="top"
+        android:textColorHint="@color/hint" />
 
     <LinearLayout
         android:layout_width="fill_parent"

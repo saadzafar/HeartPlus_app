@@ -23,7 +23,7 @@
         android:id="@+id/btnLogout"
         android:layout_width="fill_parent"
         android:layout_height="30dip"
-        android:background="@color/btn_logut_bg"
+        android:background="@color/background"
         android:text="@string/btn_logout"
         android:textAllCaps="false"
         android:textColor="@color/white"
