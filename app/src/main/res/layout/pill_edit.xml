@@ -13,7 +13,7 @@
 
         <TextView
             android:layout_height="wrap_content"
-            android:text="@string/name"
+            android:text="Drug Name"
             android:layout_width="140dp"
             android:paddingLeft="10dip"
             android:paddingRight="10dip"
@@ -28,14 +28,14 @@
             android:layout_margin="5dip"
             android:layout_marginBottom="15dip"
             android:singleLine="true"
-            android:hint="Drug Name"
+            android:hint="The Drug Name"
             android:textSize="17dp"
             android:textColorHint="@color/hint"
             />
 
         <TextView
             android:layout_height="wrap_content"
-            android:text="@string/dose"
+            android:text="Dose"
             android:layout_width="140dp"
             android:paddingLeft="10dip"
             android:paddingRight="10dip"
@@ -50,7 +50,7 @@
             android:layout_margin="5dip"
             android:layout_marginBottom="15dip"
             android:singleLine="true"
-            android:hint="Current Dosage"
+            android:hint="Current Dosage e.g 2mg"
             android:textSize="17dp"
             android:textColorHint="@color/hint"/>
 

@@ -114,7 +114,6 @@ public class HeartRateActivity extends Activity implements View.OnClickListener 
             final Calendar c = Calendar.getInstance();
             hour = c.get(Calendar.HOUR_OF_DAY);
             minutes = c.get(Calendar.MINUTE);
-            seconds = 00;
 
             // Launch Time Picker Dialog
             TimePickerDialog timePickerDialog = new TimePickerDialog(this,

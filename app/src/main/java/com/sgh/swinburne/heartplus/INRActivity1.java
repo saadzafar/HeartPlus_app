@@ -80,8 +80,8 @@ public class INRActivity1 extends Activity implements View.OnClickListener {
             public void onClick(View view) {
                 new CreateNewINR().execute();
                 inr = inputINR.getText().toString();
-              //  Intent myIntent = new Intent(view.getContext(), Graph_View.class);
-              // myIntent.putExtra("inr", inr);
+               // Intent myIntent = new Intent(view.getContext(), Graph_View.class);
+               // myIntent.putExtra("inr", inr);
                // startActivityForResult(myIntent, 0);
             }
         });
