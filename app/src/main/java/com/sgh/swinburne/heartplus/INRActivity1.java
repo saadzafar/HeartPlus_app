@@ -92,26 +92,38 @@ public class INRActivity1 extends Activity implements View.OnClickListener {
 
         if (v == btnDatePicker) {
 
-            // Get Current Date
-            final Calendar c = Calendar.getInstance();
-            year = c.get(Calendar.YEAR);
-            month = c.get(Calendar.MONTH);
-            day = c.get(Calendar.DAY_OF_MONTH);
+            if (year == 0 || month == 0 || day == 0) {
+                Calendar c=Calendar.getInstance();
+                year=c.get(Calendar.YEAR);
+                month=c.get(Calendar.MONTH);
+                day=c.get(Calendar.DAY_OF_MONTH);
+            }
 
+            DatePickerDialog mDatePicker=new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker datepicker, int selectedyear, int selectedmonth, int selectedday)
+                {
+                    year = selectedyear;
+                    month = selectedmonth;
+                    day = selectedday;
+                    txtDate.setText(new StringBuilder().append(year).append("-").append(month+1).append("-").append(day));
+                }
+            },year, month, day);
+            mDatePicker.setTitle("Please select date");
+            mDatePicker.getDatePicker().setMaxDate(System.currentTimeMillis());
+            mDatePicker.show();
+        }
 
-            DatePickerDialog datePickerDialog = new DatePickerDialog(this,
-                    new DatePickerDialog.OnDateSetListener() {
+        if(inputINR.getText().toString().length()==0)
+        {
+            // Toast.makeText(getApplicationContext(), "Invalid Systolic Value", Toast.LENGTH_LONG).show();
+            inputINR.setError("Invalid INR Value");
+            return;
+        }
 
-                        @Override
-                        public void onDateSet(DatePicker view, int year,
-                                              int monthOfYear, int dayOfMonth) {
-
-                            txtDate.setText(new StringBuilder().append(year).append("-")
-                                    .append(month).append("-").append(day));
-
-                        }
-                    }, year, month, day);
-            datePickerDialog.show();
+        else
+        {
+            Toast.makeText(getApplicationContext(), "Validated Succesfully", Toast.LENGTH_LONG).show();
         }
     }
 

@@ -119,26 +119,26 @@ public class BPActivity extends Activity implements View.OnClickListener {
 
         if (v == btnDatePicker) {
 
-            // Get Current Date
-            final Calendar c = Calendar.getInstance();
-            year = c.get(Calendar.YEAR);
-            month = c.get(Calendar.MONTH);
-            day = c.get(Calendar.DAY_OF_MONTH);
+            if (year == 0 || month == 0 || day == 0) {
+                Calendar c=Calendar.getInstance();
+                year=c.get(Calendar.YEAR);
+                month=c.get(Calendar.MONTH);
+                day=c.get(Calendar.DAY_OF_MONTH);
+            }
 
-
-            DatePickerDialog datePickerDialog = new DatePickerDialog(this,
-                    new DatePickerDialog.OnDateSetListener() {
-
-                        @Override
-                        public void onDateSet(DatePicker view, int year,
-                                              int monthOfYear, int dayOfMonth) {
-
-                            txtDate.setText(new StringBuilder().append(year).append("-")
-                                    .append(month).append("-").append(day));
-
-                        }
-                    }, year, month, day);
-            datePickerDialog.show();
+            DatePickerDialog mDatePicker=new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker datepicker, int selectedyear, int selectedmonth, int selectedday)
+                {
+                    year = selectedyear;
+                    month = selectedmonth;
+                    day = selectedday;
+                    txtDate.setText(new StringBuilder().append(year).append("-").append(month+1).append("-").append(day));
+                }
+            },year, month, day);
+            mDatePicker.setTitle("Please select date");
+            mDatePicker.getDatePicker().setMaxDate(System.currentTimeMillis());
+            mDatePicker.show();
         }
         if (v == btnTimePicker) {
 
@@ -160,6 +160,25 @@ public class BPActivity extends Activity implements View.OnClickListener {
                         }
                     }, hour, minute, false);
             timePickerDialog.show();
+        }
+
+        if(inputS.getText().toString().length()==0)
+        {
+           // Toast.makeText(getApplicationContext(), "Invalid Systolic Value", Toast.LENGTH_LONG).show();
+            inputS.setError("Invalid Systolic Value");
+            return;
+        }
+
+        if(inputD.getText().toString().length()==0)
+        {
+            //Toast.makeText(getApplicationContext(), "Invalid Dystolic Value", Toast.LENGTH_LONG).show();
+            inputD.setError("Invalid Dystolic Value");
+            return;
+        }
+
+        else
+        {
+            Toast.makeText(getApplicationContext(), "Validated Succesfully", Toast.LENGTH_LONG).show();
         }
     }
 
