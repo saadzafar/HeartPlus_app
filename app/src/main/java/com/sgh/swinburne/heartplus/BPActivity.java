@@ -54,6 +54,8 @@ public class BPActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bp_layout);
         inputS = (EditText) findViewById(R.id.inputS);
+        if (inputS.getText().toString().length() == 0)
+            inputS.setError("First name is required!");
         inputD = (EditText) findViewById(R.id.inputD);
         remark = (EditText) findViewById(R.id.remark);
         btnDatePicker=(Button)findViewById(R.id.btn_date);

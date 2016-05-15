@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.sgh.swinburne.heartplus.DashboardLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_weight="1"
+    android:background="@color/background">
+
+    <!-- Button INR -->
+    <Button
+        android:id="@+id/btnINR"
+        style="@style/DashboardButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:drawableTop="@drawable/inr"
+        android:text="INR"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+    <!-- Button Blood Pressure -->
+    <Button
+        android:id="@+id/btnBP"
+        style="@style/DashboardButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:drawableTop="@drawable/tool"
+        android:text="Blood Pressure"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+    <!-- Button Glucose -->
+    <Button
+        android:id="@+id/btnGlucose"
+        style="@style/DashboardButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:drawableTop="@drawable/glucose"
+        android:text="Glucose"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+    <!-- Button Heart Rate -->
+    <Button
+        android:id="@+id/btnHR"
+        style="@style/DashboardButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:drawableTop="@drawable/heartrate"
+        android:text="Heart Rate"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btn_test2"
+        style="@style/DashboardButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:drawableTop="@drawable/transport"
+        android:text="Emergency"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnGraph"
+        style="@style/DashboardButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:drawableTop="@drawable/graph"
+        android:text="INR Graph"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+</com.sgh.swinburne.heartplus.DashboardLayout>
