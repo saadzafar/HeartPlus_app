@@ -2,20 +2,15 @@ package com.sgh.swinburne.heartplus;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.app.TimePickerDialog;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.sgh.swinburne.heartplus.helper.SQLiteHandler;
@@ -35,24 +30,21 @@ import java.util.List;
  * Created by Saad on 11/6/2015.
  */
 public class INRActivity1 extends Activity implements View.OnClickListener {
-    private ProgressDialog pDialog;
-    private SQLiteHandler db;
-    private SessionManager session;
-
+    private static final String TAG_SUCCESS = "success";
+    private static String url_create_inr = "http://188.166.237.51/android_login_api/create_inr.php";
     JSONParser jsonParser = new JSONParser();
     EditText inputINR;
     EditText inputDate;
+    Button btnDatePicker;
+    EditText txtDate;
+    private ProgressDialog pDialog;
+    private SQLiteHandler db;
+    private SessionManager session;
     private DatePicker datePicker;
     private Calendar calendar;
     private TextView dateView;
     private int year, month, day;
     private String inr;
-    Button btnDatePicker;
-    EditText txtDate;
-
-    private static String url_create_inr = "http://188.166.237.51/android_login_api/create_inr.php";
-    private static final String TAG_SUCCESS = "success";
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -113,14 +105,12 @@ public class INRActivity1 extends Activity implements View.OnClickListener {
             mDatePicker.getDatePicker().setMaxDate(System.currentTimeMillis());
             mDatePicker.show();
         }
-
         if(inputINR.getText().toString().length()==0)
         {
             // Toast.makeText(getApplicationContext(), "Invalid Systolic Value", Toast.LENGTH_LONG).show();
             inputINR.setError("Invalid INR Value");
             return;
         }
-
         else
         {
             Toast.makeText(getApplicationContext(), "Validated Succesfully", Toast.LENGTH_LONG).show();

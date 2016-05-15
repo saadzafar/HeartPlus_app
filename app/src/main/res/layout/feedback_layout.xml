@@ -11,64 +11,56 @@
         android:layout_height="wrap_content"
         android:padding="15dip"
         android:text="Feedback"
+        android:textColor="@color/white"
         android:textSize="25dip"
-        android:textStyle="bold"
-        android:textColor="@color/black" />
+        android:textStyle="bold" />
+
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:gravity="center"
-        android:orientation="vertical"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true"
-        android:id="@+id/linearLayout">
-
-        <!--
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Email"
-            android:paddingLeft="10dip"
-            android:paddingRight="10dip"
-            android:paddingTop="10dip"
-            android:textSize="17dip" />
-
-        <EditText
-            android:id="@+id/inputEmail"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dip"
-            android:layout_marginBottom="15dip"
-            android:singleLine="true" /> -->
+        android:orientation="vertical">
 
 
         <!-- Message Label -->
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Message"
-            android:textAllCaps="true"
-            android:textStyle="bold"
             android:paddingLeft="10dip"
             android:paddingRight="10dip"
             android:paddingTop="10dip"
+            android:text="Message"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
             android:textSize="17dip"
-            android:textColor="#000" />
+            android:textStyle="bold" />
         <!-- Input Message -->
         <EditText
             android:id="@+id/inputMessage"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dip"
-            android:hint="Your Feedback"
             android:layout_marginBottom="15dip"
-            android:lines="4"
             android:gravity="top"
+            android:hint="Your Feedback"
+            android:lines="4"
             android:textColor="@color/hint"
             android:textColorHint="@color/hint" />
+
+        <RatingBar
+            android:id="@+id/ratingBar1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="44dp" />
+
 
         <!-- Button Create Message -->
         <Button

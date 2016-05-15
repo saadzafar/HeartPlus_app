@@ -1,133 +1,160 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background">
+    android:background="@color/background"
+    android:orientation="vertical">
 
 
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="25dp"
+        android:gravity="center"
         android:paddingBottom="5dp"
+        android:paddingTop="25dp"
         android:text="Blood Pressure"
         android:textAllCaps="true"
-        android:typeface="monospace"
         android:textColor="#fcfbfb"
-        android:gravity="center"
-        android:textSize="45dp"/>
+        android:textSize="42dp"
+        android:typeface="monospace" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
+        android:layout_weight="0.82"
         android:gravity="center"
         android:orientation="vertical"
-        android:id="@+id/linearLayout"
-        android:layout_weight="0.82"
-        android:weightSum="1"
-        android:layout_height="wrap_content">
+        android:weightSum="1">
 
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Systolic Value"
+            android:inputType="number"
             android:paddingLeft="10dip"
             android:paddingRight="10dip"
             android:paddingTop="5dp"
-            android:textSize="19dp"
-            android:textColor="@color/white" />
+            android:text="Systolic Value"
+            android:textColor="@color/white"
+            android:textSize="19dp" />
 
         <EditText
             android:id="@+id/inputS"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Your Systolic Value"
-            android:textSize="15dp"
+            android:hint="Your Systolic Value"
+            android:inputType="numberDecimal|number"
             android:padding="10dip"
-            android:textColor="@color/hint" />
+            android:textColor="@color/hint"
+            android:textColorHint="@color/hint"
+            android:textSize="15dp" />
 
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Diastolic Value"
+            android:inputType="number"
             android:paddingLeft="10dip"
             android:paddingRight="10dip"
             android:paddingTop="10dip"
-            android:textSize="19dp"
-            android:textColor="@color/white" />
+            android:text="Diastolic Value"
+            android:textColor="@color/white"
+            android:textSize="19dp" />
 
         <EditText
             android:id="@+id/inputD"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Your Diastolic Value"
-            android:textSize="15dp"
+            android:hint="Your Diastolic Value"
+            android:inputType="numberDecimal|number"
             android:padding="10dip"
-            android:textColor="@color/hint" />
+            android:textColor="@color/hint"
+            android:textColorHint="@color/hint"
+            android:textSize="15dp" />
 
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Remark"
             android:paddingLeft="10dip"
             android:paddingRight="10dip"
             android:paddingTop="10dip"
-            android:textSize="19dp"
-            android:textColor="@color/white" />
+            android:text="Remark"
+            android:textColor="@color/white"
+            android:textSize="19dp" />
 
         <EditText
             android:id="@+id/remark"
             android:layout_width="fill_parent"
             android:layout_height="51dp"
-            android:text="Any Remarks?"
-            android:textSize="15dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="top"
+            android:hint="Any Remarks?"
+            android:lines="1"
             android:padding="10dp"
             android:textColor="@color/hint"
-            android:layout_marginBottom="10dp"
-            android:lines="1"
-            android:gravity="top" />
+            android:textColorHint="@color/hint"
+            android:textSize="15dp" />
 
 
         <LinearLayout
+            android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginBottom="10dp"
-        android:layout_width="fill_parent">
+            android:orientation="horizontal">
 
         <Button
             android:id="@+id/btn_date"
-            android:text="SET DATE"
-            android:textSize="15dp"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
             android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
             android:layout_weight="1"
-            android:onClick="setDate"
-            android:background="#c43838" />
+            android:background="@color/timedate"
+            android:onClick="onClick"
+            android:text="SET DATE"
+            android:textSize="15dp" />
 
         <Button
             android:id="@+id/btn_time"
-            android:text="SET TIME"
-            android:textSize="15dp"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
             android:layout_weight="1"
-            android:onClick="setTime"
-            android:background="#c43838" />
+            android:background="@color/timedate"
+            android:onClick="onClick"
+            android:text="SET TIME"
+            android:textSize="15dp" />
 
     </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/in_date"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <EditText
+                android:id="@+id/in_time"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+        </LinearLayout>
 
         <Button
             android:id="@+id/btnCreateGlucose"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="SUBMIT"
-            android:background="#c43838" />
+            android:layout_marginTop="20dp"
+            android:background="@color/timedate"
+            android:text="SUBMIT" />
 
     </LinearLayout>
 

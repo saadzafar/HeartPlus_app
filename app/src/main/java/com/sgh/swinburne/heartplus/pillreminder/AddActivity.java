@@ -1,29 +1,17 @@
 package com.sgh.swinburne.heartplus.pillreminder;
 
 /**
- * Created by faiza on 4/20/2016.
+ * Created by faizan on 4/20/2016.
  */
-import com.sgh.swinburne.heartplus.R;
-
-import com.sgh.swinburne.heartplus.pillreminder.Alarm;
-import com.sgh.swinburne.heartplus.pillreminder.Pill;
-import com.sgh.swinburne.heartplus.pillreminder.PillBox;
-
-import java.net.URISyntaxException;
-import java.util.Calendar;
-import java.util.LinkedList;
-import java.util.List;
 
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
-import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -37,17 +25,18 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.sgh.swinburne.heartplus.MainActivity;
+import com.sgh.swinburne.heartplus.R;
+
+import java.net.URISyntaxException;
+import java.util.Calendar;
+import java.util.LinkedList;
+import java.util.List;
 
 
 public class AddActivity extends Activity {
-    private AlarmManager alarmManager;
-    private PendingIntent operation;
-    private boolean dayOfWeekList[] = new boolean[7];
-
     int hour, minute;
     TextView timeLabel;
     PillBox pillBox = new PillBox();
-
     // Time picker dialog that pops up when the user presses the time string
     // This method specifies the hour and minute of the time picker before the user
     // does anything
@@ -59,6 +48,9 @@ public class AddActivity extends Activity {
             timeLabel.setText(setTime(hour, minute));
         }
     };
+    private AlarmManager alarmManager;
+    private PendingIntent operation;
+    private boolean dayOfWeekList[] = new boolean[7];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +59,7 @@ public class AddActivity extends Activity {
 
         // Set up the time string on the page
         timeLabel=(TextView)findViewById(R.id.reminder_time);
-        Typeface lightFont = Typeface.createFromAsset(this.getAssets(), "fonts/Roboto-Light.ttf");
+        Typeface lightFont = Typeface.createFromAsset(this.getAssets(), "fonts/Roboto-Bold.ttf");
         timeLabel.setTypeface(lightFont);
 
         // Get the time right now and set it to be the time string
@@ -149,7 +141,7 @@ public class AddActivity extends Activity {
                 }
 
                 for(int i=0; i<7; i++) {
-                    if (dayOfWeekList[i] && pill_name.length() != 0 && dose_name.length() != 0 && instruction_name.length() != 0) {
+                    if (dayOfWeekList[i] && pill_name.length() != 0) {
 
                         int dayOfWeek = i+1;
 

@@ -58,23 +58,20 @@ public class AppointmentListActivity extends ListActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
         MenuInflater mi = getMenuInflater();
-        mi.inflate(R.menu.list_menu, menu);
+        mi.inflate(R.menu.menu_main, menu);
         return true;
     }
 
-    @Override
-    public boolean onMenuItemSelected(int featureId, MenuItem item) {
-        switch(item.getItemId()) {
-            case R.id.menu_insert:
-                createReminder();
-                return true;
-            case R.id.menu_settings:
-                Intent i = new Intent(this, TaskPreferences.class);
-                startActivity(i);
-                return true;
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+
+        if (id == R.id.action_add) {
+            createReminder();
+            return true;
         }
 
-        return super.onMenuItemSelected(featureId, item);
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

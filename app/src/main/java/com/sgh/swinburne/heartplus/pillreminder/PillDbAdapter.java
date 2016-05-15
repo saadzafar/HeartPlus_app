@@ -3,10 +3,9 @@ package com.sgh.swinburne.heartplus.pillreminder;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
+
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -16,13 +15,17 @@ import java.util.List;
  * Created by Faizan Elahi.
  */
 public class PillDbAdapter extends SQLiteOpenHelper {
+    /**
+     * Common column name and location
+     */
+    public static final String KEY_ROWID = "id";
+    public static final String KEY_DOSE = "dose";
+    public static final String KEY_INSTRUCTIONS = "instructions";
     private static final String DATABASE_NAME = "pill_model_database";
-
     /**
      * Database version
      */
-    private static final int DATABASE_VERSION = 58;
-
+    private static final int DATABASE_VERSION = 3;
     /**
      * Table names
      */
@@ -30,19 +33,10 @@ public class PillDbAdapter extends SQLiteOpenHelper {
     private static final String ALARM_TABLE = "alarms";
     private static final String PILL_ALARM_LINKS = "pill_alarm";
     private static final String HISTORIES_TABLE = "histories";
-
-    /**
-     * Common column name and location
-     */
-    public static final String KEY_ROWID = "id";
-
     /**
      * Pill table columns, used by History Table
      */
     private static final String KEY_PILLNAME = "pillName";
-    public static final String KEY_DOSE = "dose";
-    public static final String KEY_INSTRUCTIONS = "instructions";
-
     /**
      * Alarm table columns, Hour & Minute used by History Table
      */

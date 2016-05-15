@@ -1,82 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background">
+    android:background="@color/background"
+    android:orientation="vertical">
 
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
         android:padding="15dip"
         android:text="HEART RATE"
-        android:layout_marginTop="40dp"
-        android:typeface="monospace"
         android:textColor="#fcfbfb"
-        android:gravity="center"
-        android:textSize="60dp"/>
+        android:textSize="60dp"
+        android:typeface="monospace" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
+        android:layout_weight="0.82"
         android:gravity="center"
         android:orientation="vertical"
-        android:id="@+id/linearLayout"
-        android:layout_weight="0.82"
         android:weightSum="1">
 
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Heart Rate"
-            android:textStyle="bold"
             android:paddingLeft="10dip"
             android:paddingRight="10dip"
+            android:text="Heart Rate (BPM)"
+            android:textColor="@color/white"
             android:textSize="17dip"
-            android:textColor="@color/white" />
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/inputHR"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Your Heart Rate"
             android:layout_margin="5dip"
             android:layout_marginBottom="15dip"
+            android:hint="Your Heart Rate e.g. 80"
+            android:inputType="number"
             android:singleLine="true"
-            android:textColor="@color/hint" />
+            android:textColor="@color/hint"
+            android:textColorHint="@color/hint" />
 
         <LinearLayout
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginBottom="10dp"
-            android:layout_width="fill_parent">
+            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/btn_date"
-                android:text="SET DATE"
-                android:textSize="15dp"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
                 android:layout_marginRight="10dp"
+                android:layout_marginTop="25dp"
                 android:layout_weight="1"
-                android:onClick="setDate"
-                android:background="#c43838" />
+                android:background="@color/timedate"
+                android:onClick="onClick"
+                android:text="SET DATE"
+                android:textSize="15dp" />
 
 
             <Button
                 android:id="@+id/btn_time"
-                android:text="SET TIME"
-                android:textSize="15dp"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="25dp"
                 android:layout_weight="1"
-                android:onClick="setTime"
-                android:background="#c43838" />
+                android:background="@color/timedate"
+                android:onClick="onClick"
+                android:text="SET TIME"
+                android:textSize="15dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/in_date"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+
+            <EditText
+                android:id="@+id/in_time"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
 
         </LinearLayout>
 
@@ -85,8 +107,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:background="@color/timedate"
             android:text="SUBMIT"
-            android:background="#c43838"
             android:textColor="@color/white" />
 
 

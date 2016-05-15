@@ -16,5 +16,6 @@
     <color name="background">#26ae90</color>
     <color name="black">#000000</color>
     <color name="hint">#4b4949</color>
-    <color name="timedate">#433e3e</color>>
+    <color name="checklist">#4b4949</color>
+    <color name="timedate">#433e3e</color>
 </resources>

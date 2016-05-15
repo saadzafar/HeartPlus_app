@@ -9,7 +9,7 @@
     <string name="btn_link_to_login">Already registred! Login Me.</string>
     <string name="welcome">Welcome</string>
     <string name="btn_logout">LOGOUT</string>
-    <string name="name">Fullname</string>
+    <string name="name">Drug Name</string>
 
 
 
@@ -23,7 +23,6 @@
     <string name="title">Title</string>
     <string name="info">Info</string>
     <string name="confirm">Save</string>
-    <string name="str_btn_cancel">Cancel</string>
     <string name="edit_reminder">Edit Appointment</string>
     <string name="date">Appointment Date</string>
     <string name="time">Appointment Time</string>
@@ -72,6 +71,16 @@
     <!-- Notification Bar -->
 
 
+    <string name="Monday">Mo</string>
+    <string name="Tuesday">Tu</string>
+    <string name="Wednesday">We</string>
+    <string name="Thursday">Th</string>
+    <string name="Friday">Fr</string>
+    <string name="Saturday">Sa</string>
+    <string name="Sunday">Su</string>
+
+    <string name="str_btn_cancel">Cancel</string>
+
     <!-- Preferences -->
     <string name="pref_default_key">task_default_category</string>
     <string name="pref_default_title">Task Title Default</string>
@@ -89,17 +98,9 @@
     <string name="pref_time_from_now_summary">Sets the default time for a reminder.</string>
     <string name="pref_time_from_now_title">Default Reminder Time</string>
 
-    <string name="Monday">Mo</string>
-    <string name="Tuesday">Tu</string>
-    <string name="Wednesday">We</string>
-    <string name="Thursday">Th</string>
-    <string name="Friday">Fr</string>
-    <string name="Saturday">Sa</string>
-    <string name="Sunday">Su</string>
-
     <string name="title_activity_alert">Alert Activity Screen</string>
     <string name="title_activity_add">Add Alarm!</string>
     <string name="action_edit">edit</string>
-    <string name="action_History">History</string>
+
 
 </resources>

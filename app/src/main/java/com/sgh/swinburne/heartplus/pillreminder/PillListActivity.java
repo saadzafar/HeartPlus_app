@@ -2,24 +2,9 @@ package com.sgh.swinburne.heartplus.pillreminder;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-
-import com.sgh.swinburne.heartplus.MainActivity;
-import com.sgh.swinburne.heartplus.pillreminder.Alarm;
-import com.sgh.swinburne.heartplus.pillreminder.Pill;
-
-
-import com.sgh.swinburne.heartplus.pillreminder.adapter.ExpandableListAdapter;
-
-import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-
 import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.ExpandableListView.OnChildClickListener;
@@ -27,7 +12,15 @@ import android.widget.ExpandableListView.OnGroupCollapseListener;
 import android.widget.ExpandableListView.OnGroupExpandListener;
 import android.widget.Toast;
 
+import com.sgh.swinburne.heartplus.MainActivity;
 import com.sgh.swinburne.heartplus.R;
+import com.sgh.swinburne.heartplus.pillreminder.adapter.ExpandableListAdapter;
+
+import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
 
 
 /**
@@ -100,6 +93,8 @@ public class PillListActivity extends Activity {
                 startActivity(intent);
                 finish();
                 return false;
+
+
             }
         });
     }
@@ -108,6 +103,7 @@ public class PillListActivity extends Activity {
     /** Inflate the menu; this adds items to the action bar if it is present */
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
+
         return true;
     }
 
@@ -125,11 +121,6 @@ public class PillListActivity extends Activity {
             sendAdd();
             return true;
         }
-
-       /* if (id == R.id.action_History) {
-            sendHistory();
-            return true;
-        }*/
 
         return super.onOptionsItemSelected(item);
     }
@@ -185,11 +176,6 @@ public class PillListActivity extends Activity {
         finish();
     }
 
-    /*public void sendHistory() {
-        Intent intent = new Intent(this, HistoryFragment.class);
-        startActivity(intent);
-        finish();
-    }*/
 
     @Override
     public void onBackPressed() {

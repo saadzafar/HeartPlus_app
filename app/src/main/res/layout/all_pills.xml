@@ -2,35 +2,34 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical"
-    android:background="@color/background">
+    android:background="@color/background"
+    android:orientation="vertical">
 
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:padding="15dip"
         android:text="Pill List"
-        android:typeface="monospace"
         android:textColor="#fcfbfb"
-        android:gravity="center"
-        android:textSize="25dip"/>
+        android:textSize="25dip"
+        android:typeface="monospace" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:gravity="center"
-        android:orientation="vertical"
-        android:id="@+id/linearLayout">
+        android:orientation="vertical">
         <!-- Main ListView
              Always give id value as list(@android:id/list)
         -->
         <ListView
             android:id="@android:id/list"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:clickable="false" />
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 
