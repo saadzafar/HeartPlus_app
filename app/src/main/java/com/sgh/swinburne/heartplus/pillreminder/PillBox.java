@@ -23,7 +23,7 @@ public class PillBox {
     }
 
     public void setTempIds(List<Long> tempIds) {
-        this.tempIds = tempIds;
+        PillBox.tempIds = tempIds;
     }
 
     public String getTempName() {
@@ -31,7 +31,7 @@ public class PillBox {
     }
 
     public void setTempName(String tempName) {
-        this.tempName = tempName;
+        PillBox.tempName = tempName;
     }
 
     public String getTempDose() {
@@ -39,7 +39,7 @@ public class PillBox {
     }
 
     public void setTempDose(String tempDose) {
-        this.tempDose = tempDose;
+        PillBox.tempDose = tempDose;
     }
 
     public String getTempInstruction() {
@@ -47,7 +47,7 @@ public class PillBox {
     }
 
     public void setTempInstruction(String tempInstruction) {
-        this.tempInstruction = tempInstruction;
+        PillBox.tempInstruction = tempInstruction;
     }
 
     public List<Pill> getPills(Context c) {
