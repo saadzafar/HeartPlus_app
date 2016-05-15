@@ -38,7 +38,7 @@ public class FeedbackActivity extends Activity {
     private static String url_create_feedback = "http://188.166.237.51/android_login_api/create_feedback.php";
     private static final String TAG_SUCCESS = "success";
 
-    
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
