@@ -43,18 +43,16 @@
             android:id="@+id/inputGlucose"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:hint="Your Glucose Value"
-            android:inputType="number"
+            android:text="Your Glucose Value"
             android:layout_margin="5dp"
             android:layout_marginBottom="15dp"
             android:singleLine="true"
-            android:textColor="@color/hint"
-            android:textColorHint="@color/hint" />
+            android:textColor="#4b4949" />
 
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Remarks"
+            android:text="Meal (before or after)"
             android:paddingLeft="10dip"
             android:paddingRight="10dip"
             android:paddingTop="10dip"
@@ -68,9 +66,8 @@
             android:layout_margin="5dip"
             android:layout_marginBottom="15dip"
             android:singleLine="true"
-            android:hint="Any Remarks? e.g taken before dinner"
-            android:textColor="@color/hint"
-            android:textColorHint="@color/hint" />
+            android:text="Any Meals?"
+            android:textColor="#4b4949" />
 
         <LinearLayout
             android:layout_height="wrap_content"
@@ -79,7 +76,7 @@
             android:layout_width="fill_parent">
 
             <Button
-                android:id="@+id/btn_date"
+                android:id="@+id/btn_time"
                 android:text="SET DATE"
                 android:textSize="15dp"
                 android:layout_width="fill_parent"
@@ -87,11 +84,11 @@
                 android:layout_marginTop="25dp"
                 android:layout_marginRight="10dp"
                 android:layout_weight="1"
-                android:onClick="onClick"
-                android:background="@color/timedate" />
+                android:onClick="setDate"
+                android:background="#c43838" />
 
             <Button
-                android:id="@+id/btn_time"
+                android:id="@+id/btn_date"
                 android:text="SET TIME"
                 android:textSize="15dp"
                 android:layout_width="fill_parent"
@@ -99,27 +96,8 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="25dp"
                 android:layout_weight="1"
-                android:onClick="onClick"
-                android:background="@color/timedate" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_width="fill_parent">
-
-            <EditText
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/in_date"
-            android:layout_weight="1" />
-
-            <EditText
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/in_time"
-                android:layout_weight="1" />
+                android:onClick="setTime"
+                android:background="#c43838" />
 
         </LinearLayout>
 
@@ -129,9 +107,8 @@
             android:id="@+id/btnCreateGlucose"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:text="SUBMIT"
-            android:background="@color/timedate"
+            android:background="#c43838"
             android:typeface="monospace" />
 
 

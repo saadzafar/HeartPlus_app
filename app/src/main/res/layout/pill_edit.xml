@@ -8,19 +8,19 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_margin="20dp">
+        android:layout_height="fill_parent">
 
         <TextView
             android:layout_height="wrap_content"
-            android:text="Drug Name"
+            android:text="@string/name"
             android:layout_width="140dp"
+            android:textStyle="bold"
             android:paddingLeft="10dip"
             android:paddingRight="10dip"
             android:paddingTop="10dip"
             android:layout_gravity="left"
-            android:textSize="20dp"
-            android:textColor="@color/white"/>
+            android:textSize="14dip"
+            android:textColor="#000"/>
 
         <EditText android:id="@+id/name"
             android:layout_width="fill_parent"
@@ -28,21 +28,22 @@
             android:layout_margin="5dip"
             android:layout_marginBottom="15dip"
             android:singleLine="true"
-            android:hint="The Drug Name"
-            android:textSize="17dp"
-            android:textColorHint="@color/hint"
+            android:hint="Drug Name"
+            android:textSize="12dip"
+            android:textColor="@color/hint"
             />
 
         <TextView
             android:layout_height="wrap_content"
-            android:text="Dose"
+            android:text="@string/dose"
             android:layout_width="140dp"
+            android:textStyle="bold"
             android:paddingLeft="10dip"
             android:paddingRight="10dip"
             android:paddingTop="10dip"
             android:layout_gravity="left"
-            android:textSize="20dp"
-            android:textColor="@color/white"/>
+            android:textSize="14dip"
+            android:textColor="#000"/>
 
         <EditText android:id="@+id/dose"
             android:layout_width="fill_parent"
@@ -50,20 +51,21 @@
             android:layout_margin="5dip"
             android:layout_marginBottom="15dip"
             android:singleLine="true"
-            android:hint="Current Dosage e.g 2mg"
-            android:textSize="17dp"
-            android:textColorHint="@color/hint"/>
+            android:hint="Current Dosage"
+            android:textSize="12dip"
+            android:textColor="@color/hint"/>
 
         <TextView
             android:layout_height="wrap_content"
             android:text="@string/instructions"
             android:layout_width="140dp"
+            android:textStyle="bold"
             android:paddingLeft="10dip"
             android:paddingRight="10dip"
             android:paddingTop="10dip"
             android:layout_gravity="left"
-            android:textSize="20dp"
-            android:textColor="@color/white"/>
+            android:textSize="14dip"
+            android:textColor="#000"/>
 
         <EditText android:id="@+id/instructions"
             android:layout_width="fill_parent"
@@ -71,50 +73,154 @@
             android:layout_margin="5dip"
             android:layout_marginBottom="15dip"
             android:hint="Any Instructions?"
-            android:textSize="17dp"
-            android:textColorHint="@color/hint"
-            android:minLines="4"
+            android:textSize="12dip"
+            android:textColor="@color/hint"
+            android:minLines="5"
             android:scrollbars="vertical"
             android:gravity="top" />
 
         <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_width="fill_parent">
+            android:gravity="center"
+            android:orientation="horizontal" >
 
-            <Button
-                android:id="@+id/pill_date"
-                android:text="SET DATE"
-                android:textSize="15dp"
-                android:layout_width="fill_parent"
+            <TextView android:id="@+id/reminder_time"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:layout_marginRight="10dp"
-                android:layout_weight="1"
-                android:background="@color/timedate" />
-
-            <Button
-                android:id="@+id/pill_time"
-                android:text="SET TIME"
-                android:textSize="15dp"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="25dp"
-                android:layout_weight="1"
-                android:background="@color/timedate" />
+                android:layout_below="@+id/time_title"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:clickable="true"
+                android:layout_marginTop="8dp"/>
 
         </LinearLayout>
 
-        <Button android:id="@+id/confirm"
-            android:text="@string/confirm"
-            android:layout_width="fill_parent"
+        <CheckBox android:id="@+id/every_day"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_gravity="center_horizontal"
-            android:background="@color/timedate"
-            android:typeface="monospace"/>
+            android:text="Every day"
+            android:onClick="onCheckboxClicked"
+            android:layout_below="@+id/schedule"/>
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/checkbox_layout"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/every_day"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="8dp">
+
+            <com.sgh.swinburne.heartplus.pillreminder.CustomCheckBox
+                android:id="@+id/checkbox_sunday"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/Sunday"
+                android:button="@null"
+                android:onClick="onCheckboxClicked"
+                android:padding="1dp"
+                android:gravity="center"/>
+
+            <com.sgh.swinburne.heartplus.pillreminder.CustomCheckBox
+                android:id="@+id/checkbox_monday"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/Monday"
+                android:button="@null"
+                android:onClick="onCheckboxClicked"
+                android:padding="1dp"
+                android:gravity="center"/>
+
+            <com.sgh.swinburne.heartplus.pillreminder.CustomCheckBox
+                android:id="@+id/checkbox_tuesday"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/Tuesday"
+                android:button="@null"
+                android:onClick="onCheckboxClicked"
+                android:padding="1dp"
+                android:gravity="center"/>
+
+            <com.sgh.swinburne.heartplus.pillreminder.CustomCheckBox
+                android:id="@+id/checkbox_wednesday"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/Wednesday"
+                android:button="@null"
+                android:onClick="onCheckboxClicked"
+                android:padding="1dp"
+                android:gravity="center"/>
+
+            <com.sgh.swinburne.heartplus.pillreminder.CustomCheckBox
+                android:id="@+id/checkbox_thursday"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/Thursday"
+                android:button="@null"
+                android:onClick="onCheckboxClicked"
+                android:padding="1dp"
+                android:gravity="center"/>
+
+            <com.sgh.swinburne.heartplus.pillreminder.CustomCheckBox
+                android:id="@+id/checkbox_friday"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/Friday"
+                android:button="@null"
+                android:onClick="onCheckboxClicked"
+                android:padding="1dp"
+                android:gravity="center"/>
+
+            <com.sgh.swinburne.heartplus.pillreminder.CustomCheckBox
+                android:id="@+id/checkbox_saturday"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/Saturday"
+                android:button="@null"
+                android:onClick="onCheckboxClicked"
+                android:padding="1dp"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <Button android:id="@+id/btn_set_alarm"
+                android:text="@string/confirm"
+                android:layout_height="40dp"
+                android:layout_width="100dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginRight="23dp"
+                android:layout_marginLeft="23dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="10dp"/>
+
+            <Button
+                android:id="@+id/btn_cancel_alarm"
+                android:text="@string/str_btn_cancel"
+                android:layout_height="40dp"
+                android:layout_width="100dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginRight="23dp"
+                android:layout_marginLeft="23dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="10dp"/>
+
+        </LinearLayout>
+
     </LinearLayout>
+
 </LinearLayout>

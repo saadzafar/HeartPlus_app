@@ -1,10 +1,16 @@
 package com.sgh.swinburne.heartplus.pillreminder;
 
+/**
+ * Created by faiza on 4/20/2016.
+ */
+import com.sgh.swinburne.heartplus.R;
+
+import com.sgh.swinburne.heartplus.pillreminder.Alarm;
+import com.sgh.swinburne.heartplus.pillreminder.Pill;
+import com.sgh.swinburne.heartplus.pillreminder.PillBox;
+
 import java.net.URISyntaxException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -16,8 +22,8 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,18 +37,9 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.sgh.swinburne.heartplus.MainActivity;
-import com.sgh.swinburne.heartplus.R;
 
-/**
- * Utilized the link below as a reference guide:
- * http://wptrafficanalyzer.in/blog/setting-up-alarm-using-alarmmanager-and-waking-up-screen-and-unlocking-keypad-on-alarm-goes-off-in-android/
- *
- * This activity handles the view and controller of the edit page, where the user can edit an alarm
- * It is very similar to the add activity, but it uses tempIds and tempNames in the PillBox model
- * to indicate which alarms we need to edit or delete
- */
-public class PillEditActivity extends Activity {
 
+public class AddActivity extends Activity {
     private AlarmManager alarmManager;
     private PendingIntent operation;
     private boolean dayOfWeekList[] = new boolean[7];
@@ -50,10 +47,6 @@ public class PillEditActivity extends Activity {
     int hour, minute;
     TextView timeLabel;
     PillBox pillBox = new PillBox();
-    List<Long> tempIds = pillBox.getTempIds();
-    String tempPill_name;
-    String tempDose;
-   String tempInstruction;
 
     // Time picker dialog that pops up when the user presses the time string
     // This method specifies the hour and minute of the time picker before the user
@@ -70,89 +63,30 @@ public class PillEditActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.pill_edit);
-
+        setContentView(R.layout.pill_add);
 
         // Set up the time string on the page
         timeLabel=(TextView)findViewById(R.id.reminder_time);
         Typeface lightFont = Typeface.createFromAsset(this.getAssets(), "fonts/Roboto-Light.ttf");
         timeLabel.setTypeface(lightFont);
 
-        // Set up the time string on the page
-        // Uses the tempIds in the pill box to get the time string
-        try {
-            Alarm firstAlarm = pillBox.getAlarmById(getApplicationContext(), tempIds.get(0));
-            hour = firstAlarm.getHour();
-            minute = firstAlarm.getMinute();
-            timeLabel.setText(setTime(hour, minute));
-            pillBox.setTempName(firstAlarm.getPillName()) ;
-            pillBox.setTempDose(firstAlarm.getdose());
-            pillBox.setTempInstruction(firstAlarm.getinstruction());
+        // Get the time right now and set it to be the time string
+        Calendar rightNow = Calendar.getInstance();
+        hour = rightNow.get(Calendar.HOUR_OF_DAY);
+        minute = rightNow.get(Calendar.MINUTE);
+        timeLabel.setText(setTime(hour, minute));
 
-            timeLabel.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-                    new TimePickerDialog(PillEditActivity.this,
-                            t,
-                            hour,
-                            minute,
-                            false).show();
-                }
-            });
-            timeLabel.setText(setTime(hour, minute));
-
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        }
-
-        EditText editText = (EditText) findViewById(R.id.name);
-        EditText editText1 = (EditText) findViewById(R.id.dose);
-        EditText editText2 = (EditText) findViewById(R.id.instructions);
-
-        tempPill_name = pillBox.getTempName();
-        editText.setText(tempPill_name);
-
-        tempDose = pillBox.getTempDose();
-        editText1.setText(tempDose);
-
-        tempInstruction = pillBox.getTempInstruction();
-        editText2.setText(tempInstruction);
-
-        for(Long id: tempIds){
-            try{
-                int day = pillBox.getDayOfWeek(getApplicationContext(), id);
-                CheckBox checkBoxMon = (CheckBox) findViewById(R.id.checkbox_monday);
-                CheckBox checkBoxTues = (CheckBox) findViewById(R.id.checkbox_tuesday);
-                CheckBox checkBoxWed = (CheckBox) findViewById(R.id.checkbox_wednesday);
-                CheckBox checkBoxThur = (CheckBox) findViewById(R.id.checkbox_thursday);
-                CheckBox checkBoxFri = (CheckBox) findViewById(R.id.checkbox_friday);
-                CheckBox checkBoxSat = (CheckBox) findViewById(R.id.checkbox_saturday);
-                CheckBox checkBoxSun = (CheckBox) findViewById(R.id.checkbox_sunday);
-                if(day == 2) {
-                    checkBoxMon.setChecked(true);
-                    dayOfWeekList[1] = true;
-                } else if(day == 3) {
-                    checkBoxTues.setChecked(true);
-                    dayOfWeekList[2] = true;
-                } else if(day == 4) {
-                    checkBoxWed.setChecked(true);
-                    dayOfWeekList[3] = true;
-                } else if(day == 5) {
-                    checkBoxThur.setChecked(true);
-                    dayOfWeekList[4] = true;
-                } else if(day == 6) {
-                    checkBoxFri.setChecked(true);
-                    dayOfWeekList[5] = true;
-                } else if(day == 7) {
-                    checkBoxSat.setChecked(true);
-                    dayOfWeekList[6] = true;
-                } else if(day == 1) {
-                    checkBoxSun.setChecked(true);
-                    dayOfWeekList[0] = true;
-                }
-            } catch (URISyntaxException e) {
-                e.printStackTrace();
+        timeLabel.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                new TimePickerDialog(AddActivity.this,
+                        //R.style.Theme_AppCompat_Dialog,
+                        t,
+                        hour,
+                        minute,
+                        false).show();
             }
-        }
+        });
+        timeLabel.setText(setTime(hour, minute));
 
         OnClickListener setClickListener = new OnClickListener() {
 
@@ -161,6 +95,7 @@ public class PillEditActivity extends Activity {
                 int checkBoxCounter = 0;
 
                 EditText editText = (EditText) findViewById(R.id.name);
+                /*Add dose*/
                 String pill_name = editText.getText().toString();
 
                 EditText editText1 = (EditText) findViewById(R.id.dose);
@@ -169,13 +104,12 @@ public class PillEditActivity extends Activity {
                 EditText editText2 = (EditText) findViewById(R.id.instructions);
                 String instruction_name = editText2.getText().toString();
                 /** Updating model */
+
+                /** Updating model */
                 Alarm alarm = new Alarm();
-
-
 
                 /** If Pill does not already exist */
                 if (!pillBox.pillExist(getApplicationContext(), pill_name)) {
-
                     Pill pill = new Pill();
                     pill.setPillName(pill_name);
                     pill.setDose(dose_name);
@@ -215,7 +149,7 @@ public class PillEditActivity extends Activity {
                 }
 
                 for(int i=0; i<7; i++) {
-                    if (dayOfWeekList[i] && pill_name.length() != 0 && dose_name.length()!= 0 && instruction_name.length() != 0) {
+                    if (dayOfWeekList[i] && pill_name.length() != 0 && dose_name.length() != 0 && instruction_name.length() != 0) {
 
                         int dayOfWeek = i+1;
 
@@ -254,27 +188,9 @@ public class PillEditActivity extends Activity {
                     }
                 }
                 /** Input form is not completely filled out */
-                if(checkBoxCounter == 0 || pill_name.length() == 0 || dose_name.length() == 0 || instruction_name.length() == 0)
-                    Toast.makeText(getBaseContext(), "Please input a pill name or dose or instruction or check at least one day!", Toast.LENGTH_SHORT).show();
+                if(checkBoxCounter == 0 || pill_name.length() == 0 || dose_name.length() == 0 || instruction_name.length() ==0)
+                    Toast.makeText(getBaseContext(), "Please input a pill name or Doseage or instruction check at least one day!", Toast.LENGTH_SHORT).show();
                 else { // Input form is completely filled out
-                    for (long alarmID : tempIds) {
-                        pillBox.deleteAlarm(getApplicationContext(), alarmID);
-
-                        Intent intent = new Intent(getBaseContext(), AlertActivity.class);
-                        PendingIntent operation = PendingIntent.getActivity(getBaseContext(), (int) alarmID, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-                        AlarmManager alarmManager = (AlarmManager) getBaseContext().getSystemService(ALARM_SERVICE);
-                        alarmManager.cancel(operation);
-                    }
-
-                    // Delete the pill if there is no alarm for it
-                   try {
-                        List<Alarm> tempTracker = pillBox.getAlarmByPill(getBaseContext(), tempPill_name);
-                        if(tempTracker.size() == 0){
-                            pillBox.deletePill(getBaseContext(), tempPill_name);}
-                    } catch (URISyntaxException e) {
-                        e.printStackTrace();
-                    }
-
                     Toast.makeText(getBaseContext(), "Alarm for " + pill_name + " is set successfully", Toast.LENGTH_SHORT).show();
                     Intent returnHome = new Intent(getBaseContext(), PillListActivity.class);
                     startActivity(returnHome);
@@ -302,7 +218,7 @@ public class PillEditActivity extends Activity {
     @Override
     /** Inflate the menu; this adds items to the action bar if it is present */
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_edit, menu);
+        getMenuInflater().inflate(R.menu.menu_add, menu);
         return true;
     }
 
@@ -334,7 +250,7 @@ public class PillEditActivity extends Activity {
                 break;
             case R.id.every_day:
                 LinearLayout ll = (LinearLayout) findViewById(R.id.checkbox_layout);
-                for (int i=0; i < ll.getChildCount(); i++) {
+                for (int i = 0; i < ll.getChildCount(); i++) {
                     View v = ll.getChildAt(i);
                     ((CheckBox) v).setChecked(checked);
                     onCheckboxClicked(v);
@@ -351,34 +267,11 @@ public class PillEditActivity extends Activity {
      */
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-
-        if (id == R.id.action_delete) {
-            for (long alarmID : tempIds) {
-                pillBox.deleteAlarm(getApplicationContext(), alarmID);
-
-                Intent intent = new Intent(getBaseContext(), AlertActivity.class);
-                PendingIntent operation = PendingIntent.getActivity(getBaseContext(), (int) alarmID, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-                AlarmManager alarmManager = (AlarmManager) getBaseContext().getSystemService(ALARM_SERVICE);
-                alarmManager.cancel(operation);
-            }
-
-            // Delete the pill if there is no alarm for it
-            try {
-                List<Alarm> tempTracker = pillBox.getAlarmByPill(getBaseContext(), tempPill_name);
-                if(tempTracker.size() == 0)
-                    pillBox.deletePill(getBaseContext(), tempPill_name);
-            } catch (URISyntaxException e) {
-                e.printStackTrace();
-            }
-
-            Intent returnPillBox = new Intent(getBaseContext(), PillListActivity.class);
-            startActivity(returnPillBox);
-            finish();
-
-            Toast.makeText(getBaseContext(), "Alarm for " + tempPill_name + " is deleted successfully", Toast.LENGTH_SHORT).show();
+        if (id == R.id.home) {
+            NavUtils.navigateUpFromSameTask(this);
             return true;
         }
-        Intent returnHome = new Intent(getBaseContext(), PillListActivity.class);
+        Intent returnHome = new Intent(getBaseContext(), MainActivity.class);
         startActivity(returnHome);
         finish();
         return super.onOptionsItemSelected(item);
@@ -401,12 +294,10 @@ public class PillEditActivity extends Activity {
         return nonMilitaryHour + ":" + minuteWithZero + am_pm;
     }
 
-
     @Override
     public void onBackPressed() {
-        Intent returnPillBoxActivity = new Intent(getBaseContext(), PillListActivity.class);
-        startActivity(returnPillBoxActivity);
+        Intent returnHome = new Intent(getBaseContext(), PillListActivity.class);
+        startActivity(returnHome);
         finish();
     }
-
 }

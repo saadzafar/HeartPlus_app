@@ -30,7 +30,7 @@
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Heart Rate (BPM)"
+            android:text="Heart Rate"
             android:textStyle="bold"
             android:paddingLeft="10dip"
             android:paddingRight="10dip"
@@ -41,13 +41,11 @@
             android:id="@+id/inputHR"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:hint="Your Heart Rate e.g. 80"
-            android:inputType="number"
+            android:text="Your Heart Rate"
             android:layout_margin="5dip"
             android:layout_marginBottom="15dip"
             android:singleLine="true"
-            android:textColor="@color/hint"
-            android:textColorHint="@color/hint" />
+            android:textColor="@color/hint" />
 
         <LinearLayout
             android:layout_height="wrap_content"
@@ -64,8 +62,8 @@
                 android:layout_marginTop="25dp"
                 android:layout_marginRight="10dp"
                 android:layout_weight="1"
-                android:onClick="onClick"
-                android:background="@color/timedate" />
+                android:onClick="setDate"
+                android:background="#c43838" />
 
 
             <Button
@@ -77,28 +75,8 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="25dp"
                 android:layout_weight="1"
-                android:onClick="onClick"
-                android:background="@color/timedate" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_width="fill_parent">
-
-            <EditText
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/in_date"
-                android:layout_weight="1" />
-
-
-            <EditText
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/in_time"
-                android:layout_weight="1" />
+                android:onClick="setTime"
+                android:background="#c43838" />
 
         </LinearLayout>
 
@@ -108,7 +86,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="SUBMIT"
-            android:background="@color/timedate"
+            android:background="#c43838"
             android:textColor="@color/white" />
 
 

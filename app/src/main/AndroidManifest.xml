@@ -7,7 +7,7 @@
 
     <uses-sdk
         android:minSdkVersion="9"
-        android:targetSdkVersion="19" />
+        android:targetSdkVersion="23" />
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
@@ -69,9 +69,6 @@
         <!-- Heart Rate Activity -->
         <activity android:name="com.sgh.swinburne.heartplus.HeartRateActivity"></activity>
 
-        <!-- Graph Activity -->
-        <activity android:name="com.sgh.swinburne.heartplus.Graph_View"></activity>
-
         <!-- Edit Pill Activity -->
         <activity android:name="com.sgh.swinburne.heartplus.EditPill"></activity>
 
@@ -123,17 +120,29 @@
 
 
 
-        <activity android:name=".pillreminder.PillListActivity"/>
-        <activity android:name=".pillreminder.ConfirmActivity"/>
-        <activity android:name=".pillreminder.PillEditActivity"/>
-        <activity android:name=".pillreminder.TaskPreferences"/>
-        <receiver android:name=".pillreminder.OnBootReceiver">
+        <activity android:name=".pillreminder.PillListActivity" />
+        <activity android:name=".pillreminder.PillEditActivity" android:label="@string/edit_pill_title"></activity>
+        <activity
+            android:name="com.sgh.swinburne.heartplus.pillreminder.AlertActivity"
+            android:label="@string/title_activity_alert"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" >
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="teamqitalach.pillapp.alertactivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-        </receiver>
-        <receiver android:name=".pillreminder.OnAlarmReceiver" />
-        <service android:name=".pillreminder.PillService" />
+        </activity>
+
+        <activity
+            android:name="com.sgh.swinburne.heartplus.pillreminder.AddActivity"
+            android:label="@string/title_activity_add"
+            android:parentActivityName="com.sgh.swinburne.heartplus.MainActivity" >
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sgh.swinburne.heartplus.MainActivity" />
+        </activity>
 
 
 

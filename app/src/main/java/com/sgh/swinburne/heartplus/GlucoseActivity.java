@@ -68,8 +68,8 @@ public class GlucoseActivity extends Activity implements View.OnClickListener {
 
         btnDatePicker=(Button)findViewById(R.id.btn_date);
         btnTimePicker=(Button)findViewById(R.id.btn_time);
-        txtDate=(EditText)findViewById(R.id.in_date);
-        txtTime=(EditText)findViewById(R.id.in_time);
+        // txtDate=(EditText)findViewById(R.id.in_date);
+        // txtTime=(EditText)findViewById(R.id.in_time);
         btnDatePicker.setOnClickListener(this);
         btnTimePicker.setOnClickListener(this);
 
@@ -95,26 +95,25 @@ public class GlucoseActivity extends Activity implements View.OnClickListener {
 
         if (v == btnDatePicker) {
 
-            if (year == 0 || month == 0 || day == 0) {
-                Calendar c=Calendar.getInstance();
-                year=c.get(Calendar.YEAR);
-                month=c.get(Calendar.MONTH);
-                day=c.get(Calendar.DAY_OF_MONTH);
-            }
+            // Get Current Date
+            final Calendar c = Calendar.getInstance();
+            year = c.get(Calendar.YEAR);
+            month = c.get(Calendar.MONTH);
+            day = c.get(Calendar.DAY_OF_MONTH);
 
-            DatePickerDialog mDatePicker=new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-                @Override
-                public void onDateSet(DatePicker datepicker, int selectedyear, int selectedmonth, int selectedday)
-                {
-                    year = selectedyear;
-                    month = selectedmonth;
-                    day = selectedday;
-                    txtDate.setText(new StringBuilder().append(year).append("-").append(month+1).append("-").append(day));
-                }
-            },year, month, day);
-            mDatePicker.setTitle("Please select date");
-            mDatePicker.getDatePicker().setMaxDate(System.currentTimeMillis());
-            mDatePicker.show();
+
+            DatePickerDialog datePickerDialog = new DatePickerDialog(this,
+                    new DatePickerDialog.OnDateSetListener() {
+
+                        @Override
+                        public void onDateSet(DatePicker view, int year,
+                                              int monthOfYear, int dayOfMonth) {
+
+                            txtDate.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+
+                        }
+                    }, year, month, day);
+            datePickerDialog.show();
         }
         if (v == btnTimePicker) {
 
@@ -135,18 +134,6 @@ public class GlucoseActivity extends Activity implements View.OnClickListener {
                         }
                     }, hour, minute, false);
             timePickerDialog.show();
-        }
-
-        if(inputGlucose.getText().toString().length()==0)
-        {
-            // Toast.makeText(getApplicationContext(), "Invalid Systolic Value", Toast.LENGTH_LONG).show();
-            inputGlucose.setError("Invalid Glucose Value");
-            return;
-        }
-
-        else
-        {
-            Toast.makeText(getApplicationContext(), "Validated Succesfully", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -191,7 +178,7 @@ public class GlucoseActivity extends Activity implements View.OnClickListener {
             pDialog.setMessage("Posting Glucose...");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
-            pDialog.show();
+            //pDialog.show();
 
         }
 
@@ -202,16 +189,13 @@ public class GlucoseActivity extends Activity implements View.OnClickListener {
             String email = user.get("email");
             Log.d("email ", email);
             String value = inputGlucose.getText().toString();
-            String date = txtDate.getText().toString();
-            String time = txtTime.getText().toString();
+           // String date = dateView.getText().toString();
             String meal = inputMeal.getText().toString();
             Log.d("value ", value);
-            Log.d("date ", date);
-            Log.d("time ", time);
+           // Log.d("date ", date);
             List<NameValuePair> params = new ArrayList<NameValuePair>();
             params.add(new BasicNameValuePair("value", value));
-            params.add(new BasicNameValuePair("date", date));
-            params.add(new BasicNameValuePair("time", time));
+          //  params.add(new BasicNameValuePair("date", date));
             params.add(new BasicNameValuePair("email", email));
             params.add(new BasicNameValuePair("meal", meal));
             JSONObject json = jsonParser.makeHttpRequest(url_create_inr, "POST", params);
