@@ -50,11 +50,8 @@ public class GlucoseActivity extends Activity implements View.OnClickListener {
     Button btnDatePicker, btnTimePicker;
     EditText txtDate, txtTime;
 
-
-
     private static String url_create_inr = "http://188.166.237.51/android_login_api/create_glucose.php";
     private static final String TAG_SUCCESS = "success";
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -63,23 +60,12 @@ public class GlucoseActivity extends Activity implements View.OnClickListener {
 
 
         inputGlucose = (EditText) findViewById(R.id.inputGlucose);
-       // dateView = (TextView) findViewById(R.id.inputDate);
         inputMeal = (EditText) findViewById(R.id.inputMeal);
 
         btnDatePicker=(Button)findViewById(R.id.btn_date);
         btnTimePicker=(Button)findViewById(R.id.btn_time);
-        // txtDate=(EditText)findViewById(R.id.in_date);
-        // txtTime=(EditText)findViewById(R.id.in_time);
         btnDatePicker.setOnClickListener(this);
         btnTimePicker.setOnClickListener(this);
-
-      /*  calendar = Calendar.getInstance();
-        year = calendar.get(Calendar.YEAR);
-
-        month = calendar.get(Calendar.MONTH);
-        day = calendar.get(Calendar.DAY_OF_MONTH);
-        showDate(year, month + 1, day); */
-
 
         Button btnCreateGlucose = (Button) findViewById(R.id.btnCreateGlucose);
         btnCreateGlucose.setOnClickListener(new View.OnClickListener() {
@@ -136,39 +122,6 @@ public class GlucoseActivity extends Activity implements View.OnClickListener {
             timePickerDialog.show();
         }
     }
-
-  /*  @SuppressWarnings("deprecation")
-    public void setDate(View view) {
-        showDialog(999);
-        Toast.makeText(getApplicationContext(), "ca", Toast.LENGTH_SHORT)
-                .show();
-    }
-
-    @Override
-    protected Dialog onCreateDialog(int id) {
-        // TODO Auto-generated method stub
-        if (id == 999) {
-            return new DatePickerDialog(this, myDateListener, year, month, day);
-        }
-        return null;
-    }
-
-    private DatePickerDialog.OnDateSetListener myDateListener = new DatePickerDialog.OnDateSetListener() {
-        @Override
-        public void onDateSet(DatePicker arg0, int arg1, int arg2, int arg3) {
-            // TODO Auto-generated method stub
-            // arg1 = year
-            // arg2 = month
-            // arg3 = day
-            showDate(arg1, arg2 + 1, arg3);
-        }
-    };
-
-    private void showDate(int year, int month, int day) {
-        dateView.setText(new StringBuilder().append(year).append("-")
-                .append(month).append("-").append(day));
-        Log.d("date: ", dateView.toString());
-    } */
 
     class CreateNewGlucose extends AsyncTask<String, String, String> {
         @Override
