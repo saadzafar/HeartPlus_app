@@ -60,6 +60,7 @@ public class GlucoseActivity extends Activity implements View.OnClickListener {
 
 
         inputGlucose = (EditText) findViewById(R.id.inputGlucose);
+
         inputMeal = (EditText) findViewById(R.id.inputMeal);
 
         btnDatePicker=(Button)findViewById(R.id.btn_date);
@@ -120,6 +121,18 @@ public class GlucoseActivity extends Activity implements View.OnClickListener {
                         }
                     }, hour, minute, false);
             timePickerDialog.show();
+        }
+
+        if(inputGlucose.getText().toString().length()==0)
+        {
+            // Toast.makeText(getApplicationContext(), "Invalid Systolic Value", Toast.LENGTH_LONG).show();
+            inputGlucose.setError("Invalid INR Value");
+            return;
+        }
+
+        else
+        {
+            Toast.makeText(getApplicationContext(), "Validated Succesfully", Toast.LENGTH_LONG).show();
         }
     }
 
