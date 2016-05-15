@@ -78,6 +78,13 @@ public class GlucoseActivity extends Activity implements View.OnClickListener {
         btnCreateGlucose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (inputGlucose.getText().toString().length() == 0) {
+                    // Toast.makeText(getApplicationContext(), "Invalid Systolic Value", Toast.LENGTH_LONG).show();
+                    inputGlucose.setError("Invalid Glucose Value");
+                    return;
+                } else {
+                    Toast.makeText(getApplicationContext(), "Validated Succesfully", Toast.LENGTH_LONG).show();
+                }
                 new CreateNewGlucose().execute();
             }
         });
@@ -129,16 +136,7 @@ public class GlucoseActivity extends Activity implements View.OnClickListener {
                     }, hour, minute, false);
             timePickerDialog.show();
         }
-        if(inputGlucose.getText().toString().length()==0)
-        {
-            // Toast.makeText(getApplicationContext(), "Invalid Systolic Value", Toast.LENGTH_LONG).show();
-            inputGlucose.setError("Invalid Glucose Value");
-            return;
-        }
-        else
-        {
-            Toast.makeText(getApplicationContext(), "Validated Succesfully", Toast.LENGTH_LONG).show();
-        }
+
     }
 
   /*  @SuppressWarnings("deprecation")

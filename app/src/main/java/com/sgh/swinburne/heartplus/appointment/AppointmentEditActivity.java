@@ -28,19 +28,17 @@ import java.util.Date;
  */
 public class AppointmentEditActivity extends Activity {
 
+    public static final String DATE_TIME_FORMAT = "yyyy-MM-dd kk:mm:ss";
     //
     // Dialog Constants
     //
     private static final int DATE_PICKER_DIALOG = 0;
     private static final int TIME_PICKER_DIALOG = 1;
-
     //
     // Date Format
     //
     private static final String DATE_FORMAT = "yyyy-MM-dd";
     private static final String TIME_FORMAT = "kk:mm";
-    public static final String DATE_TIME_FORMAT = "yyyy-MM-dd kk:mm:ss";
-
     private EditText mTitleText;
     private EditText mBodyText;
     private Button mDateButton;
@@ -159,6 +157,18 @@ public class AppointmentEditActivity extends Activity {
         mConfirmButton.setOnClickListener(new View.OnClickListener()
         {
             public void onClick(View view) {
+                if (mTitleText.getText().toString().length() == 0) {
+                    // Toast.makeText(getApplicationContext(), "Invalid Systolic Value", Toast.LENGTH_LONG).show();
+                    mTitleText.setError("Please insert title");
+                    return;
+                }
+                if (mBodyText.getText().toString().length() == 0) {
+                    //Toast.makeText(getApplicationContext(), "Invalid Dystolic Value", Toast.LENGTH_LONG).show();
+                    mBodyText.setError("Please insert your info");
+                    return;
+                } else {
+                    Toast.makeText(getApplicationContext(), "Validated Succesfully", Toast.LENGTH_LONG).show();
+                }
                 saveState();
                 setResult(RESULT_OK);
                 Toast.makeText(AppointmentEditActivity.this, getString(R.string.task_saved_message), Toast.LENGTH_SHORT).show();

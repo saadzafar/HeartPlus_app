@@ -25,7 +25,7 @@ public class PillDbAdapter extends SQLiteOpenHelper {
     /**
      * Database version
      */
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 9;
     /**
      * Table names
      */

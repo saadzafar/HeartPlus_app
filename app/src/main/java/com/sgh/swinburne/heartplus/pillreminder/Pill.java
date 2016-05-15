@@ -17,6 +17,7 @@ public class Pill {
     private long pillId;
     private List<Alarm> alarms = new LinkedList<Alarm>();
 
+
     public String getPillName() {
         return pillName;
     }

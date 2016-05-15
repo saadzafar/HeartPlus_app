@@ -54,8 +54,6 @@ public class BPActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bp_layout);
         inputS = (EditText) findViewById(R.id.inputS);
-        if (inputS.getText().toString().length() == 0)
-            inputS.setError("First name is required!");
         inputD = (EditText) findViewById(R.id.inputD);
         remark = (EditText) findViewById(R.id.remark);
         btnDatePicker=(Button)findViewById(R.id.btn_date);
@@ -81,6 +79,18 @@ public class BPActivity extends Activity implements View.OnClickListener {
         btnCreateGlucose.setOnClickListener(new View.OnClickListener() {
                                                 @Override
                                                 public void onClick(View view) {
+                                                    if (inputS.getText().toString().length() == 0) {
+                                                        // Toast.makeText(getApplicationContext(), "Invalid Systolic Value", Toast.LENGTH_LONG).show();
+                                                        inputS.setError("Invalid Systolic Value");
+                                                        return;
+                                                    }
+                                                    if (inputD.getText().toString().length() == 0) {
+                                                        //Toast.makeText(getApplicationContext(), "Invalid Dystolic Value", Toast.LENGTH_LONG).show();
+                                                        inputD.setError("Invalid Dystolic Value");
+                                                        return;
+                                                    } else {
+                                                        Toast.makeText(getApplicationContext(), "Validated Succesfully", Toast.LENGTH_LONG).show();
+                                                    }
                                                     new CreateNewBP().execute();
                                                 }
                                             }
@@ -134,22 +144,7 @@ public class BPActivity extends Activity implements View.OnClickListener {
                     }, hour, minute, false);
             timePickerDialog.show();
         }
-        if(inputS.getText().toString().length()==0)
-        {
-            // Toast.makeText(getApplicationContext(), "Invalid Systolic Value", Toast.LENGTH_LONG).show();
-            inputS.setError("Invalid Systolic Value");
-            return;
-        }
-        if(inputD.getText().toString().length()==0)
-        {
-            //Toast.makeText(getApplicationContext(), "Invalid Dystolic Value", Toast.LENGTH_LONG).show();
-            inputD.setError("Invalid Dystolic Value");
-            return;
-        }
-        else
-        {
-            Toast.makeText(getApplicationContext(), "Validated Succesfully", Toast.LENGTH_LONG).show();
-        }
+
     }
 
   /*  @SuppressWarnings("deprecation")

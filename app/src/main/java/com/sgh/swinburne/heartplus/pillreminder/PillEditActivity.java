@@ -245,7 +245,7 @@ public class PillEditActivity extends Activity {
                     }
                 }
                 /** Input form is not completely filled out */
-                if(checkBoxCounter == 0 || pill_name.length() == 0 || dose_name.length() == 0 || instruction_name.length() == 0)
+                if (checkBoxCounter == 0 && pill_name.length() == 0 && dose_name.length() == 0 && instruction_name.length() == 0)
                     Toast.makeText(getBaseContext(), "Please input a pill name or dose or instruction or check at least one day!", Toast.LENGTH_SHORT).show();
                 else { // Input form is completely filled out
                     for (long alarmID : tempIds) {

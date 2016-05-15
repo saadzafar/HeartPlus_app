@@ -15,7 +15,6 @@ import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -36,6 +35,9 @@ import java.util.List;
 public class AddActivity extends Activity {
     int hour, minute;
     TextView timeLabel;
+    EditText editText;
+    EditText editText1;
+    EditText editText2;
     PillBox pillBox = new PillBox();
     // Time picker dialog that pops up when the user presses the time string
     // This method specifies the hour and minute of the time picker before the user
@@ -80,22 +82,48 @@ public class AddActivity extends Activity {
         });
         timeLabel.setText(setTime(hour, minute));
 
-        OnClickListener setClickListener = new OnClickListener() {
 
+        Button btnSetAlarm = (Button) findViewById(R.id.btn_set_alarm);
+        btnSetAlarm.setOnClickListener(new View.OnClickListener() {
             @Override
+
             public void onClick(View v) {
                 int checkBoxCounter = 0;
 
-                EditText editText = (EditText) findViewById(R.id.name);
+                editText = (EditText) findViewById(R.id.name);
                 /*Add dose*/
                 String pill_name = editText.getText().toString();
 
-                EditText editText1 = (EditText) findViewById(R.id.dose);
+                editText1 = (EditText) findViewById(R.id.dose);
                 String dose_name = editText1.getText().toString();
 
-                EditText editText2 = (EditText) findViewById(R.id.instructions);
+                editText2 = (EditText) findViewById(R.id.instructions);
                 String instruction_name = editText2.getText().toString();
                 /** Updating model */
+
+                if (editText.getText().toString().length() == 0) {
+                    // Toast.makeText(getApplicationContext(), "Invalid Systolic Value", Toast.LENGTH_LONG).show();
+                    editText.setError("Please insert Pill name");
+                    return;
+                }
+
+                if (editText1.getText().toString().length() == 0) {
+                    // Toast.makeText(getApplicationContext(), "Invalid Systolic Value", Toast.LENGTH_LONG).show();
+                    editText1.setError("Please insert dosage of medication");
+                    return;
+                }
+
+                if (editText2.getText().toString().length() == 0) {
+                    // Toast.makeText(getApplicationContext(), "Invalid Systolic Value", Toast.LENGTH_LONG).show();
+                    editText2.setError("Please insert how to take medication");
+                    return;
+                } else {
+                    Toast.makeText(getBaseContext(), "Alarm for " + pill_name + " is set successfully", Toast.LENGTH_LONG).show();
+                    Intent returnHome = new Intent(getBaseContext(), PillListActivity.class);
+                    startActivity(returnHome);
+                    finish();
+                }
+
 
                 /** Updating model */
                 Alarm alarm = new Alarm();
@@ -113,7 +141,7 @@ public class AddActivity extends Activity {
                     alarm.setinstruction(instruction_name);
                     alarm.setDayOfWeek(dayOfWeekList);
                     pill.addAlarm(alarm);
-                    long pillId = pillBox.addPill(getApplicationContext() ,pill);
+                    long pillId = pillBox.addPill(getApplicationContext(), pill);
                     pill.setPillId(pillId);
                     pillBox.addAlarm(getApplicationContext(), alarm, pill);
                 } else { // If Pill already exists
@@ -130,8 +158,8 @@ public class AddActivity extends Activity {
                 List<Long> ids = new LinkedList<Long>();
                 try {
                     List<Alarm> alarms = pillBox.getAlarmByPill(getApplicationContext(), pill_name);
-                    for(Alarm tempAlarm: alarms) {
-                        if(tempAlarm.getHour() == hour && tempAlarm.getMinute() == minute) {
+                    for (Alarm tempAlarm : alarms) {
+                        if (tempAlarm.getHour() == hour && tempAlarm.getMinute() == minute) {
                             ids = tempAlarm.getIds();
                             break;
                         }
@@ -140,10 +168,10 @@ public class AddActivity extends Activity {
                     e.printStackTrace();
                 }
 
-                for(int i=0; i<7; i++) {
+                for (int i = 0; i < 7; i++) {
                     if (dayOfWeekList[i] && pill_name.length() != 0) {
 
-                        int dayOfWeek = i+1;
+                        int dayOfWeek = i + 1;
 
                         long _id = ids.get(checkBoxCounter);
                         int id = (int) _id;
@@ -178,33 +206,23 @@ public class AddActivity extends Activity {
                         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, alarm_time,
                                 AlarmManager.INTERVAL_DAY * 7, operation);
                     }
-                }
-                /** Input form is not completely filled out */
-                if(checkBoxCounter == 0 || pill_name.length() == 0 || dose_name.length() == 0 || instruction_name.length() ==0)
-                    Toast.makeText(getBaseContext(), "Please input a pill name or Doseage or instruction check at least one day!", Toast.LENGTH_SHORT).show();
-                else { // Input form is completely filled out
-                    Toast.makeText(getBaseContext(), "Alarm for " + pill_name + " is set successfully", Toast.LENGTH_SHORT).show();
-                    Intent returnHome = new Intent(getBaseContext(), PillListActivity.class);
-                    startActivity(returnHome);
-                    finish();
-                }
-            }
-        };
 
-        OnClickListener cancelClickListener = new OnClickListener() {
+                }
+
+            }
+
+
+        });
+
+        Button btnQuitAlarm = (Button) findViewById(R.id.btn_cancel_alarm);
+        btnQuitAlarm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent returnHome = new Intent(getBaseContext(), PillListActivity.class);
                 startActivity(returnHome);
                 finish();
             }
-        };
-
-        Button btnSetAlarm = (Button) findViewById(R.id.btn_set_alarm);
-        btnSetAlarm.setOnClickListener(setClickListener);
-
-        Button btnQuitAlarm = (Button) findViewById(R.id.btn_cancel_alarm);
-        btnQuitAlarm.setOnClickListener(cancelClickListener);
+        });
     }
 
     @Override
@@ -291,5 +309,6 @@ public class AddActivity extends Activity {
         Intent returnHome = new Intent(getBaseContext(), PillListActivity.class);
         startActivity(returnHome);
         finish();
+
     }
 }

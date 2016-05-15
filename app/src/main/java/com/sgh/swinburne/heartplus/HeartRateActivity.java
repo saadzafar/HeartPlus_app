@@ -73,6 +73,13 @@ public class HeartRateActivity extends Activity implements View.OnClickListener 
         btnCreateINR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (inputHR.getText().toString().length() == 0) {
+                    // Toast.makeText(getApplicationContext(), "Invalid Systolic Value", Toast.LENGTH_LONG).show();
+                    inputHR.setError("Invalid HeartRate Value");
+                    return;
+                } else {
+                    Toast.makeText(getApplicationContext(), "Validated Succesfully", Toast.LENGTH_LONG).show();
+                }
                 new CreateNewINR().execute();
             }
         });
@@ -124,16 +131,7 @@ public class HeartRateActivity extends Activity implements View.OnClickListener 
                     }, hour, minutes, false);
             timePickerDialog.show();
         }
-        if(inputHR.getText().toString().length()==0)
-        {
-            // Toast.makeText(getApplicationContext(), "Invalid Systolic Value", Toast.LENGTH_LONG).show();
-            inputHR.setError("Invalid HeartRate Value");
-            return;
-        }
-        else
-        {
-            Toast.makeText(getApplicationContext(), "Validated Succesfully", Toast.LENGTH_LONG).show();
-        }
+
     }
 
   /*  @SuppressWarnings("deprecation")
