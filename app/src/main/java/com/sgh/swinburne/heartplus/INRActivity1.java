@@ -70,6 +70,14 @@ public class INRActivity1 extends Activity implements View.OnClickListener {
         btnCreateINR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                if (inputINR.getText().toString().length() == 0) {
+                    // Toast.makeText(getApplicationContext(), "Invalid Systolic Value", Toast.LENGTH_LONG).show();
+                    inputINR.setError("Invalid INR Value");
+                    return;
+                } else {
+                    Toast.makeText(getApplicationContext(), "Validated Succesfully", Toast.LENGTH_LONG).show();
+                }
                 new CreateNewINR().execute();
                 inr = inputINR.getText().toString();
                // Intent myIntent = new Intent(view.getContext(), Graph_View.class);
@@ -105,16 +113,7 @@ public class INRActivity1 extends Activity implements View.OnClickListener {
             mDatePicker.getDatePicker().setMaxDate(System.currentTimeMillis());
             mDatePicker.show();
         }
-        if(inputINR.getText().toString().length()==0)
-        {
-            // Toast.makeText(getApplicationContext(), "Invalid Systolic Value", Toast.LENGTH_LONG).show();
-            inputINR.setError("Invalid INR Value");
-            return;
-        }
-        else
-        {
-            Toast.makeText(getApplicationContext(), "Validated Succesfully", Toast.LENGTH_LONG).show();
-        }
+
     }
 
   /*  @SuppressWarnings("deprecation")

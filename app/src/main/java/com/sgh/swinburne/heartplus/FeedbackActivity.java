@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
+import android.widget.Toast;
 
 import com.sgh.swinburne.heartplus.helper.SQLiteHandler;
 import com.sgh.swinburne.heartplus.helper.SessionManager;
@@ -60,6 +61,13 @@ public class FeedbackActivity extends Activity {
         btnCreateFeedback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (inputMessage.getText().toString().length() == 0) {
+
+                    inputMessage.setError("Please Put a message");
+                    return;
+                } else {
+                    Toast.makeText(getApplicationContext(), "Validated Succesfully", Toast.LENGTH_LONG).show();
+                }
                 new CreateNewFeedback().execute();
             }
         });

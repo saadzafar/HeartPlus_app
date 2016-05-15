@@ -159,6 +159,24 @@ public class PillEditActivity extends Activity {
 
                 EditText editText2 = (EditText) findViewById(R.id.instructions);
                 String instruction_name = editText2.getText().toString();
+
+                if (editText.getText().toString().length() == 0) {
+                    // Toast.makeText(getApplicationContext(), "Invalid Systolic Value", Toast.LENGTH_LONG).show();
+                    editText.setError("Please insert Pill name");
+                    return;
+                }
+
+                if (editText1.getText().toString().length() == 0) {
+                    // Toast.makeText(getApplicationContext(), "Invalid Systolic Value", Toast.LENGTH_LONG).show();
+                    editText1.setError("Please insert dosage of medication");
+                    return;
+                }
+
+                if (editText2.getText().toString().length() == 0) {
+                    // Toast.makeText(getApplicationContext(), "Invalid Systolic Value", Toast.LENGTH_LONG).show();
+                    editText2.setError("Please insert how to take medication");
+                    return;
+                }
                 /** Updating model */
                 Alarm alarm = new Alarm();
 
@@ -245,7 +263,7 @@ public class PillEditActivity extends Activity {
                     }
                 }
                 /** Input form is not completely filled out */
-                if(checkBoxCounter == 0 || pill_name.length() == 0 || dose_name.length() == 0 || instruction_name.length() == 0)
+                if (checkBoxCounter == 0 && pill_name.length() == 0 && dose_name.length() == 0 && instruction_name.length() == 0)
                     Toast.makeText(getBaseContext(), "Please input a pill name or dose or instruction or check at least one day!", Toast.LENGTH_SHORT).show();
                 else { // Input form is completely filled out
                     for (long alarmID : tempIds) {
