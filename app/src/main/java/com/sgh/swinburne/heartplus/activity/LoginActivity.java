@@ -13,20 +13,23 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import com.android.volley.Request.Method;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import org.json.JSONException;
-import org.json.JSONObject;
-import java.util.HashMap;
-import java.util.Map;
 import com.sgh.swinburne.heartplus.MainActivity;
 import com.sgh.swinburne.heartplus.R;
 import com.sgh.swinburne.heartplus.app.AppConfig;
 import com.sgh.swinburne.heartplus.app.AppController;
 import com.sgh.swinburne.heartplus.helper.SQLiteHandler;
 import com.sgh.swinburne.heartplus.helper.SessionManager;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class LoginActivity extends Activity
 {
@@ -43,7 +46,7 @@ public class LoginActivity extends Activity
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        new Disclaimer(this).show();
         inputEmail = (EditText) findViewById(R.id.email);
         inputPassword = (EditText) findViewById(R.id.password);
         btnLogin = (Button) findViewById(R.id.btnLogin);
@@ -98,8 +101,8 @@ public class LoginActivity extends Activity
                 finish();
             }
         });
-
     }
+
 
     /**
      * function to verify login details in mysql db

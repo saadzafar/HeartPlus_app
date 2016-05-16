@@ -2,7 +2,6 @@ package com.sgh.swinburne.heartplus;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
 import android.os.AsyncTask;
@@ -33,23 +32,20 @@ import java.util.List;
  * Created by Saad on 11/9/2015.
  */
 public class HeartRateActivity extends Activity implements View.OnClickListener {
-    private ProgressDialog pDialog;
-    private SQLiteHandler db;
-    private SessionManager session;
-
+    private static final String TAG_SUCCESS = "success";
+    private static String url_create_hr = "http://188.166.237.51/android_login_api/create_hr.php";
     JSONParser jsonParser = new JSONParser();
     EditText inputHR;
     EditText inputDate;
+    Button btnDatePicker, btnTimePicker;
+    EditText txtDate, txtTime;
+    private ProgressDialog pDialog;
+    private SQLiteHandler db;
+    private SessionManager session;
     private DatePicker datePicker;
     private Calendar calendar;
     private TextView dateView;
     private int year, month, day, hour, minutes, seconds;
-    Button btnDatePicker, btnTimePicker;
-    EditText txtDate, txtTime;
-
-    private static String url_create_hr = "http://188.166.237.51/android_login_api/create_hr.php";
-    private static final String TAG_SUCCESS = "success";
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -77,6 +73,13 @@ public class HeartRateActivity extends Activity implements View.OnClickListener 
         btnCreateINR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (inputHR.getText().toString().length() == 0) {
+                    // Toast.makeText(getApplicationContext(), "Invalid Systolic Value", Toast.LENGTH_LONG).show();
+                    inputHR.setError("Invalid HeartRate Value");
+                    return;
+                } else {
+                    Toast.makeText(getApplicationContext(), "Validated Succesfully", Toast.LENGTH_LONG).show();
+                }
                 new CreateNewINR().execute();
             }
         });
@@ -107,30 +110,6 @@ public class HeartRateActivity extends Activity implements View.OnClickListener 
             mDatePicker.setTitle("Please select date");
             mDatePicker.getDatePicker().setMaxDate(System.currentTimeMillis());
             mDatePicker.show();
-
-
-            /* Get Current Date
-            final Calendar c = Calendar.getInstance();
-            year = c.get(Calendar.YEAR);
-            month = c.get(Calendar.MONTH);
-            day = c.get(Calendar.DAY_OF_MONTH);
-
-
-            DatePickerDialog datePickerDialog = new DatePickerDialog(this,
-                    new DatePickerDialog.OnDateSetListener() {
-
-                        @Override
-                        public void onDateSet(DatePicker view, int year,
-                                              int monthOfYear, int dayOfMonth) {
-
-                            txtDate.setText(new StringBuilder().append(year).append("-")
-                                    .append(month + 1).append("-").append(day));
-
-                        }
-                    }, year, month, day);
-
-            datePickerDialog.show();*/
-
         }
         if (v == btnTimePicker) {
 
@@ -153,17 +132,6 @@ public class HeartRateActivity extends Activity implements View.OnClickListener 
             timePickerDialog.show();
         }
 
-        if(inputHR.getText().toString().length()==0)
-        {
-            // Toast.makeText(getApplicationContext(), "Invalid Systolic Value", Toast.LENGTH_LONG).show();
-            inputHR.setError("Invalid HeartRate Value");
-            return;
-        }
-
-        else
-        {
-            Toast.makeText(getApplicationContext(), "Validated Succesfully", Toast.LENGTH_LONG).show();
-        }
     }
 
   /*  @SuppressWarnings("deprecation")

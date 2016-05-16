@@ -6,39 +6,41 @@ package com.sgh.swinburne.heartplus;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.LayerDrawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RatingBar;
+import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import com.sgh.swinburne.heartplus.helper.SQLiteHandler;
+import com.sgh.swinburne.heartplus.helper.SessionManager;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.os.AsyncTask;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-
-import com.sgh.swinburne.heartplus.helper.SQLiteHandler;
-import com.sgh.swinburne.heartplus.helper.SessionManager;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 
 public class FeedbackActivity extends Activity {
-    private ProgressDialog pDialog;
-    private SQLiteHandler db;
-    private SessionManager session;
-
+    private static final String TAG_SUCCESS = "success";
+    private static String url_create_feedback = "http://188.166.237.51/android_login_api/create_feedback.php";
     JSONParser jsonParser = new JSONParser();
     EditText inputEmail;
     EditText inputMessage;
-    private static String url_create_feedback = "http://188.166.237.51/android_login_api/create_feedback.php";
-    private static final String TAG_SUCCESS = "success";
-
-
+    RatingBar rate;
+    private ProgressDialog pDialog;
+    private SQLiteHandler db;
+    private SessionManager session;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -49,11 +51,23 @@ public class FeedbackActivity extends Activity {
         //inputEmail = (EditText) findViewById(R.id.inputEmail);
         inputMessage = (EditText) findViewById(R.id.inputMessage);
 
+        rate = (RatingBar) findViewById(R.id.ratingBar1);
+
+        LayerDrawable stars = (LayerDrawable) rate.getProgressDrawable();
+        stars.getDrawable(2).setColorFilter(Color.BLACK, PorterDuff.Mode.SRC_ATOP);
+
 
         Button btnCreateFeedback = (Button) findViewById(R.id.btnCreateFeedback);
         btnCreateFeedback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (inputMessage.getText().toString().length() == 0) {
+
+                    inputMessage.setError("Please Put a message");
+                    return;
+                } else {
+                    Toast.makeText(getApplicationContext(), "Validated Succesfully", Toast.LENGTH_LONG).show();
+                }
                 new CreateNewFeedback().execute();
             }
         });

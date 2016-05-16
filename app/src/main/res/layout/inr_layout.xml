@@ -9,86 +9,70 @@
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="50dp"
-        android:paddingBottom="10dp"
-        android:text="INR"
-        android:typeface="monospace"
-        android:textColor="#fcfbfb"
         android:gravity="center"
+        android:paddingBottom="10dp"
+        android:paddingTop="60dp"
+        android:text="INR"
+        android:textAllCaps="true"
+        android:textColor="#fcfbfb"
         android:textSize="60dp"
-        android:textAllCaps="true"/>
+        android:typeface="monospace" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_margin="25dp"
+        android:layout_weight="0.82"
         android:gravity="center"
         android:orientation="vertical"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true"
-        android:id="@+id/linearLayout"
-        android:layout_weight="0.82"
         android:weightSum="1">
 
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="INR"
+            android:layout_marginTop="40dp"
             android:paddingLeft="10dip"
             android:paddingRight="10dip"
-            android:textSize="20dp"
-            android:textColor="@color/white" />
+            android:text="INR"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
 
         <EditText
             android:id="@+id/inputINR"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dip"
-            android:layout_marginBottom="15dip"
+            android:layout_marginBottom="5dp"
+            android:hint="Your INR Value e.g 2.3"
+            android:inputType="numberDecimal|number"
             android:singleLine="true"
-            android:text="Your INR Value"
-            android:textSize="18dp"
-            android:textColor="@color/hint" />
+            android:textColor="@color/hint"
+            android:textColorHint="@color/hint"
+            android:textSize="18dp" />
 
-        <LinearLayout
+        <Button
+            android:id="@+id/btn_date"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginBottom="10dp"
-            android:layout_width="fill_parent">
+            android:layout_marginTop="30dp"
+            android:background="@color/timedate"
+            android:onClick="onClick"
+            android:text="SET DATE"
+            android:textSize="15dp" />
 
-            <Button
-                android:id="@+id/btn_time"
-                android:text="SET DATE"
-                android:textSize="15dp"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:layout_marginRight="10dp"
-                android:layout_weight="1"
-                android:onClick="setDate"
-                android:background="#c43838" />
-
-            <Button
-                android:id="@+id/btn_date"
-                android:text="SET TIME"
-                android:textSize="15dp"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="25dp"
-                android:layout_weight="1"
-                android:onClick="setTime"
-                android:background="#c43838" />
-
-        </LinearLayout>
+        <EditText
+            android:id="@+id/inputDate"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
 
         <Button
             android:id="@+id/btnCreateINR"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Submit"
-            android:background="#c43838" />
+            android:layout_marginTop="20dp"
+            android:background="@color/timedate"
+            android:text="Submit" />
 
 
     </LinearLayout>

@@ -2,32 +2,6 @@ package com.sgh.swinburne.heartplus;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
-import android.app.Dialog;
-import android.app.ProgressDialog;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.sgh.swinburne.heartplus.helper.SQLiteHandler;
-import com.sgh.swinburne.heartplus.helper.SessionManager;
-
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.Calendar;
-import java.util.HashMap;
-
-import android.app.Activity;
-import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
 import android.os.AsyncTask;
@@ -58,25 +32,22 @@ import java.util.List;
  * Created by Saad on 11/5/2015.
  */
 public class BPActivity extends Activity implements View.OnClickListener {
-    private ProgressDialog pDialog;
-    private SQLiteHandler db;
-    private SessionManager session;
-
+    private static final String TAG_SUCCESS = "success";
+    private static String url_create_bp = "http://188.166.237.51/android_login_api/create_bp.php";
     JSONParser jsonParser = new JSONParser();
     EditText inputS;
     EditText inputDate;
     EditText inputTime;
     EditText inputD;
     EditText remark;
+    Button btnDatePicker, btnTimePicker;
+    TextView txtDate, txtTime;
+    private ProgressDialog pDialog;
+    private SQLiteHandler db;
+    private SessionManager session;
     private DatePicker datePicker;
     private Calendar calendar;
     private int year, month, day, hour, minute;
-    Button btnDatePicker, btnTimePicker;
-    TextView txtDate, txtTime;
-
-    private static String url_create_bp = "http://188.166.237.51/android_login_api/create_bp.php";
-    private static final String TAG_SUCCESS = "success";
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -108,6 +79,18 @@ public class BPActivity extends Activity implements View.OnClickListener {
         btnCreateGlucose.setOnClickListener(new View.OnClickListener() {
                                                 @Override
                                                 public void onClick(View view) {
+                                                    if (inputS.getText().toString().length() == 0) {
+                                                        // Toast.makeText(getApplicationContext(), "Invalid Systolic Value", Toast.LENGTH_LONG).show();
+                                                        inputS.setError("Invalid Systolic Value");
+                                                        return;
+                                                    }
+                                                    if (inputD.getText().toString().length() == 0) {
+                                                        //Toast.makeText(getApplicationContext(), "Invalid Dystolic Value", Toast.LENGTH_LONG).show();
+                                                        inputD.setError("Invalid Dystolic Value");
+                                                        return;
+                                                    } else {
+                                                        Toast.makeText(getApplicationContext(), "Validated Succesfully", Toast.LENGTH_LONG).show();
+                                                    }
                                                     new CreateNewBP().execute();
                                                 }
                                             }
@@ -162,24 +145,6 @@ public class BPActivity extends Activity implements View.OnClickListener {
             timePickerDialog.show();
         }
 
-        if(inputS.getText().toString().length()==0)
-        {
-           // Toast.makeText(getApplicationContext(), "Invalid Systolic Value", Toast.LENGTH_LONG).show();
-            inputS.setError("Invalid Systolic Value");
-            return;
-        }
-
-        if(inputD.getText().toString().length()==0)
-        {
-            //Toast.makeText(getApplicationContext(), "Invalid Dystolic Value", Toast.LENGTH_LONG).show();
-            inputD.setError("Invalid Dystolic Value");
-            return;
-        }
-
-        else
-        {
-            Toast.makeText(getApplicationContext(), "Validated Succesfully", Toast.LENGTH_LONG).show();
-        }
     }
 
   /*  @SuppressWarnings("deprecation")

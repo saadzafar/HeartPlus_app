@@ -4,15 +4,6 @@ package com.sgh.swinburne.heartplus;
  * Created by Saad on 11/12/2015.
  */
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -20,46 +11,48 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class EditPill extends Activity {
 
-    TextView txtName;
-    TextView txtSideEffect;
-    TextView txtDescription;
-    TextView txtIndication;
-    TextView txtCreatedAt;
-   /* Button btnSave;
-    Button btnDelete;*/
-
-    String pid;
-
-    // Progress Dialog
-    private ProgressDialog pDialog;
-
-    // JSON parser class
-    JSONParser jsonParser = new JSONParser();
-
     // single product url
     private static final String url_pill_details = "http://188.166.237.51/android_login_api/get_pill_details.php";
+    // JSON Node names
+    private static final String TAG_SUCCESS = "success";
+    private static final String TAG_PILL = "pill";
+    private static final String TAG_PID = "pid";
+    private static final String TAG_NAME = "name";
+
+    /* Button btnSave;
+     Button btnDelete;*/
+    private static final String TAG_SIDEEFFECT = "sideeffect";
+    private static final String TAG_INDICATION = "indication";
+    private static final String TAG_DESCRIPTION = "description";
+    TextView txtName;
 
    /* // url to update product
     private static final String url_update_pill = "http://188.166.237.51/android_login_api/update_pill.php";*/
 
     /*// url to delete product
     private static final String url_delete_pill = "http://188.166.237.51/android_login_api/dele_pill.php";*/
-
-    // JSON Node names
-    private static final String TAG_SUCCESS = "success";
-    private static final String TAG_PILL = "pill";
-    private static final String TAG_PID = "pid";
-    private static final String TAG_NAME = "name";
-    private static final String TAG_SIDEEFFECT = "sideeffect";
-    private static final String TAG_INDICATION = "indication";
-    private static final String TAG_DESCRIPTION = "description";
+    TextView txtSideEffect;
+    TextView txtDescription;
+    TextView txtIndication;
+    TextView txtCreatedAt;
+    String pid;
+    // JSON parser class
+    JSONParser jsonParser = new JSONParser();
+    // Progress Dialog
+    private ProgressDialog pDialog;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

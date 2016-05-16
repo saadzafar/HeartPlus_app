@@ -7,7 +7,7 @@
 
     <uses-sdk
         android:minSdkVersion="9"
-        android:targetSdkVersion="23" />
+        android:targetSdkVersion="19" />
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
@@ -16,11 +16,13 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
     <application
         android:name="com.sgh.swinburne.heartplus.app.AppController"
         android:allowBackup="true"
+        android:icon="@mipmap/heartlogo_toolbar"
         android:label="@string/app_name"
-        android:icon="@mipmap/ic_launcher"
         android:theme="@android:style/Theme.Holo">
 
         <!-- Splash Screen -->
@@ -38,8 +40,8 @@
 
 
         <activity
-            android:label="@string/app_name"
-            android:name="com.sgh.swinburne.heartplus.MainActivity" >
+            android:name="com.sgh.swinburne.heartplus.MainActivity"
+            android:label="@string/app_name">
             <intent-filter >
                 <action android:name="android.intent.action.MAIN" />
 
@@ -68,6 +70,9 @@
 
         <!-- Heart Rate Activity -->
         <activity android:name="com.sgh.swinburne.heartplus.HeartRateActivity"></activity>
+
+        <!-- Graph Activity -->
+        <activity android:name="com.sgh.swinburne.heartplus.Graph_View"></activity>
 
         <!-- Edit Pill Activity -->
         <activity android:name="com.sgh.swinburne.heartplus.EditPill"></activity>
@@ -109,7 +114,7 @@
 
         <activity android:name=".appointment.AppointmentListActivity"></activity>
         <activity android:name=".appointment.AppointmentEditActivity"/>
-        <activity android:name=".appointment.TaskPreferences"/>
+
         <receiver android:name=".appointment.BootReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
@@ -119,15 +124,14 @@
         <service android:name=".appointment.AppointmentServices" />
 
 
-
         <activity android:name=".pillreminder.PillListActivity" />
         <activity android:name=".pillreminder.PillEditActivity" android:label="@string/edit_pill_title"></activity>
         <activity
             android:name="com.sgh.swinburne.heartplus.pillreminder.AlertActivity"
             android:label="@string/title_activity_alert"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" >
+            android:theme="@android:style/Theme.Holo">
             <intent-filter>
-                <action android:name="teamqitalach.pillapp.alertactivity" />
+                <action android:name="com.sgh.swinburne.heartplus.pillreminder.alertactivity" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -143,7 +147,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.sgh.swinburne.heartplus.MainActivity" />
         </activity>
-
 
 
     </application>

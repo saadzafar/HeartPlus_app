@@ -2,7 +2,6 @@ package com.sgh.swinburne.heartplus;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
 import android.os.AsyncTask;
@@ -21,7 +20,6 @@ import com.sgh.swinburne.heartplus.helper.SessionManager;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -35,23 +33,21 @@ import java.util.List;
  */
 public class GlucoseActivity extends Activity implements View.OnClickListener {
 
-    private ProgressDialog pDialog;
-    private SQLiteHandler db;
-    private SessionManager session;
-
+    private static final String TAG_SUCCESS = "success";
+    private static String url_create_inr = "http://188.166.237.51/android_login_api/create_glucose.php";
     JSONParser jsonParser = new JSONParser();
     EditText inputGlucose;
     EditText inputDate;
     EditText inputMeal;
+    Button btnDatePicker, btnTimePicker;
+    EditText txtDate, txtTime;
+    private ProgressDialog pDialog;
+    private SQLiteHandler db;
+    private SessionManager session;
     private DatePicker datePicker;
     private Calendar calendar;
     private TextView dateView;
     private int year, month, day, hour, minute;
-    Button btnDatePicker, btnTimePicker;
-    EditText txtDate, txtTime;
-
-    private static String url_create_inr = "http://188.166.237.51/android_login_api/create_glucose.php";
-    private static final String TAG_SUCCESS = "success";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -60,18 +56,35 @@ public class GlucoseActivity extends Activity implements View.OnClickListener {
 
 
         inputGlucose = (EditText) findViewById(R.id.inputGlucose);
-
+        // dateView = (TextView) findViewById(R.id.inputDate);
         inputMeal = (EditText) findViewById(R.id.inputMeal);
 
         btnDatePicker=(Button)findViewById(R.id.btn_date);
         btnTimePicker=(Button)findViewById(R.id.btn_time);
+        txtDate = (EditText) findViewById(R.id.in_date);
+        txtTime = (EditText) findViewById(R.id.in_time);
         btnDatePicker.setOnClickListener(this);
         btnTimePicker.setOnClickListener(this);
+
+      /*  calendar = Calendar.getInstance();
+        year = calendar.get(Calendar.YEAR);
+
+        month = calendar.get(Calendar.MONTH);
+        day = calendar.get(Calendar.DAY_OF_MONTH);
+        showDate(year, month + 1, day); */
+
 
         Button btnCreateGlucose = (Button) findViewById(R.id.btnCreateGlucose);
         btnCreateGlucose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (inputGlucose.getText().toString().length() == 0) {
+                    // Toast.makeText(getApplicationContext(), "Invalid Systolic Value", Toast.LENGTH_LONG).show();
+                    inputGlucose.setError("Invalid Glucose Value");
+                    return;
+                } else {
+                    Toast.makeText(getApplicationContext(), "Validated Succesfully", Toast.LENGTH_LONG).show();
+                }
                 new CreateNewGlucose().execute();
             }
         });
@@ -96,7 +109,8 @@ public class GlucoseActivity extends Activity implements View.OnClickListener {
                         public void onDateSet(DatePicker view, int year,
                                               int monthOfYear, int dayOfMonth) {
 
-                            txtDate.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+                            txtDate.setText(new StringBuilder().append(year).append("-")
+                                    .append(month + 1).append("-").append(day));
 
                         }
                     }, year, month, day);
@@ -123,18 +137,40 @@ public class GlucoseActivity extends Activity implements View.OnClickListener {
             timePickerDialog.show();
         }
 
-        if(inputGlucose.getText().toString().length()==0)
-        {
-            // Toast.makeText(getApplicationContext(), "Invalid Systolic Value", Toast.LENGTH_LONG).show();
-            inputGlucose.setError("Invalid INR Value");
-            return;
-        }
-
-        else
-        {
-            Toast.makeText(getApplicationContext(), "Validated Succesfully", Toast.LENGTH_LONG).show();
-        }
     }
+
+  /*  @SuppressWarnings("deprecation")
+    public void setDate(View view) {
+        showDialog(999);
+        Toast.makeText(getApplicationContext(), "ca", Toast.LENGTH_SHORT)
+                .show();
+    }
+
+    @Override
+    protected Dialog onCreateDialog(int id) {
+        // TODO Auto-generated method stub
+        if (id == 999) {
+            return new DatePickerDialog(this, myDateListener, year, month, day);
+        }
+        return null;
+    }
+
+    private DatePickerDialog.OnDateSetListener myDateListener = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker arg0, int arg1, int arg2, int arg3) {
+            // TODO Auto-generated method stub
+            // arg1 = year
+            // arg2 = month
+            // arg3 = day
+            showDate(arg1, arg2 + 1, arg3);
+        }
+    };
+
+    private void showDate(int year, int month, int day) {
+        dateView.setText(new StringBuilder().append(year).append("-")
+                .append(month).append("-").append(day));
+        Log.d("date: ", dateView.toString());
+    } */
 
     class CreateNewGlucose extends AsyncTask<String, String, String> {
         @Override
@@ -144,7 +180,7 @@ public class GlucoseActivity extends Activity implements View.OnClickListener {
             pDialog.setMessage("Posting Glucose...");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
-            //pDialog.show();
+            pDialog.show();
 
         }
 
@@ -155,13 +191,16 @@ public class GlucoseActivity extends Activity implements View.OnClickListener {
             String email = user.get("email");
             Log.d("email ", email);
             String value = inputGlucose.getText().toString();
-           // String date = dateView.getText().toString();
+            String date = txtDate.getText().toString();
+            String time = txtTime.getText().toString();
             String meal = inputMeal.getText().toString();
             Log.d("value ", value);
-           // Log.d("date ", date);
+            Log.d("date ", date);
+            Log.d("time ", time);
             List<NameValuePair> params = new ArrayList<NameValuePair>();
             params.add(new BasicNameValuePair("value", value));
-          //  params.add(new BasicNameValuePair("date", date));
+            params.add(new BasicNameValuePair("date", date));
+            params.add(new BasicNameValuePair("time", time));
             params.add(new BasicNameValuePair("email", email));
             params.add(new BasicNameValuePair("meal", meal));
             JSONObject json = jsonParser.makeHttpRequest(url_create_inr, "POST", params);

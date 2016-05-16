@@ -3,81 +3,92 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:fillViewport="false"
-    android:background="@color/background">
+    android:background="@color/background"
+    android:fillViewport="false">
+
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
 
         <TextView
-            android:layout_height="wrap_content"
-            android:text="@string/name"
             android:layout_width="140dp"
-            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginTop="5dp"
             android:paddingLeft="10dip"
             android:paddingRight="10dip"
             android:paddingTop="10dip"
-            android:layout_gravity="left"
-            android:textSize="14dip"
-            android:textColor="#000"/>
+            android:text="@string/name"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
         <EditText android:id="@+id/name"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dip"
-            android:layout_marginBottom="15dip"
+            android:layout_marginBottom="2dp"
+            android:hint="e.g warfarin"
+            android:paddingLeft="10dip"
+            android:paddingRight="10dip"
             android:singleLine="true"
-            android:hint="Drug Name"
-            android:textSize="12dip"
             android:textColor="@color/hint"
-            />
+            android:textColorHint="@color/hint"
+            android:textSize="18dp" />
 
         <TextView
-            android:layout_height="wrap_content"
-            android:text="@string/dose"
             android:layout_width="140dp"
-            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginTop="5dp"
             android:paddingLeft="10dip"
             android:paddingRight="10dip"
             android:paddingTop="10dip"
-            android:layout_gravity="left"
-            android:textSize="14dip"
-            android:textColor="#000"/>
+            android:text="@string/dose"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
         <EditText android:id="@+id/dose"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dip"
-            android:layout_marginBottom="15dip"
+            android:layout_margin="2dp"
+            android:layout_marginBottom="2dp"
+            android:hint="e.g 3mg"
+            android:paddingLeft="10dip"
+            android:paddingRight="10dip"
             android:singleLine="true"
-            android:hint="Current Dosage"
-            android:textSize="12dip"
-            android:textColor="@color/hint"/>
+            android:textColor="@color/hint"
+            android:textColorHint="@color/hint"
+            android:textSize="18dp" />
 
         <TextView
-            android:layout_height="wrap_content"
-            android:text="@string/instructions"
             android:layout_width="140dp"
-            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginTop="5dp"
             android:paddingLeft="10dip"
             android:paddingRight="10dip"
             android:paddingTop="10dip"
-            android:layout_gravity="left"
-            android:textSize="14dip"
-            android:textColor="#000"/>
+            android:text="@string/instructions"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
         <EditText android:id="@+id/instructions"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dip"
-            android:layout_marginBottom="15dip"
-            android:hint="Any Instructions?"
-            android:textSize="12dip"
-            android:textColor="@color/hint"
+            android:layout_marginBottom="3dp"
+            android:gravity="top"
+            android:hint=" e.g take after dinner"
             android:minLines="5"
+            android:paddingLeft="10dip"
+            android:paddingRight="10dip"
             android:scrollbars="vertical"
-            android:gravity="top" />
+            android:textColor="@color/hint"
+            android:textColorHint="@color/hint"
+            android:textSize="16dip" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -89,105 +100,108 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/time_title"
-                android:textSize="20sp"
-                android:gravity="center"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="5dp"
                 android:clickable="true"
-                android:layout_marginTop="8dp"/>
+                android:gravity="center"
+                android:hint="Time"
+                android:textColor="@color/hint"
+                android:textColorHint="@color/hint"
+                android:textSize="20sp" />
 
         </LinearLayout>
 
         <CheckBox android:id="@+id/every_day"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Every day"
             android:onClick="onCheckboxClicked"
-            android:layout_below="@+id/schedule"/>
+            android:text="Every day" />
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/checkbox_layout"
-            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/every_day"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="8dp">
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
 
             <com.sgh.swinburne.heartplus.pillreminder.CustomCheckBox
                 android:id="@+id/checkbox_sunday"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/Sunday"
                 android:button="@null"
+                android:gravity="center"
                 android:onClick="onCheckboxClicked"
                 android:padding="1dp"
-                android:gravity="center"/>
+                android:text="@string/Sunday" />
 
             <com.sgh.swinburne.heartplus.pillreminder.CustomCheckBox
                 android:id="@+id/checkbox_monday"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/Monday"
                 android:button="@null"
+                android:gravity="center"
                 android:onClick="onCheckboxClicked"
                 android:padding="1dp"
-                android:gravity="center"/>
+                android:text="@string/Monday" />
 
             <com.sgh.swinburne.heartplus.pillreminder.CustomCheckBox
                 android:id="@+id/checkbox_tuesday"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/Tuesday"
                 android:button="@null"
+                android:gravity="center"
                 android:onClick="onCheckboxClicked"
                 android:padding="1dp"
-                android:gravity="center"/>
+                android:text="@string/Tuesday" />
 
             <com.sgh.swinburne.heartplus.pillreminder.CustomCheckBox
                 android:id="@+id/checkbox_wednesday"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/Wednesday"
                 android:button="@null"
+                android:gravity="center"
                 android:onClick="onCheckboxClicked"
                 android:padding="1dp"
-                android:gravity="center"/>
+                android:text="@string/Wednesday" />
 
             <com.sgh.swinburne.heartplus.pillreminder.CustomCheckBox
                 android:id="@+id/checkbox_thursday"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/Thursday"
                 android:button="@null"
+                android:gravity="center"
                 android:onClick="onCheckboxClicked"
                 android:padding="1dp"
-                android:gravity="center"/>
+                android:text="@string/Thursday" />
 
             <com.sgh.swinburne.heartplus.pillreminder.CustomCheckBox
                 android:id="@+id/checkbox_friday"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/Friday"
                 android:button="@null"
+                android:gravity="center"
                 android:onClick="onCheckboxClicked"
                 android:padding="1dp"
-                android:gravity="center"/>
+                android:text="@string/Friday" />
 
             <com.sgh.swinburne.heartplus.pillreminder.CustomCheckBox
                 android:id="@+id/checkbox_saturday"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/Saturday"
                 android:button="@null"
+                android:gravity="center"
                 android:onClick="onCheckboxClicked"
                 android:padding="1dp"
-                android:gravity="center"/>
+                android:text="@string/Saturday" />
 
         </LinearLayout>
 
@@ -199,25 +213,25 @@
             android:orientation="horizontal" >
 
             <Button android:id="@+id/btn_set_alarm"
-                android:text="@string/confirm"
-                android:layout_height="40dp"
                 android:layout_width="100dp"
+                android:layout_height="40dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginRight="23dp"
-                android:layout_marginLeft="23dp"
                 android:layout_marginBottom="15dp"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginLeft="23dp"
+                android:layout_marginRight="23dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/confirm" />
 
             <Button
                 android:id="@+id/btn_cancel_alarm"
-                android:text="@string/str_btn_cancel"
-                android:layout_height="40dp"
                 android:layout_width="100dp"
+                android:layout_height="40dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginRight="23dp"
-                android:layout_marginLeft="23dp"
                 android:layout_marginBottom="15dp"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginLeft="23dp"
+                android:layout_marginRight="23dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/str_btn_cancel" />
 
         </LinearLayout>
 
