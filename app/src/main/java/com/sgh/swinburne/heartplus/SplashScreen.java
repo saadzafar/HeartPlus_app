@@ -10,6 +10,7 @@ import android.os.Handler;
  */
 public class SplashScreen extends Activity {
 
+    public static final String PREFS_NAME = "user_conditions";
     // Splash screen timer
     private static int SPLASH_TIME_OUT = 1500;
 

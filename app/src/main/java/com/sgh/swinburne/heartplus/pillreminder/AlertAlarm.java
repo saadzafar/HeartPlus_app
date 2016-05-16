@@ -21,6 +21,8 @@ import android.view.WindowManager.LayoutParams;
  */
 
 public class AlertAlarm extends DialogFragment {
+
+    @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
         /** Turn Screen On and Unlock the keypad when this alert dialog is displayed */
@@ -36,8 +38,6 @@ public class AlertAlarm extends DialogFragment {
         setCancelable(false);
 
         final String pill_name = getActivity().getIntent().getStringExtra("pill_name");
-        final String dose = getActivity().getIntent().getStringExtra("Dose");
-        final String instruction = getActivity().getIntent().getStringExtra("Instruction");
 
         builder.setMessage("Did you take your " + pill_name + " ?");
 

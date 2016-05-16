@@ -16,6 +16,8 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
     <application
         android:name="com.sgh.swinburne.heartplus.app.AppController"
         android:allowBackup="true"
@@ -127,9 +129,9 @@
         <activity
             android:name="com.sgh.swinburne.heartplus.pillreminder.AlertActivity"
             android:label="@string/title_activity_alert"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" >
+            android:theme="@android:style/Theme.Holo">
             <intent-filter>
-                <action android:name="teamqitalach.pillapp.alertactivity" />
+                <action android:name="com.sgh.swinburne.heartplus.pillreminder.alertactivity" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
