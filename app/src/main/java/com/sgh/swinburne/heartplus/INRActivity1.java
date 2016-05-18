@@ -55,7 +55,7 @@ public class INRActivity1 extends Activity implements View.OnClickListener {
         inputINR = (EditText) findViewById(R.id.inputINR);
       //  dateView = (TextView) findViewById(R.id.inputDate);
         btnDatePicker=(Button)findViewById(R.id.btn_date);
-        txtDate=(EditText)findViewById(R.id.inputDate);
+        inputDate = (EditText) findViewById(R.id.inputDate);
         btnDatePicker.setOnClickListener(this);
 
       /*  calendar = Calendar.getInstance();
@@ -74,6 +74,10 @@ public class INRActivity1 extends Activity implements View.OnClickListener {
                 if (inputINR.getText().toString().length() == 0) {
                     // Toast.makeText(getApplicationContext(), "Invalid Systolic Value", Toast.LENGTH_LONG).show();
                     inputINR.setError("Invalid INR Value");
+                    return;
+                } else if (inputDate.getText().toString().length() == 0) {
+                    // Toast.makeText(getApplicationContext(), "Invalid Systolic Value", Toast.LENGTH_LONG).show();
+                    inputDate.setError("Please insert a date");
                     return;
                 } else {
                     Toast.makeText(getApplicationContext(), "Validated Succesfully", Toast.LENGTH_LONG).show();
@@ -106,7 +110,7 @@ public class INRActivity1 extends Activity implements View.OnClickListener {
                     year = selectedyear;
                     month = selectedmonth;
                     day = selectedday;
-                    txtDate.setText(new StringBuilder().append(year).append("-").append(month+1).append("-").append(day));
+                    inputDate.setText(new StringBuilder().append(year).append("-").append(month + 1).append("-").append(day));
                 }
             },year, month, day);
             mDatePicker.setTitle("Please select date");
@@ -168,7 +172,7 @@ public class INRActivity1 extends Activity implements View.OnClickListener {
             String email = user.get("email");
             Log.d("email ", email);
             String value = inputINR.getText().toString();
-            String date = txtDate.getText().toString();
+            String date = inputDate.getText().toString();
             Log.d("value ", value);
             Log.d("date ", date);
             List<NameValuePair> params = new ArrayList<NameValuePair>();

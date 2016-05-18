@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.sgh.swinburne.heartplus.Graph_View">
+    tools:context="com.sgh.swinburne.heartplus.Glucose_Graph">
 
     <TextView
         android:id="@+id/linetext"
@@ -17,19 +17,19 @@
         android:gravity="center"
         android:paddingBottom="10dp"
         android:paddingTop="60dp"
-        android:text="INR Graph"
+        android:text="Glucose Graph"
         android:textAllCaps="true"
         android:textColor="#fcfbfb"
-        android:textSize="60dp"
+        android:textSize="50dp"
         android:typeface="monospace" />
 
 
     <com.jjoe64.graphview.GraphView
-        android:id="@+id/graph"
+        android:id="@+id/Glucose_graph"
         android:layout_width="match_parent"
         android:layout_height="200dip"
         android:layout_below="@+id/linetext"
         android:layout_marginTop="30dp"
-        android:title="INR Graph" />
+        android:title="Glucose Graph" />
 
 </RelativeLayout>

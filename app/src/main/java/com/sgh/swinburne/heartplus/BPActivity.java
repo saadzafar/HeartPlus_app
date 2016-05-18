@@ -63,8 +63,8 @@ public class BPActivity extends Activity implements View.OnClickListener {
         btnDatePicker.setOnClickListener(this);
         btnTimePicker.setOnClickListener(this);
 
-       // dateView = (TextView) findViewById(R.id.inputDate);
-       // timeView = (TextView) findViewById(R.id.inputTime);
+        // dateView = (TextView) findViewById(R.id.inputDate);
+        // timeView = (TextView) findViewById(R.id.inputTime);
 
        /* calendar = Calendar.getInstance();
         year = calendar.get(Calendar.YEAR);
@@ -73,7 +73,7 @@ public class BPActivity extends Activity implements View.OnClickListener {
         hour = calendar.get(Calendar.HOUR_OF_DAY);
         minute = calendar.get(Calendar.MINUTE);
         showDate(year, month + 1, day);*/
-       // showTime(hour, minute);
+        // showTime(hour, minute);
 
         Button btnCreateGlucose = (Button) findViewById(R.id.btnCreateGlucose);
         btnCreateGlucose.setOnClickListener(new View.OnClickListener() {
@@ -83,10 +83,14 @@ public class BPActivity extends Activity implements View.OnClickListener {
                                                         // Toast.makeText(getApplicationContext(), "Invalid Systolic Value", Toast.LENGTH_LONG).show();
                                                         inputS.setError("Invalid Systolic Value");
                                                         return;
-                                                    }
-                                                    if (inputD.getText().toString().length() == 0) {
+                                                    } else if (inputD.getText().toString().length() == 0) {
                                                         //Toast.makeText(getApplicationContext(), "Invalid Dystolic Value", Toast.LENGTH_LONG).show();
-                                                        inputD.setError("Invalid Dystolic Value");
+                                                        inputD.setError("Invalid Diastolic Value");
+                                                        return;
+                                                    }
+                                                    if (txtDate.getText().toString().length() == 0) {
+                                                        // Toast.makeText(getApplicationContext(), "Invalid Systolic Value", Toast.LENGTH_LONG).show();
+                                                        txtDate.setError("Please enter the date");
                                                         return;
                                                     } else {
                                                         Toast.makeText(getApplicationContext(), "Validated Succesfully", Toast.LENGTH_LONG).show();
@@ -138,7 +142,7 @@ public class BPActivity extends Activity implements View.OnClickListener {
                         public void onTimeSet(TimePicker view, int hourOfDay,
                                               int minute) {
 
-                           txtTime.setText(new StringBuilder().append(hourOfDay).append(":").append(minute));
+                            txtTime.setText(new StringBuilder().append(hourOfDay).append(":").append(minute));
 
                         }
                     }, hour, minute, false);
@@ -153,7 +157,6 @@ public class BPActivity extends Activity implements View.OnClickListener {
         Toast.makeText(getApplicationContext(), "ca", Toast.LENGTH_SHORT)
                 .show();
     }
-
     @Override
     protected Dialog onCreateDialog(int id) {
         // TODO Auto-generated method stub
@@ -162,7 +165,6 @@ public class BPActivity extends Activity implements View.OnClickListener {
         }
         return null;
     }
-
     private DatePickerDialog.OnDateSetListener myDateListener = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker arg0, int arg1, int arg2, int arg3) {
@@ -173,75 +175,70 @@ public class BPActivity extends Activity implements View.OnClickListener {
             showDate(arg1, arg2 + 1, arg3);
         }
     };
-
-
         private void showTime(int hour, int minute) {
             timeView.setText(new StringBuilder().append(hour).append(":").append(minute));
             Log.d("time: ", timeView.toString());
-
         }
-
         ;
-
         private void showDate(int year, int month, int day) {
             dateView.setText(new StringBuilder().append(year).append("-")
                     .append(month).append("-").append(day));
             Log.d("date: ", dateView.toString());
         } */
 
-        class CreateNewBP extends AsyncTask<String, String, String> {
-            @Override
-            protected void onPreExecute() {
-                super.onPreExecute();
-                pDialog = new ProgressDialog(BPActivity.this);
-                pDialog.setMessage("Posting Blood Pressure...");
-                pDialog.setIndeterminate(false);
-                pDialog.setCancelable(true);
-                pDialog.show();
+    class CreateNewBP extends AsyncTask<String, String, String> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            pDialog = new ProgressDialog(BPActivity.this);
+            pDialog.setMessage("Posting Blood Pressure...");
+            pDialog.setIndeterminate(false);
+            pDialog.setCancelable(true);
+            pDialog.show();
 
-            }
-
-            protected String doInBackground(String... args) {
-                db = new SQLiteHandler(getApplicationContext());
-                session = new SessionManager(getApplicationContext());
-                HashMap<String, String> user = db.getUserDetails();
-                String email = user.get("email");
-                Log.d("email ", email);
-                String time = txtTime.getText().toString();
-                String systolic = inputS.getText().toString();
-                String diastolic = inputD.getText().toString();
-                String inputremark = remark.getText().toString();
-                String date = txtDate.getText().toString();
-                Log.d("BPS ", systolic);
-                Log.d("BPD ", diastolic);
-                Log.d("date ", date);
-                Log.d("time ", time);
-                List<NameValuePair> params = new ArrayList<NameValuePair>();
-                params.add(new BasicNameValuePair("systolic", systolic));
-                params.add(new BasicNameValuePair("diastolic", diastolic));
-                params.add(new BasicNameValuePair("date", date));
-                params.add(new BasicNameValuePair("time", time));
-                params.add(new BasicNameValuePair("email", email));
-                params.add(new BasicNameValuePair("remark", inputremark));
-                Log.d("params ", params.toString());
-                JSONObject json = jsonParser.makeHttpRequest(url_create_bp, "POST", params);
-                Log.d("Create Response", json.toString());
-
-                try {
-                    int success = json.getInt(TAG_SUCCESS);
-                    if (success == 1) {
-                        finish();
-                    } else {
-
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                return null;
-            }
-
-            protected void onPostExecute(String file_url) {
-                pDialog.dismiss();
-            }
         }
+
+        protected String doInBackground(String... args) {
+            db = new SQLiteHandler(getApplicationContext());
+            session = new SessionManager(getApplicationContext());
+            HashMap<String, String> user = db.getUserDetails();
+            String email = user.get("email");
+            Log.d("email ", email);
+            String time = txtTime.getText().toString();
+            String systolic = inputS.getText().toString();
+            String diastolic = inputD.getText().toString();
+            String inputremark = remark.getText().toString();
+            String date = txtDate.getText().toString();
+            Log.d("BPS ", systolic);
+            Log.d("BPD ", diastolic);
+            Log.d("date ", date);
+            Log.d("time ", time);
+            List<NameValuePair> params = new ArrayList<NameValuePair>();
+            params.add(new BasicNameValuePair("systolic", systolic));
+            params.add(new BasicNameValuePair("diastolic", diastolic));
+            params.add(new BasicNameValuePair("date", date));
+            params.add(new BasicNameValuePair("time", time));
+            params.add(new BasicNameValuePair("email", email));
+            params.add(new BasicNameValuePair("remark", inputremark));
+            Log.d("params ", params.toString());
+            JSONObject json = jsonParser.makeHttpRequest(url_create_bp, "POST", params);
+            Log.d("Create Response", json.toString());
+
+            try {
+                int success = json.getInt(TAG_SUCCESS);
+                if (success == 1) {
+                    finish();
+                } else {
+
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        protected void onPostExecute(String file_url) {
+            pDialog.dismiss();
+        }
+    }
 }

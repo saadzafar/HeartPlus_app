@@ -1,7 +1,7 @@
 package com.sgh.swinburne.heartplus;
 
 /**
- * Created by Faizan Elahi on 11/3/2015.
+ * Created by Faizan Elahi on 11/3/2016.
  */
 
 import android.app.Activity;
@@ -48,7 +48,6 @@ public class FeedbackActivity extends Activity {
         setContentView(R.layout.feedback_layout);
 
 
-        //inputEmail = (EditText) findViewById(R.id.inputEmail);
         inputMessage = (EditText) findViewById(R.id.inputMessage);
 
         rate = (RatingBar) findViewById(R.id.ratingBar1);

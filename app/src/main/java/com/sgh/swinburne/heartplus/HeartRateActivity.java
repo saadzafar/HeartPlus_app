@@ -77,6 +77,12 @@ public class HeartRateActivity extends Activity implements View.OnClickListener 
                     // Toast.makeText(getApplicationContext(), "Invalid Systolic Value", Toast.LENGTH_LONG).show();
                     inputHR.setError("Invalid HeartRate Value");
                     return;
+                }
+
+                if (txtDate.getText().toString().length() == 0) {
+                    // Toast.makeText(getApplicationContext(), "Invalid Systolic Value", Toast.LENGTH_LONG).show();
+                    txtDate.setError("Please enter the date");
+                    return;
                 } else {
                     Toast.makeText(getApplicationContext(), "Validated Succesfully", Toast.LENGTH_LONG).show();
                 }

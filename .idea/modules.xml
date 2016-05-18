@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/HeartPlus.iml" filepath="$PROJECT_DIR$/HeartPlus.iml" />
-      <module fileurl="file://$PROJECT_DIR$/HeartPlus_app - Copy.iml" filepath="$PROJECT_DIR$/HeartPlus_app - Copy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HeartPlus_app.iml" filepath="$PROJECT_DIR$/HeartPlus_app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

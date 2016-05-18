@@ -2,11 +2,9 @@ package com.sgh.swinburne.heartplus;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 
 /**
  * Created by Saad on 11/5/2015.
@@ -62,10 +60,8 @@ public class MedicalChartActivity extends Activity {
         Button btn_emergency = (Button) findViewById(R.id.btn_test2);
         btn_emergency.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                String emergency_number = "999";
-                Intent intent = new Intent(Intent.ACTION_CALL);
-                intent.setData(Uri.parse("tel: " + emergency_number));
-                startActivity(intent);
+                Intent i = new Intent(getApplicationContext(), Glucose_Graph.class);
+                startActivity(i);
             }
         });
 

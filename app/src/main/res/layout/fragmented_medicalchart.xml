@@ -15,15 +15,13 @@
         android:text="INR"
         android:textColor="@color/black"
         android:textStyle="bold" />
-
-    <!-- Button Blood Pressure -->
     <Button
-        android:id="@+id/btnBP"
+        android:id="@+id/btnGraph"
         style="@style/DashboardButton"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:drawableTop="@drawable/tool"
-        android:text="Blood Pressure"
+        android:drawableTop="@drawable/graph"
+        android:text="INR Graph"
         android:textColor="@color/black"
         android:textStyle="bold" />
 
@@ -38,6 +36,28 @@
         android:textColor="@color/black"
         android:textStyle="bold" />
 
+    <Button
+        android:id="@+id/btn_test2"
+        style="@style/DashboardButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:drawableTop="@drawable/graph"
+        android:text="Glucose Graph"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+    <!-- Button Blood Pressure -->
+    <Button
+        android:id="@+id/btnBP"
+        style="@style/DashboardButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:drawableTop="@drawable/tool"
+        android:text="Blood Pressure"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+
     <!-- Button Heart Rate -->
     <Button
         android:id="@+id/btnHR"
@@ -46,26 +66,6 @@
         android:layout_height="wrap_content"
         android:drawableTop="@drawable/heartrate"
         android:text="Heart Rate"
-        android:textColor="@color/black"
-        android:textStyle="bold" />
-
-    <Button
-        android:id="@+id/btn_test2"
-        style="@style/DashboardButton"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:drawableTop="@drawable/transport"
-        android:text="Emergency"
-        android:textColor="@color/black"
-        android:textStyle="bold" />
-
-    <Button
-        android:id="@+id/btnGraph"
-        style="@style/DashboardButton"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:drawableTop="@drawable/graph"
-        android:text="INR Graph"
         android:textColor="@color/black"
         android:textStyle="bold" />
 

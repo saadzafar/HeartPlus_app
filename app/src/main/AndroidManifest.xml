@@ -18,6 +18,7 @@
 
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
+
     <application
         android:name="com.sgh.swinburne.heartplus.app.AppController"
         android:allowBackup="true"
@@ -73,6 +74,9 @@
 
         <!-- Graph Activity -->
         <activity android:name="com.sgh.swinburne.heartplus.Graph_View"></activity>
+
+        <!-- Glucose Graph Activity -->
+        <activity android:name="com.sgh.swinburne.heartplus.Glucose_Graph"></activity>
 
         <!-- Edit Pill Activity -->
         <activity android:name="com.sgh.swinburne.heartplus.EditPill"></activity>

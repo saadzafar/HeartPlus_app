@@ -28,13 +28,13 @@ import java.util.Vector;
 /**
  * Created by VivekShah.
  */
-public class Graph_View extends Activity {
+public class Glucose_Graph extends Activity {
 
     private static final Random RANDOM = new Random();
     private static final String TAG_SUCCESS = "success";
     private static Vector<Double> inrList;
     private static Vector<DataPoint> test;
-    private static String url_create_graph = "http://188.166.237.51/android_login_api/create_graph.php";
+    private static String url_create_graph = "http://188.166.237.51/android_login_api/create_graph_gulcose.php";
     /*private static final String TAG_INR = "inr";
     private static final String TAG_VALUE = "value";
     private static final String TAG_DATE = "date";*/
@@ -50,19 +50,19 @@ public class Graph_View extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.graph_view);
+        setContentView(R.layout.glucosegraph);
         inrList = new Vector<Double>();
         test = new Vector<DataPoint>();
 
         inr_series = new ArrayList<HashMap<String, String>>();
-        new LoadINR().execute();
+        new LoadGUL().execute();
         //Log.d("INR Results", json.toString());
         Log.d("Dragons:", "Here be Dragons!");
 
         //doInBackground(null);
 
         // we get graph view instance
-        GraphView graph = (GraphView) findViewById(R.id.graph);
+        GraphView graph = (GraphView) findViewById(R.id.Glucose_graph);
         // data
         series = new LineGraphSeries<DataPoint>();
         graph.addSeries(series);
@@ -71,7 +71,7 @@ public class Graph_View extends Activity {
         Viewport viewport = graph.getViewport();
         viewport.setYAxisBoundsManual(true);
         viewport.setMinY(0);
-        viewport.setMaxY(4);
+        viewport.setMaxY(100);
         viewport.setScrollable(true);
 
 
@@ -111,11 +111,11 @@ public class Graph_View extends Activity {
     }
     // here, we choose to display max 10 points on the viewport and we scroll to end
 
-    private class LoadINR extends AsyncTask<String, String, String> {
+    private class LoadGUL extends AsyncTask<String, String, String> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog = new ProgressDialog(Graph_View.this);
+            pDialog = new ProgressDialog(Glucose_Graph.this);
             pDialog.setMessage("Loading graph. Please wait...");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(false);
@@ -137,14 +137,14 @@ public class Graph_View extends Activity {
                 int success = json.getInt(TAG_SUCCESS);
                 if (success == 1) {
                     String in = json.toString();
-                    String newStr = in.substring(62);
+                    String newStr = in.substring(66);
 
                     StringTokenizer st = new StringTokenizer(newStr, ",");
 
                     while (st.hasMoreTokens()) {
                         String inr = st.nextToken();
                         //System.out.println(key+"****");
-                        String temp = inr.substring(10, 20);
+                        String temp = inr.substring(10, 14);
                         String date = st.nextToken();
                         String temp2 = date.substring(8, 17);
                         //System.out.println(temp+ " " +temp2);
