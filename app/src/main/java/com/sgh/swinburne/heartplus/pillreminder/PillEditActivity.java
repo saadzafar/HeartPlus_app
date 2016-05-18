@@ -25,15 +25,8 @@ import java.net.URISyntaxException;
 import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.List;
+/*Created by Faizan Elahi*/
 
-/**
- * Utilized the link below as a reference guide:
- * http://wptrafficanalyzer.in/blog/setting-up-alarm-using-alarmmanager-and-waking-up-screen-and-unlocking-keypad-on-alarm-goes-off-in-android/
- *
- * This activity handles the view and controller of the edit page, where the user can edit an alarm
- * It is very similar to the add activity, but it uses tempIds and tempNames in the PillBox model
- * to indicate which alarms we need to edit or delete
- */
 public class PillEditActivity extends Activity {
 
     int hour, minute;
